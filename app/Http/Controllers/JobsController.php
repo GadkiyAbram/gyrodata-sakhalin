@@ -13,7 +13,9 @@ class JobsController extends Controller
     }
     public function addJob()
     {
-        return view('jobs/addjob');
+        $batteries = \App\Battery::all();
+
+        return view('jobs/addjob', compact('batteries'));
     }
     public function store()
     {

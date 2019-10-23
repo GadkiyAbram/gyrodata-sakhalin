@@ -47,6 +47,16 @@
 					</div>
 				</div>
 				<div class="form-group row">
+					<label for="battery" class="col-4 col-form-label">Battery</label>
+					<div class="col-4">
+						<select name="battery" id="battery" class="form-control">
+							@foreach($batteries as $battery)
+								<option value="{{ $battery->id }}">{{ $battery->serialOne }}</option>
+							@endforeach
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
 					<label for="firstEng" class="col-4 col-form-label">1st Engineer</label>
 					<div class="col-4">
 						<input type="text" class="form-control" name="firstEng" placeholder="F/L Names">
