@@ -12,12 +12,21 @@
 */
 
 Route::get('/', function () {
+
+    $job = factory(\App\Job::class)->create();
+
+    $battery = new \App\Battery();
+    $battery->serialOne = 'S1-0331-0007';
+    $battery->save();
+
+    $job->battery()->associate($battery);
+
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/batteries', 'BatteriesController@index');
 Route::get('/batteries/addbattery', 'BatteriesController@addBattery');

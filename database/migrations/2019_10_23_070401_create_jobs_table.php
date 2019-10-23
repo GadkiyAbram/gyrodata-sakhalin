@@ -18,6 +18,7 @@ class CreateJobsTable extends Migration
             $table->string('jobNumber')->unique();
             $table->string('toolNumber')->nullable();
             $table->string('modemNumber')->nullable();
+            $table->unsignedBigInteger('battery_id')->nullable()->index();
             $table->string('bbpNumber')->nullable();
             $table->string('firstEng')->nullable();
             $table->string('secondEng')->nullable();
@@ -31,6 +32,8 @@ class CreateJobsTable extends Migration
             $table->float('toolCircHrs')->nullable();
             $table->string('comment')->nullable();
             $table->timestamps();
+
+            $table->foreign('battery_id')->references('id')->on('batteries');
         });
     }
 

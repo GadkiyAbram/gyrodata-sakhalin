@@ -53,7 +53,7 @@
 				<td>{{ $job->toolNumber }}</td>
 				<td>{{ $job->modemNumber }}</td>
 				<td>{{ $job->bbpNumber }}</td>
-				<td>{{ $job->battery_id }}</td>
+				<td>{{ $job->battery->serialOne }}</td>
 				<td>{{ $job->firstEng }}</td>
 				<td>{{ $job->secondEng }}</td>
 				<td>{{ $job->container }}</td>

@@ -15,11 +15,11 @@ class CreateBatteriesTable extends Migration
     {
         Schema::create('batteries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('serialOne')->unique();
+            $table->string('serialOne');
             $table->string('serialTwo')->nullable();
             $table->string('serialThree')->nullable();
-            $table->date('date');
-            $table->integer('condition');
+            $table->date('date')->nullable();
+            $table->integer('condition')->nullable();
             $table->text('comment')->nullable();
             $table->string('container')->nullable();
             $table->timestamps();
