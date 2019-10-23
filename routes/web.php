@@ -14,12 +14,13 @@
 Route::get('/', function () {
 
     $job = factory(\App\Job::class)->create();
-
-    $battery = new \App\Battery();
-    $battery->serialOne = 'S1-0331-0007';
+    $battery = factory(\App\Battery::class)->create();
     $battery->save();
 
-    $job->battery()->associate($battery);
+    $job->battery_id = $battery->id;
+    $job->save();
+
+//    $job->battery()->associate($battery);
 
     return view('welcome');
 });
