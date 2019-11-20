@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Item;
 
 class ToolsController extends Controller
 {
@@ -15,7 +16,9 @@ class ToolsController extends Controller
 
     public function addTool()
     {
-        return view('tools/addtool');
+        $items = \App\Item::all();
+
+        return view('tools/addtool', compact('items'));
     }
 
     public function store()
@@ -27,6 +30,8 @@ class ToolsController extends Controller
 
         $tool = new \App\Tool();
         $tool->tool_type = request('tool_type');
+        $toolType = request('tool_type');
+
         $tool->tool_number = request('tool_number');
         $tool->tool_arrived = request('tool_arrived');
         $tool->tool_demob = request('tool_demob');
@@ -37,6 +42,12 @@ class ToolsController extends Controller
         $tool->tool_location = request('tool_location');
         $tool->tool_comment = request('tool_comment');
         $tool->save();
+
+        //Calculating Tool quantity
+        $item = Item::where('name', $toolType)->first();
+        $item->quantity += 1;
+        $item->save();
+
 
         return redirect('/tools');
     }

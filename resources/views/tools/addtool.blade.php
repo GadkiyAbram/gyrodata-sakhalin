@@ -25,7 +25,11 @@
 				<div class="form-group row">
 					<label for="tool_type" class="col-4 col-form-label">Tool Type</label>
 					<div class="col-4">
-						<input type="text" class="form-control" name="tool_type" placeholder="GWD Gyro Section">
+						<select name="tool_type" id="tool_type" class="form-control">
+							@foreach($items as $item)
+								<option value="{{ $item->name }}">{{ $item->name }}</option>
+							@endforeach
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">

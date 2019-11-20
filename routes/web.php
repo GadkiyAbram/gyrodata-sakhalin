@@ -13,17 +13,32 @@
 
 Route::get('/', function () {
 
-    $tool = factory(\App\Tool::class)->create();
-    $tool->save();
+//    $tool = factory(\App\Tool::class)->create();
+//    $tool->save();
 //
-    $job = factory(\App\Job::class)->create();
-    $battery = factory(\App\Battery::class)->create();
-    $eng = factory(\App\Engineer::class)->create();
-    $battery->save();
+//    $job = factory(\App\Job::class)->create();
+//    $battery = factory(\App\Battery::class)->create();
+//    $eng = factory(\App\Engineer::class)->create();
+//    $battery->save();
+//
+//    $job->battery_id = $battery->id;
+//    $job->eng_id = $eng->id;
+//    $job->save();
 
-    $job->battery_id = $battery->id;
-    $job->eng_id = $eng->id;
-    $job->save();
+//    $file = file(public_path('/GWDequipment.txt'));
+
+//    foreach (file(public_path('/GWDequipment.txt')) as $line)
+//    {
+//        $line = str_replace("\r\n", '', $line);
+//        $item = new \App\Item();
+//        $item->name = $line;
+//        $item->save();
+//    }
+
+//    $item = \App\Item::all();
+//    dd($item);
+
+
 
 //    $job->battery()->associate($battery);
 

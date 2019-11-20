@@ -18,7 +18,7 @@ class JobsController extends Controller
     {
         $batteries = \App\Battery::where('condition', 1)->get();
         $engineers = \App\Engineer::all();
-        $tools = \App\Tool::where('tool_type', 'GWD Gyro Section')->get();
+        $tools = \App\Tool::where('tool_type', 'GWD GDP Section')->get();
         $modems = \App\Tool::where('tool_type', 'GWD Modem Section')->get();
         $bbps = \App\Tool::where('tool_type', 'GWD Battery BullPlug')->get();
 
