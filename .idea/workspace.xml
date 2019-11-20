@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb13fe00-7d51-4b8d-900e-86ae71d9dc84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../public/gyrodata-main.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../resources/views/tools/addtool.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Engineer.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Engineer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Job.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Job.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/factories/JobFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/factories/JobFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/migrations/2019_10_23_070401_create_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/migrations/2019_10_23_070401_create_jobs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/addjob.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/addjob.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/nav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/factories/BatteryFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/factories/BatteryFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/migrations/2019_10_23_062139_create_batteries_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/migrations/2019_10_23_062139_create_batteries_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../app/Http/Controllers/JobsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
+            <state relative-caret-position="323">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -41,8 +32,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../database/migrations/2019_10_23_062139_create_batteries_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="17" column="37" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="37" />
+            <state relative-caret-position="255">
+              <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../database/factories/BatteryFactory.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -91,6 +91,7 @@
       <find>engin</find>
       <find>number</find>
       <find>toolNum</find>
+      <find>batter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -120,9 +121,7 @@
         <option value="$PROJECT_DIR$/resources/views/jobs/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/JobsController.php" />
         <option value="$PROJECT_DIR$/../resources/views/welcome.blade.php" />
-        <option value="$PROJECT_DIR$/../database/migrations/2019_10_23_062139_create_batteries_table.php" />
         <option value="$PROJECT_DIR$/../database/factories/EngineerFactory.php" />
-        <option value="$PROJECT_DIR$/../resources/views/jobs/index.blade.php" />
         <option value="$PROJECT_DIR$/../app/Tool.php" />
         <option value="$PROJECT_DIR$/../resources/views/nav.blade.php" />
         <option value="$PROJECT_DIR$/../database/factories/ToolFactory.php" />
@@ -134,7 +133,11 @@
         <option value="$PROJECT_DIR$/../database/migrations/2019_10_23_070401_create_jobs_table.php" />
         <option value="$PROJECT_DIR$/../database/migrations/2019_11_19_132106_creates_tools_table.php" />
         <option value="$PROJECT_DIR$/../resources/views/jobs/addjob.blade.php" />
+        <option value="$PROJECT_DIR$/../database/migrations/2019_10_23_062139_create_batteries_table.php" />
+        <option value="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" />
+        <option value="$PROJECT_DIR$/../resources/views/jobs/index.blade.php" />
         <option value="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" />
+        <option value="$PROJECT_DIR$/../database/factories/BatteryFactory.php" />
       </list>
     </option>
   </component>
@@ -356,7 +359,7 @@
       <workItem from="1571810076337" duration="22862000" />
       <workItem from="1573974510938" duration="2455000" />
       <workItem from="1574081371976" duration="430000" />
-      <workItem from="1574141458904" duration="23001000" />
+      <workItem from="1574141458904" duration="25512000" />
     </task>
     <task id="LOCAL-00001" summary="Battery / Job can be added separately, now relations">
       <created>1571816280301</created>
@@ -393,11 +396,18 @@
       <option name="project" value="LOCAL" />
       <updated>1571830145714</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added: tools&#10;&#10;selecting tools (GPDM, BBP) / Batteries &amp; Engs while creating a Job&#10;&#10;Calculating circulation hours for GDPM &amp; BBP&#10;&#10;changing batt condition after job created (switch to USED one)">
+      <created>1574237805542</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574237805542</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48748000" />
+    <option name="totallyTimeSpent" value="51259000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -458,7 +468,8 @@
     <MESSAGE value="Partially working version of assigning battery to the Job" />
     <MESSAGE value="Assigning battery to the Job&#10;&#10;Created Engineers table" />
     <MESSAGE value="Selecting battery from db while creating the Job" />
-    <option name="LAST_COMMIT_MESSAGE" value="Selecting battery from db while creating the Job" />
+    <MESSAGE value="added: tools&#10;&#10;selecting tools (GPDM, BBP) / Batteries &amp; Engs while creating a Job&#10;&#10;Calculating circulation hours for GDPM &amp; BBP&#10;&#10;changing batt condition after job created (switch to USED one)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added: tools&#10;&#10;selecting tools (GPDM, BBP) / Batteries &amp; Engs while creating a Job&#10;&#10;Calculating circulation hours for GDPM &amp; BBP&#10;&#10;changing batt condition after job created (switch to USED one)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../database/migrations/2014_10_12_000000_create_users_table.php">
@@ -527,22 +538,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../database/factories/BatteryFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../app/Http/Controllers/ToolController.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../resources/views/batteries/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../resources/views/nav.blade.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -621,13 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../resources/views/jobs/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="58" column="87" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../resources/views/jobs/addjob.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="499">
@@ -637,15 +627,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../database/migrations/2019_10_23_062139_create_batteries_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="37" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="37" />
+        <state relative-caret-position="255">
+          <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../app/Http/Controllers/JobsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../resources/views/jobs/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../resources/views/batteries/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../database/factories/BatteryFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
         </state>
       </provider>
     </entry>

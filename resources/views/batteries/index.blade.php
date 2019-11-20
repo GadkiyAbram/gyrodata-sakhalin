@@ -43,6 +43,7 @@
 			<th scope="col">Serial 3</th>
 			<th scope="col">Production Date</th>
 			<th scope="col">Container</th>
+			<th scope="col">Job assigned</th>
 			<th scope="col">Comment</th>
 			<th scope="col">Action</th>
 		</tr>
@@ -64,6 +65,7 @@
 				<td>{{ $battery->serialThree }}</td>
 				<td>{{ $battery->date }}</td>
 				<td>{{ $battery->container }}</td>
+				<td>{{ $battery->job_assigned }}</td>
 				<td>{{ $battery->comment }}</td>
 				<td><a href="#">Edit</a></td>
 			</tr>

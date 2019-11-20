@@ -20,6 +20,9 @@ class CreateBatteriesTable extends Migration
             $table->string('serialThree')->nullable();
             $table->date('date')->nullable();
             $table->integer('condition')->nullable();
+            $table->string('invoice')->nullable();
+            $table->string('ccd')->nullable();
+            $table->string('job_assigned')->nullable();
             $table->text('comment')->nullable();
             $table->string('container')->nullable();
             $table->timestamps();

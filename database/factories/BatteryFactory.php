@@ -11,7 +11,7 @@ $factory->define(Battery::class, function (Faker $faker) {
         'serialTwo' => 'N/A',
         'serialThree' => 'N/A',
         'date' => $faker->date('M-Y'),
-        'condition' => $faker->numberBetween(0, 1),
+        'condition' => 1,
         'container' => 'AMD-015-S',
         'comment' => 'Test purpose'
     ];

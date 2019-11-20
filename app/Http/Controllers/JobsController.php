@@ -8,8 +8,6 @@ class JobsController extends Controller
 {
     public function index()
     {
-        $tool = \App\Tool::where('tool_number', 'G0767')->first();
-
         $jobs = \App\Job::all();
 //        $jobs = \App\Job::with('engineer');
 //        dd($jobs);
@@ -18,7 +16,7 @@ class JobsController extends Controller
 
     public function addJob()
     {
-        $batteries = \App\Battery::all();
+        $batteries = \App\Battery::where('condition', 1)->get();
         $engineers = \App\Engineer::all();
         $tools = \App\Tool::where('tool_type', 'GWD Gyro Section')->get();
         $modems = \App\Tool::where('tool_type', 'GWD Modem Section')->get();
@@ -36,6 +34,8 @@ class JobsController extends Controller
         ]);
         $job = new \App\Job();
         $job->jobNumber = request('jobNumber');
+        $job_number = $job->jobNumber;
+
         $job->toolNumber = request('toolNumber');
         $toolNum = $job->toolNumber;
 
@@ -68,7 +68,7 @@ class JobsController extends Controller
         $this->calcCircHrsTool($toolNum, $tool_circHrs);
         $this->calcCircHrsTool($modemNum, $tool_circHrs);
         $this->calcCircHrsTool($bbpNum, $tool_circHrs);
-        $this->changBatStatus($batt_id);
+        $this->changBatStatus($batt_id, $job_number);
 
         return redirect('/jobs');
     }
@@ -86,11 +86,13 @@ class JobsController extends Controller
         $tool->save();
     }
 
-    private function changBatStatus($batt_id)
+    private function changBatStatus($batt_id, $jobNumber)
     {
         $battery = \App\Battery::where('id', $batt_id)->first();
 
         $battery->condition = 0;    //0 - USED, 1 - NEW
+
+        $battery->job_assigned = $jobNumber;
 
         $battery->save();
     }
