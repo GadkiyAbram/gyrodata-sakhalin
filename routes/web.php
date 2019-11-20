@@ -13,11 +13,16 @@
 
 Route::get('/', function () {
 
+    $tool = factory(\App\Tool::class)->create();
+    $tool->save();
+//
     $job = factory(\App\Job::class)->create();
     $battery = factory(\App\Battery::class)->create();
+    $eng = factory(\App\Engineer::class)->create();
     $battery->save();
 
     $job->battery_id = $battery->id;
+    $job->eng_id = $eng->id;
     $job->save();
 
 //    $job->battery()->associate($battery);
@@ -36,3 +41,7 @@ Route::post('/batteries', 'BatteriesController@store');
 Route::get('/jobs', 'JobsController@index');
 Route::get('/jobs/addjob', 'JobsController@addJob');
 Route::post('/jobs', 'JobsController@store');
+
+Route::get('/tools', 'ToolsController@index');
+Route::get('/tools/addtool', 'ToolsController@addTool');
+Route::post('/tools', 'ToolsController@store');

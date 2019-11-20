@@ -42,8 +42,10 @@
 			<th scope="col">Battery</th>
 			<th scope="col">Engineer 1</th>
 			<th scope="col">Engineer 2</th>
+			<th scope="col">Circ Hrs</th>
 			<th scope="col">Container</th>
 			<th scope="col">Comment</th>
+			<th scope="col">###</th>
 		</tr>
 		</thead>
 		@foreach($jobs as $job)
@@ -53,9 +55,12 @@
 				<td>{{ $job->toolNumber }}</td>
 				<td>{{ $job->modemNumber }}</td>
 				<td>{{ $job->bbpNumber }}</td>
-				<td>{{ $job->battery->serialOne }}</td>
-				<td>{{ $job->firstEng }}</td>
+				{{--<td>{{ $job->battery_id }}</td>--}}
+				<td>{{ \App\Battery::where('id', $job->battery_id)->first()->serialOne }}</td>
+				{{--<td>{{ $job->eng_id }}</td>--}}
+				<td>{{ \App\Engineer::where('id', $job->eng_id)->first()->name }}</td>
 				<td>{{ $job->secondEng }}</td>
+				<td>{{ $job->toolCircHrs }}</td>
 				<td>{{ $job->container }}</td>
 				<td>{{ $job->comment }}</td>
 				<td><a href="#">Edit</a></td>

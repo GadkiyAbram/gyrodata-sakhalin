@@ -59,10 +59,13 @@
 <body>
 <div class="flex-center position-ref full-height">
 
-    <div class="content">
+   <div class="content">
+
+
         <div class="title m-b-md">
             Gyrodata Sakhalin
         </div>
+
 
         <div>
             @if (Route::has('login'))

@@ -24,7 +24,7 @@
 			<a class="nav-link" href="/news">Updates</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/equipment">Equipment</a>
+			<a class="nav-link" href="/tools">Tools</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="/jobs">Job Tracking</a>

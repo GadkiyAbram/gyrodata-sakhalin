@@ -31,19 +31,31 @@
 				<div class="form-group row">
 					<label for="toolNumber" class="col-4 col-form-label">Tool</label>
 					<div class="col-4">
-						<input type="text" class="form-control" name="toolNumber" placeholder="G0001">
+						<select name="toolNumber" id="toolNumber" class="form-control">
+							@foreach($tools as $tool)
+								<option value="{{ $tool->tool_number }}">{{ $tool->tool_number }}</option>
+							@endforeach
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="modemNumber" class="col-4 col-form-label">Modem</label>
 					<div class="col-4">
-						<input type="text" class="form-control" name="modemNumber" placeholder="G0015">
+						<select name="modemNumber" id="modemNumber" class="form-control">
+							@foreach($modems as $modem)
+								<option value="{{ $modem->tool_number }}">{{ $modem->tool_number }}</option>
+							@endforeach
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="bbpNumber" class="col-4 col-form-label">BBP Number</label>
 					<div class="col-4">
-						<input type="text" class="form-control" name="bbpNumber" placeholder="S1-0163-0155">
+						<select name="bbpNumber" id="bbpNumber" class="form-control">
+							@foreach($bbps as $bbp)
+								<option value="{{ $bbp->tool_number }}">{{ $bbp->tool_number }}</option>
+							@endforeach
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -56,10 +68,20 @@
 						</select>
 					</div>
 				</div>
+				{{--<div class="form-group row">--}}
+					{{--<label for="firstEng" class="col-4 col-form-label">1st Engineer</label>--}}
+					{{--<div class="col-4">--}}
+						{{--<input type="text" class="form-control" name="firstEng" placeholder="F/L Names">--}}
+					{{--</div>--}}
+				{{--</div>--}}
 				<div class="form-group row">
 					<label for="firstEng" class="col-4 col-form-label">1st Engineer</label>
 					<div class="col-4">
-						<input type="text" class="form-control" name="firstEng" placeholder="F/L Names">
+						<select name="firstEng" id="firstEng" class="form-control">
+							@foreach($engineers as $engineer)
+								<option value="{{ $engineer->id }}">{{ $engineer->name }}</option>
+							@endforeach
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -118,7 +140,7 @@
 				<div class="form-group row">
 					<label for="toolCircHrs" class="col-4 col-form-label">Tool Hours</label>
 					<div class="col-4">
-						<input type="number" class="form-control" name="toolCircHrs" placeholder="43.3">
+						<input type="number" step="0.01" class="form-control" name="toolCircHrs" placeholder="43.3">
 					</div>
 				</div>
 				<div class="form-group row">

@@ -8,15 +8,27 @@ class JobsController extends Controller
 {
     public function index()
     {
+        $tool = \App\Tool::where('tool_number', 'G0767')->first();
+
         $jobs = \App\Job::all();
+//        $jobs = \App\Job::with('engineer');
+//        dd($jobs);
         return view('jobs.index', compact('jobs'));
     }
+
     public function addJob()
     {
         $batteries = \App\Battery::all();
+        $engineers = \App\Engineer::all();
+        $tools = \App\Tool::where('tool_type', 'GWD Gyro Section')->get();
+        $modems = \App\Tool::where('tool_type', 'GWD Modem Section')->get();
+        $bbps = \App\Tool::where('tool_type', 'GWD Battery BullPlug')->get();
 
-        return view('jobs/addjob', compact('batteries'));
+        return view('jobs/addjob', compact(
+                            'batteries','engineers', 'tools',
+                            'modems', 'bbps'));
     }
+
     public function store()
     {
         $data = request()->validate([
@@ -25,9 +37,18 @@ class JobsController extends Controller
         $job = new \App\Job();
         $job->jobNumber = request('jobNumber');
         $job->toolNumber = request('toolNumber');
+        $toolNum = $job->toolNumber;
+
         $job->modemNumber = request('modemNumber');
+        $modemNum = $job->modemNumber;
+
         $job->bbpNumber = request('bbpNumber');
-        $job->firstEng = request('firstEng');
+        $bbpNum = $job->bbpNumber;
+
+        $job->battery_id = request('battery');
+        $batt_id = request('battery');
+
+        $job->eng_id = request('firstEng');
         $job->secondEng = request('secondEng');
         $job->eng1ArrRig = request('eng1ArrRig');
         $job->eng2ArrRig = request('eng2ArrRig');
@@ -37,8 +58,40 @@ class JobsController extends Controller
         $job->containerArrRig = request('containerArrRig');
         $job->containerDepRig = request('containerDepRig');
         $job->toolCircHrs = request('toolCircHrs');
+
+//        $tool_circHrs = $job->toolCircHrs;
+        $tool_circHrs = request('toolCircHrs');
+
         $job->comment = request('comment');
         $job->save();
+
+        $this->calcCircHrsTool($toolNum, $tool_circHrs);
+        $this->calcCircHrsTool($modemNum, $tool_circHrs);
+        $this->calcCircHrsTool($bbpNum, $tool_circHrs);
+        $this->changBatStatus($batt_id);
+
         return redirect('/jobs');
+    }
+
+    private function calcCircHrsTool($tool_number, $tool_circHrs)
+    {
+        $tool = \App\Tool::where('tool_number', $tool_number)->first();
+
+        $tool_current_circHrs = $tool->tool_circHrs;
+
+        $tool_total_circHrs = $tool_current_circHrs + $tool_circHrs;
+
+        $tool->tool_circHrs = $tool_total_circHrs;
+
+        $tool->save();
+    }
+
+    private function changBatStatus($batt_id)
+    {
+        $battery = \App\Battery::where('id', $batt_id)->first();
+
+        $battery->condition = 0;    //0 - USED, 1 - NEW
+
+        $battery->save();
     }
 }
