@@ -52,6 +52,7 @@
 					<label for="bbpNumber" class="col-4 col-form-label">BBP Number</label>
 					<div class="col-4">
 						<select name="bbpNumber" id="bbpNumber" class="form-control">
+								<option value="N/A">N/A</option>
 							@foreach($bbps as $bbp)
 								<option value="{{ $bbp->tool_number }}">{{ $bbp->tool_number }}</option>
 							@endforeach
@@ -68,16 +69,12 @@
 						</select>
 					</div>
 				</div>
-				{{--<div class="form-group row">--}}
-					{{--<label for="firstEng" class="col-4 col-form-label">1st Engineer</label>--}}
-					{{--<div class="col-4">--}}
-						{{--<input type="text" class="form-control" name="firstEng" placeholder="F/L Names">--}}
-					{{--</div>--}}
-				{{--</div>--}}
+
 				<div class="form-group row">
 					<label for="firstEng" class="col-4 col-form-label">1st Engineer</label>
 					<div class="col-4">
 						<select name="firstEng" id="firstEng" class="form-control">
+								<option value="N/A">N/A</option>
 							@foreach($engineers as $engineer)
 								<option value="{{ $engineer->id }}">{{ $engineer->name }}</option>
 							@endforeach
@@ -87,7 +84,12 @@
 				<div class="form-group row">
 					<label for="secondEng" class="col-4 col-form-label">2nd Engineer</label>
 					<div class="col-4">
-						<input type="text" class="form-control" name="secondEng" placeholder="F/L Names">
+						<select name="secondEng" id="secondEng" class="form-control">
+								<option value="N/A">N/A</option>
+							@foreach($engineers as $engineer)
+								<option value="{{ $engineer->id }}">{{ $engineer->name }}</option>
+							@endforeach
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">

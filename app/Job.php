@@ -13,8 +13,8 @@ class Job extends Model
         return $this->belongsTo(Battery::class);
     }
 
-    public function engineers()
-    {
-        return $this->hasMany(Engineer::class);
-    }
+//    public function engineers()
+//    {
+//        return $this->hasMany(Engineer::class);
+//    }
 }

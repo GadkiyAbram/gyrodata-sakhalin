@@ -20,8 +20,8 @@ class CreateJobsTable extends Migration
             $table->string('modemNumber')->nullable();
             $table->unsignedBigInteger('battery_id')->nullable();
             $table->string('bbpNumber')->nullable();
-            $table->unsignedBigInteger('eng_id')->nullable();
-            $table->string('secondEng')->nullable();
+            $table->string('engFirst')->nullable();
+            $table->string('engSecond')->nullable();
             $table->date('eng1ArrRig')->nullable();
             $table->date('eng2ArrRig')->nullable();
             $table->date('eng1DepRig')->nullable();
@@ -34,7 +34,8 @@ class CreateJobsTable extends Migration
             $table->timestamps();
 
             $table->foreign('battery_id')->references('id')->on('batteries');
-            $table->foreign('eng_id')->references('id')->on('engineers');
+//            $table->foreign('eng_first_id')->references('id')->on('engineers');
+//            $table->foreign('eng_secon_id')->references('id')->on('engineers');
         });
     }
 

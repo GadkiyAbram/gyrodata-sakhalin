@@ -19,12 +19,13 @@ Route::get('/', function () {
 //    $job = factory(\App\Job::class)->create();
 //    $battery = factory(\App\Battery::class)->create();
 //    $eng = factory(\App\Engineer::class)->create();
+//    factory(\App\Engineer::class, 8)->create();
 //    $battery->save();
 //
 //    $job->battery_id = $battery->id;
-//    $job->eng_id = $eng->id;
+//    $job->eng_first_id = $eng->id;
 //    $job->save();
-//
+
 //    foreach (file(public_path('/GWDequipment.txt')) as $line)
 //    {
 //        $line = str_replace("\r\n", '', $line);
@@ -47,6 +48,7 @@ Route::post('/batteries', 'BatteriesController@store');
 Route::get('/jobs', 'JobsController@index');
 Route::get('/jobs/addjob', 'JobsController@addJob');
 Route::post('/jobs', 'JobsController@store');
+Route::get('/jobs/{job}', 'JobsController@show');
 
 Route::get('/tools', 'ToolsController@index');
 Route::get('/tools/addtool', 'ToolsController@addTool');

@@ -51,16 +51,13 @@
 		@foreach($jobs as $job)
 			<tbody>
 			<tr>
-				<th scope="row"><a href="#">{{ $job->jobNumber }}</a></th>
+				<th scope="row"><a href="/jobs/{{ $job->id }}">{{ $job->jobNumber }}</a></th>
 				<td>{{ $job->toolNumber }}</td>
 				<td>{{ $job->modemNumber }}</td>
 				<td>{{ $job->bbpNumber }}</td>
-				{{--<td>{{ $job->battery_id }}</td>--}}
 				<td>{{ \App\Battery::where('id', $job->battery_id)->first()->serialOne }}</td>
-				{{--<td>{{ $job->eng_id }}</td>--}}
-				<td>Engineer</td>
-{{--				<td>{{ \App\Engineer::where('id', $job->eng_id)->first()->name }}</td>--}}
-				<td>{{ $job->secondEng }}</td>
+				<td>{{ \App\Engineer::where('id', $job->engFirst)->first()->name }}</td>
+				<td>{{ \App\Engineer::where('id', $job->engSecond)->first()->name }}</td>
 				<td>{{ $job->toolCircHrs }}</td>
 				<td>{{ $job->container }}</td>
 				<td>{{ $job->comment }}</td>

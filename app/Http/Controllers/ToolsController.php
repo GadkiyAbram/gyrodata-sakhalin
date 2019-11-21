@@ -35,6 +35,7 @@ class ToolsController extends Controller
             'tool_desc_rus' => 'nullable',
             'tool_ccd_pos' => 'nullable',
             'tool_location' => 'nullable',
+            'tool_last_rt' => 'nullable',
             'tool_comment' => 'nullable',
         ]);
 

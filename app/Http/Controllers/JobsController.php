@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Job;
 use Illuminate\Http\Request;
 
 class JobsController extends Controller
@@ -27,6 +28,13 @@ class JobsController extends Controller
                             'modems', 'bbps'));
     }
 
+    public function show($job)
+    {
+        $job = Job::find($job);
+
+        return view('jobs.show', compact('job'));
+    }
+
     public function store()
     {
         $data = request()->validate([
@@ -48,8 +56,8 @@ class JobsController extends Controller
         $job->battery_id = request('battery');
         $batt_id = request('battery');
 
-        $job->eng_id = request('firstEng');
-        $job->secondEng = request('secondEng');
+        $job->engFirst = request('firstEng');
+        $job->engSecond = request('secondEng');
         $job->eng1ArrRig = request('eng1ArrRig');
         $job->eng2ArrRig = request('eng2ArrRig');
         $job->eng1DepRig = request('eng1DepRig');
