@@ -58,7 +58,8 @@
 				{{--<td>{{ $job->battery_id }}</td>--}}
 				<td>{{ \App\Battery::where('id', $job->battery_id)->first()->serialOne }}</td>
 				{{--<td>{{ $job->eng_id }}</td>--}}
-				<td>{{ \App\Engineer::where('id', $job->eng_id)->first()->name }}</td>
+				<td>Engineer</td>
+{{--				<td>{{ \App\Engineer::where('id', $job->eng_id)->first()->name }}</td>--}}
 				<td>{{ $job->secondEng }}</td>
 				<td>{{ $job->toolCircHrs }}</td>
 				<td>{{ $job->container }}</td>

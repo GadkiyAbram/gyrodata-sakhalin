@@ -73,12 +73,18 @@
 				</div>
 
 				<div class="form-group row">
+					<label for="tool_last_rt" class="col-4 col-form-label">Tool Las RT</label>
+					<div class="col-4">
+						<input type="date" class="form-control" name="tool_last_rt">
+					</div>
+				</div>
+
+				<div class="form-group row">
 					<label for="tool_comment" class="col-4 col-form-label">Comment</label>
 					<div class="col-4">
 						<input type="text" class="form-control" name="tool_comment" placeholder="Your comment here">
 					</div>
 				</div>
-
 
 
 				<div class="col-4">

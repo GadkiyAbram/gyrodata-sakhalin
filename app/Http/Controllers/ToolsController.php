@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Job;
 use Illuminate\Http\Request;
+use App\Tool;
 use \App\Item;
 
 class ToolsController extends Controller
@@ -62,5 +64,13 @@ class ToolsController extends Controller
         return redirect('/tools');
     }
 
+    public function show($tool)
+    {
+        $tool = Tool::find($tool);
+        $jobs_involved = Job::where('toolNumber', $tool->tool_number)->get();
+//        dd($jobs_involved);
+
+        return view('tools.show', compact('tool', 'jobs_involved'));
+    }
 
 }

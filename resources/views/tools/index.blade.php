@@ -43,7 +43,7 @@
 			<tbody>
 			<tr>
 				<td>{{ $tool->tool_type }}</td>
-				<td><a href="#">{{ $tool->tool_number }}</a></td>
+				<td><a href="/tools/{{ $tool->id }}">{{ $tool->tool_number }}</a></td>
 				<td>{{ $tool->tool_arrived }}</td>
 				<td>{{ $tool->tool_demob }}</td>
 				<td><a href="#">{{ $tool->tool_ccd }}</a></td>

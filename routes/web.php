@@ -51,3 +51,4 @@ Route::post('/jobs', 'JobsController@store');
 Route::get('/tools', 'ToolsController@index');
 Route::get('/tools/addtool', 'ToolsController@addTool');
 Route::post('/tools', 'ToolsController@store');
+Route::get('/tools/{tool}', 'ToolsController@show');
