@@ -25,7 +25,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-12">
+		<div class="col-5">
 			<p><strong>Type: </strong>{{ $tool->tool_type }}</p>
 			<p><strong>Asset: </strong>{{ $tool->tool_number }}</p>
 			<p><strong>Arrived: </strong>{{ $tool->tool_arrived }}</p>
@@ -37,6 +37,13 @@
 			<p><strong>Tool Location: </strong>{{ $tool->tool_location }}</p>
 			<p><strong>Tool Last RT: </strong>{{ $tool->tool_last_rt }}</p>
 			<p><strong>Comment: </strong>{{ $tool->tool_comment }}</p>
+
+		</div>
+
+		<div class="col-7">
+			<p><strong>Total Circulation: </strong>
+				{{ $tool->tool_circHrs }} hrs,	{{ $circ_remains }} until PM
+			</p>
 			<table class="table table-striped">
 				<thead>
 				<tr>
@@ -53,7 +60,7 @@
 					</tbody>
 				@endforeach
 			</table>
-			<p><strong>Total Circulation: </strong>{{ $tool->tool_circHrs }}</p>
+
 		</div>
 	</div>
 

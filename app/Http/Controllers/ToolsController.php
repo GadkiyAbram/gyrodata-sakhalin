@@ -67,10 +67,23 @@ class ToolsController extends Controller
     public function show($tool)
     {
         $tool = Tool::find($tool);
-        $jobs_involved = Job::where('toolNumber', $tool->tool_number)->get();
-//        dd($jobs_involved);
+        switch ($tool->tool_type){
+            case 'GWD GDP Section':
+                $jobs_involved = Job::where('toolNumber', $tool->tool_number)->get();
+                break;
+            case 'GWD Modem Section':
+                $jobs_involved = Job::where('modemNumber', $tool->tool_number)->get();
+                break;
+            case 'GWD Battery BullPlug':
+                $jobs_involved = Job::where('bbpNumber', $tool->tool_number)->get();
+                break;
+        }
 
-        return view('tools.show', compact('tool', 'jobs_involved'));
+        $circ_remains = 500 - $tool->tool_circHrs;
+
+        return view('tools.show', compact('tool',
+            'jobs_involved',
+            'circ_remains'));
     }
 
 }
