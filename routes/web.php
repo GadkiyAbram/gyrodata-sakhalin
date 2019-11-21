@@ -24,9 +24,7 @@ Route::get('/', function () {
 //    $job->battery_id = $battery->id;
 //    $job->eng_id = $eng->id;
 //    $job->save();
-
-//    $file = file(public_path('/GWDequipment.txt'));
-
+//
 //    foreach (file(public_path('/GWDequipment.txt')) as $line)
 //    {
 //        $line = str_replace("\r\n", '', $line);
@@ -34,13 +32,6 @@ Route::get('/', function () {
 //        $item->name = $line;
 //        $item->save();
 //    }
-
-//    $item = \App\Item::all();
-//    dd($item);
-
-
-
-//    $job->battery()->associate($battery);
 
     return view('welcome');
 });

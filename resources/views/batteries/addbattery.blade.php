@@ -57,9 +57,23 @@
 		</div>
 
 		<div class="form-group row">
+			<label for="battery_invoice" class="col-sm-2 col-form-label">Invoice</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" name="battery_invoice" placeholder="Invoice">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="battery_ccd" class="col-sm-2 col-form-label">CCD</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" name="battery_ccd" placeholder="ccd">
+			</div>
+		</div>
+
+		<div class="form-group row">
 			<label for="container" class="col-sm-2 col-form-label">Container</label>
 			<div class="col-sm-2">
-				<input type="container" class="form-control" name="container" placeholder="Container N">
+				<input type="text" class="form-control" name="container" placeholder="Container N">
 			</div>
 		</div>
 		<div class="form-group row">

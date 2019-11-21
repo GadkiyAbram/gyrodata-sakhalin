@@ -22,7 +22,6 @@ class BatteriesController extends Controller
 
         $data = request()->validate([
             'serialOne' => 'required',
-            'date' => 'required',
             'condition' => 'required',
         ]);
         $battery = new \App\Battery();
