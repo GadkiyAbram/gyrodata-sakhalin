@@ -56,8 +56,8 @@
 				<td>{{ $job->modemNumber }}</td>
 				<td>{{ $job->bbpNumber }}</td>
 				<td>{{ \App\Battery::where('id', $job->battery_id)->first()->serialOne }}</td>
-				<td>{{ \App\Engineer::where('id', $job->engFirst)->first()->name }}</td>
-				<td>{{ \App\Engineer::where('id', $job->engSecond)->first()->name }}</td>
+				<td>{{ \App\Engineer::where('id', $job->engFirst)->first()->name ?? 'Not assigned'}}</td>
+				<td>{{ \App\Engineer::where('id', $job->engSecond)->first()->name ?? 'Not assigned' }}</td>
 				<td>{{ $job->toolCircHrs }}</td>
 				<td>{{ $job->container }}</td>
 				<td>{{ $job->comment }}</td>

@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Job;
+use App\Tool;
 use Illuminate\Http\Request;
 
 class JobsController extends Controller
 {
     public function index()
     {
-        $jobs = \App\Job::all();
+        $jobs = Job::all();
 //        $jobs = \App\Job::with('engineer');
 //        dd($jobs);
         return view('jobs.index', compact('jobs'));
@@ -17,11 +18,15 @@ class JobsController extends Controller
 
     public function addJob()
     {
+        $gdp = 'GWD GDP Section';
+        $modem = 'GWD Modem Section';
+        $bbp = 'GWD Battery BullPlug';
+
         $batteries = \App\Battery::where('condition', 1)->get();
         $engineers = \App\Engineer::all();
-        $tools = \App\Tool::where('tool_type', 'GWD GDP Section')->get();
-        $modems = \App\Tool::where('tool_type', 'GWD Modem Section')->get();
-        $bbps = \App\Tool::where('tool_type', 'GWD Battery BullPlug')->get();
+        $tools = Tool::where('tool_type', $gdp)->get();
+        $modems = Tool::where('tool_type', $modem)->get();
+        $bbps = Tool::where('tool_type', $bbp)->get();
 
         return view('jobs/addjob', compact(
                             'batteries','engineers', 'tools',

@@ -15,8 +15,11 @@
 
 	<div class="d-flex justify-content-between align-items-baseline">
 
-		<div>
-			<h5>{{ $tool->tool_number }}</h5>
+		<div class="align-content-center pr-3">
+			<div class="d-flex justify-content-between align-items-baseline">
+				<a href="/tools">Go back</a>
+				<h5 class="pl-2">{{ $tool->tool_number }}</h5>
+			</div>
 		</div>
 		<div>
 			<a href="#">Edit Tool</a>

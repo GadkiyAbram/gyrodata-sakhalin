@@ -10,7 +10,7 @@ class Job extends Model
 
     public function battery()
     {
-        return $this->belongsTo(Battery::class);
+        return $this->hasOne(Battery::class);
     }
 
 //    public function engineers()

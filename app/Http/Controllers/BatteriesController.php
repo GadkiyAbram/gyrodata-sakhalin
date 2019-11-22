@@ -8,9 +8,10 @@ class BatteriesController extends Controller
 {
     public function index()
     {
+        $jobs = \App\Job::all();
         $batteries = \App\Battery::all();
 
-        return view('batteries/index', compact('batteries'));
+        return view('batteries/index', compact('batteries', 'jobs'));
     }
 
     public function addBattery()

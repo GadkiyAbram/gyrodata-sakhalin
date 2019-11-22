@@ -20,8 +20,8 @@ class CreateJobsTable extends Migration
             $table->string('modemNumber')->nullable();
             $table->unsignedBigInteger('battery_id')->nullable();
             $table->string('bbpNumber')->nullable();
-            $table->string('engFirst')->nullable();
-            $table->string('engSecond')->nullable();
+            $table->integer('engFirst')->nullable();
+            $table->integer('engSecond')->nullable();
             $table->date('eng1ArrRig')->nullable();
             $table->date('eng2ArrRig')->nullable();
             $table->date('eng1DepRig')->nullable();

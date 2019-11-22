@@ -15,6 +15,9 @@
 
 	<div class="d-flex justify-content-between align-items-baseline">
 
+		<div class="align-content-center pr-3">
+			<a href="/jobs">Go back</a>
+		</div>
 		<div>
 			<h5>{{ $job->jobNumber }}</h5>
 		</div>
@@ -26,12 +29,12 @@
 
 	<div class="row">
 		<div class="col-4">
-			<p><strong>Tool: </strong>{{ $job->toolNumber }}</p>
+			<p><strong>GWD Tool: </strong>{{ $job->toolNumber }}</p>
 			<p><strong>Modem: </strong>{{ $job->modemNumber }}</p>
 			<p><strong>Battery: </strong>{{ \App\Battery::where('id', $job->battery_id)->first()->serialOne }}</p>
 			<p><strong>GWD BBP: </strong>{{ $job->bbpNumber }}</p>
-			<p><strong>First Eng: </strong>{{ \App\Engineer::where('id', $job->engFirst)->first()->name }}</p>
-			<p><strong>Second Eng: </strong>{{ \App\Engineer::where('id', $job->engSecond)->first()->name }}</p>
+			<p><strong>First Eng: </strong>{{ \App\Engineer::where('id', $job->engFirst)->first()->name ?? 'Not assigned'}}</p>
+			<p><strong>Second Eng: </strong>{{ \App\Engineer::where('id', $job->engSecond)->first()->name ?? 'Not assigned' }}</p>
 			<p><strong>Eng1 Arrived: </strong>{{ $job->eng1ArrRig }}</p>
 			<p><strong>Eng2 Arrived: </strong>{{ $job->eng2ArrRig }}</p>
 

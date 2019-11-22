@@ -16,6 +16,8 @@ class CreateBatteriesTable extends Migration
         Schema::create('batteries', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('serialOne');
+//            $table->unsignedBigInteger('job_id')->index();
+
             $table->string('serialTwo')->nullable();
             $table->string('serialThree')->nullable();
             $table->date('date')->nullable();
@@ -26,6 +28,8 @@ class CreateBatteriesTable extends Migration
             $table->text('comment')->nullable();
             $table->string('container')->nullable();
             $table->timestamps();
+
+//            $table->foreign('user_id')->references('id')->on('jobs');
         });
     }
 

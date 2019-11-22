@@ -13,12 +13,13 @@
 
 Route::get('/', function () {
 
+//    $eng = factory(\App\Engineer::class)->create();
+
 //    $tool = factory(\App\Tool::class)->create();
 //    $tool->save();
 //
 //    $job = factory(\App\Job::class)->create();
 //    $battery = factory(\App\Battery::class)->create();
-//    $eng = factory(\App\Engineer::class)->create();
 //    factory(\App\Engineer::class, 8)->create();
 //    $battery->save();
 //
@@ -32,6 +33,14 @@ Route::get('/', function () {
 //        $item = new \App\Item();
 //        $item->name = $line;
 //        $item->save();
+//    }
+
+//    foreach (file(public_path('/personnel.txt')) as $line)
+//    {
+//        $line = str_replace("\r\n", '', $line);
+//        $eng = new \App\Engineer();
+//        $eng->name = $line;
+//        $eng->save();
 //    }
 
     return view('welcome');
@@ -54,3 +63,5 @@ Route::get('/tools', 'ToolsController@index');
 Route::get('/tools/addtool', 'ToolsController@addTool');
 Route::post('/tools', 'ToolsController@store');
 Route::get('/tools/{tool}', 'ToolsController@show');
+
+Route::get('/ccd', 'CCDController@index');

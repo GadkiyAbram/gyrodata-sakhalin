@@ -61,7 +61,7 @@
 
 				</th>
 				<td><a href="#">{{ $battery->serialOne }}</a></td>
-				<td>{{ $battery->serialTwo }}</td>
+				<td>{{ $battery->serialTwo ?? 'N/A' }}</td>
 				<td>{{ $battery->serialThree }}</td>
 				<td>{{ $battery->date }}</td>
 				<td>{{ $battery->container }}</td>

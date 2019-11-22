@@ -86,5 +86,4 @@ class ToolsController extends Controller
             'jobs_involved',
             'circ_remains'));
     }
-
 }

@@ -1,6 +1,7 @@
 GWD GDP Section
 GWD Modem Section
 GWD Modem Section - Wireline
+GWD Battery BullPlug
 GWD Wireline Simulator
 GWD Roll Test Cable
 Short Serial Cable
@@ -30,7 +31,6 @@ Data to Gyro Test Cable
 Battery Depassivator
 Gauss Meter
 O-Rings
-GWD Battery BullPlug
 Battery Barrel
 Bellville Adapter
 In-collar Test Adapter
