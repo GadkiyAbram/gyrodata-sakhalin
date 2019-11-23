@@ -87,7 +87,7 @@ class JobsController extends Controller
         $this->calcCircHrsTool($toolNum, $tool_circHrs);
         $this->calcCircHrsTool($modemNum, $tool_circHrs);
         $this->calcCircHrsTool($bbpNum, $tool_circHrs);
-        $this->changBatStatus($battery_find, $job_number);
+        $this->changBatStatus($battery_find->id, $job_number);
 
         return redirect('/jobs');
     }
@@ -107,17 +107,20 @@ class JobsController extends Controller
 
     private function changBatStatus($batt_id, $jobNumber)
     {
-        $battery = \App\Battery::find($batt_id)->first();
+        $battery = \App\Battery::where('id', $batt_id)->first();
+//        dd($battery->serialOne, $battery->id, $battery->condition);
 
         $battery->condition = 0;    //0 - USED, 1 - NEW
 
         $battery->job_assigned = $jobNumber;
 
-        $data = [
-            'condition' => $battery->condition,
-            'job_assigned' => $battery->job_assigned,
-        ];
+//        $data = [
+//            'condition' => $battery->condition,
+//            'job_assigned' => $battery->job_assigned,
+//        ];
 
-        $battery->update($data);
+//        $battery->save($data);
+
+        $battery->save();
     }
 }

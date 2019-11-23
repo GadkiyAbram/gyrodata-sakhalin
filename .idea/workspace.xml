@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb13fe00-7d51-4b8d-900e-86ae71d9dc84" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/migrations/2019_10_23_062139_create_batteries_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/migrations/2019_10_23_062139_create_batteries_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/migrations/2019_10_23_070401_create_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/migrations/2019_10_23_070401_create_jobs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/batteries/addbattery.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/batteries/addbattery.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/addjob.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/addjob.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/web.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,8 +47,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../app/Http/Controllers/JobsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="109" column="37" selection-start-line="109" selection-start-column="33" selection-end-line="109" selection-end-column="37" />
+            <state relative-caret-position="408">
+              <caret line="111" selection-start-line="111" selection-end-line="111" />
               <folding>
                 <element signature="e#40#56#0#PHP" expanded="true" />
               </folding>
@@ -66,7 +59,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../resources/views/jobs/addjob.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
+            <state relative-caret-position="255">
               <caret line="54" selection-start-line="54" selection-end-line="54" />
             </state>
           </provider>
@@ -346,7 +339,7 @@
       <workItem from="1574410742578" duration="220000" />
       <workItem from="1574425324305" duration="197000" />
       <workItem from="1574427602501" duration="198000" />
-      <workItem from="1574429391346" duration="13502000" />
+      <workItem from="1574429391346" duration="15396000" />
     </task>
     <task id="LOCAL-00001" summary="Battery / Job can be added separately, now relations">
       <created>1571816280301</created>
@@ -439,11 +432,18 @@
       <option name="project" value="LOCAL" />
       <updated>1574402206845</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="assigning battery to Job&#10;&#10;need to update status changing function">
+      <created>1574502216582</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1574502216582</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106016000" />
+    <option name="totallyTimeSpent" value="107910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -512,7 +512,8 @@
     <MESSAGE value="added switch case to select the Tool: GDP / M / BBP and further displaying the Job Log tool involved" />
     <MESSAGE value="displaying Engs in index / show job views" />
     <MESSAGE value="working version prior to implode OneToOne Relationship" />
-    <option name="LAST_COMMIT_MESSAGE" value="working version prior to implode OneToOne Relationship" />
+    <MESSAGE value="assigning battery to Job&#10;&#10;need to update status changing function" />
+    <option name="LAST_COMMIT_MESSAGE" value="assigning battery to Job&#10;&#10;need to update status changing function" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../database/migrations/2014_10_12_000000_create_users_table.php" />
@@ -611,15 +612,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../resources/views/jobs/addjob.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
+        <state relative-caret-position="255">
           <caret line="54" selection-start-line="54" selection-end-line="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../app/Http/Controllers/JobsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="109" column="37" selection-start-line="109" selection-start-column="33" selection-end-line="109" selection-end-column="37" />
+        <state relative-caret-position="408">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
           <folding>
             <element signature="e#40#56#0#PHP" expanded="true" />
           </folding>
