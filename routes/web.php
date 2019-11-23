@@ -34,7 +34,7 @@ Route::get('/', function () {
 //        $item->name = $line;
 //        $item->save();
 //    }
-
+//
 //    foreach (file(public_path('/personnel.txt')) as $line)
 //    {
 //        $line = str_replace("\r\n", '', $line);
@@ -42,6 +42,11 @@ Route::get('/', function () {
 //        $eng->name = $line;
 //        $eng->save();
 //    }
+
+//    $battery = new \App\Battery();
+//    $battery->serialOne = 'S1-0652-N-0001';
+//    $battery->condition = 1;
+//    $battery->save();
 
     return view('welcome');
 });

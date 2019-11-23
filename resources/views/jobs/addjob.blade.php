@@ -52,7 +52,6 @@
 					<label for="bbpNumber" class="col-4 col-form-label">BBP Number</label>
 					<div class="col-4">
 						<select name="bbpNumber" id="bbpNumber" class="form-control">
-								<option value="N/A">N/A</option>
 							@foreach($bbps as $bbp)
 								<option value="{{ $bbp->tool_number }}">{{ $bbp->tool_number }}</option>
 							@endforeach

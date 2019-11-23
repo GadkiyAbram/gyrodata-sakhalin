@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Battery;
 use App\Job;
 use App\Tool;
 use Illuminate\Http\Request;
@@ -58,8 +59,9 @@ class JobsController extends Controller
         $job->bbpNumber = request('bbpNumber');
         $bbpNum = $job->bbpNumber;
 
-        $job->battery_id = request('battery');
-        $batt_id = request('battery');
+//        $job->battery_id = request('battery');
+//        $batt_id = request('battery');
+        $battery = request('battery');
 
         $job->engFirst = request('firstEng');
         $job->engSecond = request('secondEng');
@@ -78,10 +80,14 @@ class JobsController extends Controller
         $job->comment = request('comment');
         $job->save();
 
+        $battery_find = Battery::where('id', $battery)->first();
+//        dd($battery_find->id);
+        $job->battery()->save($battery_find);
+
         $this->calcCircHrsTool($toolNum, $tool_circHrs);
         $this->calcCircHrsTool($modemNum, $tool_circHrs);
         $this->calcCircHrsTool($bbpNum, $tool_circHrs);
-        $this->changBatStatus($batt_id, $job_number);
+        $this->changBatStatus($battery_find, $job_number);
 
         return redirect('/jobs');
     }
@@ -101,12 +107,17 @@ class JobsController extends Controller
 
     private function changBatStatus($batt_id, $jobNumber)
     {
-        $battery = \App\Battery::where('id', $batt_id)->first();
+        $battery = \App\Battery::find($batt_id)->first();
 
         $battery->condition = 0;    //0 - USED, 1 - NEW
 
         $battery->job_assigned = $jobNumber;
 
-        $battery->save();
+        $data = [
+            'condition' => $battery->condition,
+            'job_assigned' => $battery->job_assigned,
+        ];
+
+        $battery->update($data);
     }
 }
