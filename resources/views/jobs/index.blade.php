@@ -57,7 +57,7 @@
 				<td>{{ $job->toolCircHrs }}</td>
 				<td>{{ $job->container }}</td>
 				<td>{{ $job->comment }}</td>
-				<td><a href="#">Edit</a></td>
+				<td><a href="/jobs/{{ $job->id }}/editjob">Edit</a></td>
 			</tr>
 			</tbody>
 		@endforeach

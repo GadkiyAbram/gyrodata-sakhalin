@@ -12,8 +12,6 @@ class JobsController extends Controller
     public function index()
     {
         $jobs = Job::all();
-//        $jobs = \App\Job::with('engineer');
-//        dd($jobs);
         return view('jobs.index', compact('jobs'));
     }
 
@@ -92,6 +90,83 @@ class JobsController extends Controller
         return redirect('/jobs');
     }
 
+    public function editJob(Job $job)
+    {
+        $gdp = 'GWD GDP Section';
+        $modem = 'GWD Modem Section';
+        $bbp = 'GWD Battery BullPlug';
+
+        $tools = Tool::where('tool_type', $gdp)->get();
+        $modems = Tool::where('tool_type', $modem)->get();
+        $bbps = Tool::where('tool_type', $bbp)->get();
+        $engineers = \App\Engineer::all();
+
+        return view('jobs.editjob', compact('job', 'tools',
+                                                    'modems', 'bbps', 'engineers'));
+    }
+
+    public function update(Job $job)
+    {
+        //tool
+        $tool = \App\Tool::where('tool_number', request('toolNumber'))->first();
+        $tool_number = $tool->tool_number;
+        $tool_circ_current = $tool->tool_circHrs;
+
+        //modem
+        $modem = \App\Tool::where('tool_number', request('modemNumber'))->first();
+        $modem_number = $modem->tool_number;
+        $modem_circ_current = $modem->tool_circHrs;
+
+        //bbp
+        $bbp = \App\Tool::where('tool_number', request('bbpNumber'))->first();
+        $bbp_number = $bbp->tool_number;
+        $bbp_circ_current = $bbp->tool_circHrs;
+
+        $job_old = $job->toolCircHrs;
+        $job_new = request('toolCircHrs');
+
+        $data = request()->validate([
+            'jobNumber' => 'required',
+            'toolNumber' => 'required',
+            'modemNumber' => 'required',
+            'bbpNumber' => 'required',
+            'engFirst' => 'nullable',
+            'engSecond' => 'nullable',
+            'eng1ArrRig' => 'nullable',
+            'eng2ArrRig' => 'nullable',
+            'eng1DepRig' => 'nullable',
+            'eng2DepRig' => 'nullable',
+            'container' => 'nullable',
+            'containerArrRig' => 'nullable',
+            'containerDepRig' => 'nullable',
+            'toolCircHrs' => 'nullable',
+            'comment' => 'nullable',
+
+        ]);
+//        $job->jobNumber = request('jobNumber');
+//        $job->toolNumber = request('toolNumber');
+//        $job->modemNumber = request('modemNumber');
+//        $job->bbpNumber = request('bbpNumber');
+//        $job->engFirst = request('firstEng');
+//        $job->engSecond = request('secondEng');
+//        $job->eng1ArrRig = request('eng1ArrRig');
+//        $job->eng2ArrRig = request('eng2ArrRig');
+//        $job->eng1DepRig = request('eng1DepRig');
+//        $job->eng2DepRig = request('eng2DepRig');
+//        $job->container = request('container');
+//        $job->containerArrRig = request('containerArrRig');
+//        $job->containerDepRig = request('containerDepRig');
+//        $job->toolCircHrs = request('toolCircHrs');
+//        $job->comment = request('comment');
+        $job->update($data);
+
+        $this->circDiff($tool_number, $tool_circ_current, $job_old, $job_new);
+        $this->circDiff($modem_number, $modem_circ_current, $job_old, $job_new);
+        $this->circDiff($bbp_number, $bbp_circ_current, $job_old, $job_new);
+
+        return redirect('/jobs');
+    }
+
     private function calcCircHrsTool($tool_number, $tool_circHrs)
     {
         $tool = \App\Tool::where('tool_number', $tool_number)->first();
@@ -122,5 +197,20 @@ class JobsController extends Controller
 //        $battery->save($data);
 
         $battery->save();
+    }
+
+    public function circDiff($tool_number, $tool_circ_current, $job_old, $job_new)
+    {
+        $tool = \App\Tool::where('tool_number', $tool_number)->first();
+
+        $tool_circ_total = ($job_new - $job_old) + $tool_circ_current;
+
+        $tool->tool_circHrs = $tool_circ_total;
+
+//        dd($tool_circ_current, $tool_circ_total);
+
+
+        $tool->save();
+
     }
 }

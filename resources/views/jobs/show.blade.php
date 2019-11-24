@@ -31,8 +31,8 @@
 		<div class="col-4">
 			<p><strong>GWD Tool: </strong>{{ $job->toolNumber }}</p>
 			<p><strong>Modem: </strong>{{ $job->modemNumber }}</p>
-			<p><strong>Battery: </strong>{{ \App\Battery::where('id', $job->battery_id)->first()->serialOne }}</p>
 			<p><strong>GWD BBP: </strong>{{ $job->bbpNumber }}</p>
+			<p><strong>Battery: </strong>{{ $job->battery->serialOne }}</p>
 			<p><strong>First Eng: </strong>{{ \App\Engineer::where('id', $job->engFirst)->first()->name ?? 'Not assigned'}}</p>
 			<p><strong>Second Eng: </strong>{{ \App\Engineer::where('id', $job->engSecond)->first()->name ?? 'Not assigned' }}</p>
 			<p><strong>Eng1 Arrived: </strong>{{ $job->eng1ArrRig }}</p>

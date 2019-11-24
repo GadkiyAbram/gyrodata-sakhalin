@@ -63,6 +63,8 @@ Route::get('/jobs', 'JobsController@index');
 Route::get('/jobs/addjob', 'JobsController@addJob');
 Route::post('/jobs', 'JobsController@store');
 Route::get('/jobs/{job}', 'JobsController@show');
+Route::get('/jobs/{job}/editjob', 'JobsController@editJob');
+Route::patch('/jobs/{job}', 'JobsController@update');
 
 Route::get('/tools', 'ToolsController@index');
 Route::get('/tools/addtool', 'ToolsController@addTool');
