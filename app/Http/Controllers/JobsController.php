@@ -11,7 +11,6 @@ use App\Battery;
 use App\Job;
 use App\Tool;
 use App\Engineer;
-use Illuminate\Http\Request;
 
 class JobsController extends Controller
 {

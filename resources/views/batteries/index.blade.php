@@ -13,7 +13,6 @@
 
 <body>
 <div class="pl-3 pr-3">
-
 	@include('nav')
 </div>
 

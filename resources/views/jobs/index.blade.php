@@ -18,6 +18,7 @@
 		<div>
 			<h3>Job Tracking</h3>
 		</div>
+
 		<div>
 			<a href="/jobs/addjob">Add New Job</a>
 		</div>

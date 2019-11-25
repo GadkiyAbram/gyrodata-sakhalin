@@ -52,7 +52,7 @@
             text-transform: uppercase;
         }
         .m-b-md {
-            margin-bottom: 30px;
+            margin-bottom: 140px;
         }
     </style>
 </head>
@@ -70,15 +70,15 @@
         <div>
             @if (Route::has('login'))
                 <div class="center-content links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                @auth
+                {{--<a href="{{ url('/home') }}">Home</a>--}}
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}">Register</a>
+                    @endif
+                @endauth
                 </div>
             @endif
         </div>

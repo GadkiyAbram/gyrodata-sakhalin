@@ -53,11 +53,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/batteries', 'BatteriesController@index');
 Route::get('/batteries/addbattery', 'BatteriesController@addBattery');
 Route::post('/batteries', 'BatteriesController@store');
+
+//Route::resource('batteries', 'BatteriesController');
 
 Route::get('/jobs', 'JobsController@index');
 Route::get('/jobs/addjob', 'JobsController@addJob');
@@ -66,9 +66,13 @@ Route::get('/jobs/{job}', 'JobsController@show');
 Route::get('/jobs/{job}/editjob', 'JobsController@editJob');
 Route::patch('/jobs/{job}', 'JobsController@update');
 
+//Route::resource('jobs', 'JobsController');
+
 Route::get('/tools', 'ToolsController@index');
 Route::get('/tools/addtool', 'ToolsController@addTool');
 Route::post('/tools', 'ToolsController@store');
 Route::get('/tools/{tool}', 'ToolsController@show');
+
+//Route::resource('tools', 'ToolsController');
 
 Route::get('/ccd', 'CCDController@index');
