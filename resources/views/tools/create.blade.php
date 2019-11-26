@@ -109,7 +109,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label for="image" class="col-4 col-form-label">Tool Image</label>
+					<label for="image" class="col-4 col-form-label">Tool Image (<= 5 Mb)</label>
 					<div class="col-8">
 						<input type="file" name="image">
 					</div>

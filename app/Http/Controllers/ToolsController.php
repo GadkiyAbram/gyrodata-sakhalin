@@ -6,6 +6,7 @@ use App\Job;
 use Illuminate\Http\Request;
 use App\Tool;
 use \App\Item;
+use Intervention\Image\Facades\Image;
 
 class ToolsController extends Controller
 {
@@ -34,7 +35,6 @@ class ToolsController extends Controller
         $item = Item::where('name', $toolType)->first();
         $item->quantity += 1;
         $item->save();
-
 
         return redirect('/tools');
     }
@@ -75,9 +75,8 @@ class ToolsController extends Controller
             'tool_location' => 'nullable',
             'tool_last_rt' => 'nullable',
             'tool_comment' => 'nullable',
-        ]), function (){
-            if (request()->hasFile('image'))
-            {
+        ]), function () {
+            if (request()->hasFile('image')){
                 request()->validate([
                     'image' => 'file|image|max:5000',
                 ]);
@@ -90,6 +89,14 @@ class ToolsController extends Controller
             $tool->update([
                 'image' => request()->image->store('uploads', 'public'),
             ]);
+
+            $image = Image::make(public_path('storage/' . $tool->image));
+            if ($image->getWidth() < $image->getHeight()){
+                $image->rotate(90);
+
+            }
+            $image->fit(650, 400);
+            $image->save();
         }
     }
 }

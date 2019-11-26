@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb13fe00-7d51-4b8d-900e-86ae71d9dc84" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/gyrodata-sakhalin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/gyrodata-sakhalin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/migrations/2019_11_19_132106_creates_tools_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/migrations/2019_11_19_132106_creates_tools_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/batteries/addbattery.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/batteries/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/addjob.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/tools/addtool.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/../composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/tools/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,10 +33,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../resources/views/tools/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../resources/views/tools/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="544">
               <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../resources/views/tools/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="111" column="87" selection-start-line="111" selection-start-column="87" selection-end-line="111" selection-end-column="87" />
             </state>
           </provider>
         </entry>
@@ -55,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="445">
-              <caret line="90" column="72" selection-start-line="90" selection-start-column="72" selection-end-line="90" selection-end-column="72" />
+              <caret line="97" column="32" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
               <folding>
                 <element signature="e#40#52#0#PHP" expanded="true" />
               </folding>
@@ -132,14 +149,14 @@
         <option value="$PROJECT_DIR$/../resources/views/nav.blade.php" />
         <option value="$PROJECT_DIR$/../resources/views/jobs/index.blade.php" />
         <option value="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" />
-        <option value="$PROJECT_DIR$/../resources/views/tools/index.blade.php" />
         <option value="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" />
         <option value="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" />
         <option value="$PROJECT_DIR$/../database/migrations/2019_11_19_132106_creates_tools_table.php" />
-        <option value="$PROJECT_DIR$/../resources/views/tools/create.blade.php" />
-        <option value="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" />
-        <option value="$PROJECT_DIR$/../routes/web.php" />
         <option value="$PROJECT_DIR$/../resources/views/tools/show.blade.php" />
+        <option value="$PROJECT_DIR$/../routes/web.php" />
+        <option value="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" />
+        <option value="$PROJECT_DIR$/../resources/views/tools/create.blade.php" />
+        <option value="$PROJECT_DIR$/../resources/views/tools/index.blade.php" />
       </list>
     </option>
   </component>
@@ -231,6 +248,10 @@
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/../vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/../vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/../vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/../vendor/intervention/image" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -259,6 +280,24 @@
               <item name="." type="b2602c69:ProjectViewProjectNode" />
               <item name="gyrodata-sakhalin" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="gyrodata-sakhalin" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="gyrodata-sakhalin" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="." type="b2602c69:ProjectViewProjectNode" />
+              <item name="gyrodata-sakhalin" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
+              <item name="uploads" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -323,7 +362,7 @@
       <workItem from="1574429391346" duration="17231000" />
       <workItem from="1574571738145" duration="23649000" />
       <workItem from="1574662470847" duration="3597000" />
-      <workItem from="1574762279243" duration="3818000" />
+      <workItem from="1574762279243" duration="10540000" />
     </task>
     <task id="LOCAL-00001" summary="Battery / Job can be added separately, now relations">
       <created>1571816280301</created>
@@ -458,11 +497,18 @@
       <option name="project" value="LOCAL" />
       <updated>1574756815053</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="adding an image to the Tool">
+      <created>1574775646551</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1574775646551</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140809000" />
+    <option name="totallyTimeSpent" value="147531000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -537,7 +583,8 @@
     <MESSAGE value="refactoring:&#10;add global var's tool / mod / bbp" />
     <MESSAGE value="prior to setting up policies" />
     <MESSAGE value="switched routes to recources" />
-    <option name="LAST_COMMIT_MESSAGE" value="switched routes to recources" />
+    <MESSAGE value="adding an image to the Tool" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding an image to the Tool" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../app/Http/Controllers/ToolController.php" />
@@ -668,13 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../resources/views/tools/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../resources/views/batteries/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -706,39 +746,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../database/migrations/2019_11_19_132106_creates_tools_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="29" column="48" lean-forward="true" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../resources/views/tools/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="113" column="43" selection-start-line="113" selection-start-column="43" selection-end-line="113" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="90" column="72" selection-start-line="90" selection-start-column="72" selection-end-line="90" selection-end-column="72" />
-          <folding>
-            <element signature="e#40#52#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../storage/app/public/uploads/O1ZeU1mLVHfQRzuwvzzY4Js96RTqYgBLyZFEwHpJ.jpeg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="43" column="7" selection-start-line="29" selection-start-column="6" selection-end-line="43" selection-end-column="7" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../resources/views/welcome.blade.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -754,10 +763,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../resources/views/tools/show.blade.php">
+    <entry file="file://$PROJECT_DIR$/../routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="43" column="7" selection-start-line="29" selection-start-column="6" selection-end-line="43" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../database/migrations/2019_11_19_132106_creates_tools_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
+          <caret line="29" column="48" lean-forward="true" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="97" column="32" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
+          <folding>
+            <element signature="e#40#52#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../resources/views/tools/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
           <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../resources/views/tools/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="111" column="87" selection-start-line="111" selection-start-column="87" selection-end-line="111" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../resources/views/tools/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
         </state>
       </provider>
     </entry>
