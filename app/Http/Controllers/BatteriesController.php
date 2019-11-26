@@ -16,7 +16,7 @@ class BatteriesController extends Controller
 
     public function create()
     {
-        return view('batteries/addbattery');
+        return view('batteries/create');
     }
     public function store()
     {

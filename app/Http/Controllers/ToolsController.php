@@ -11,35 +11,23 @@ class ToolsController extends Controller
 {
     public function index()
     {
-        $tools = \App\Tool::all();
+        $tools = Tool::all();
 
         return view('tools.index', compact('tools'));
     }
 
     public function create()
     {
-        $items = \App\Item::all();
+        $items = Item::all();
 
-        return view('tools/addtool', compact('items'));
+        return view('tools/create', compact('items'));
     }
 
     public function store()
     {
-        $data = request()->validate([
-            'tool_type' => 'required',
-            'tool_number' => 'required',
-            'tool_arrived' => 'nullable|date',
-            'tool_demob' => 'nullable|date',
-            'tool_invoice' => 'nullable',
-            'tool_ccd' => 'nullable',
-            'tool_desc_rus' => 'nullable',
-            'tool_ccd_pos' => 'nullable',
-            'tool_location' => 'nullable',
-            'tool_last_rt' => 'nullable',
-            'tool_comment' => 'nullable',
-        ]);
+        $tool = Tool::create($this->validatedData());
 
-        Tool::create($data);
+        $this->storeImage($tool);
 
         //Calculating Tool quantity
         $toolType = request('tool_type');
@@ -71,5 +59,37 @@ class ToolsController extends Controller
         return view('tools.show', compact('tool',
             'jobs_involved',
             'circ_remains'));
+    }
+
+    private function validatedData()
+    {
+        return tap(request()->validate([
+            'tool_type' => 'required',
+            'tool_number' => 'required',
+            'tool_arrived' => 'nullable|date',
+            'tool_demob' => 'nullable|date',
+            'tool_invoice' => 'nullable',
+            'tool_ccd' => 'nullable',
+            'tool_desc_rus' => 'nullable',
+            'tool_ccd_pos' => 'nullable',
+            'tool_location' => 'nullable',
+            'tool_last_rt' => 'nullable',
+            'tool_comment' => 'nullable',
+        ]), function (){
+            if (request()->hasFile('image'))
+            {
+                request()->validate([
+                    'image' => 'file|image|max:5000',
+                ]);
+            }
+        });
+    }
+    public function storeImage($tool)
+    {
+        if (request()->has('image')){
+            $tool->update([
+                'image' => request()->image->store('uploads', 'public'),
+            ]);
+        }
     }
 }

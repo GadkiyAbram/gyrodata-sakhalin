@@ -28,7 +28,7 @@ class JobsController extends Controller
         $modems = Tool::where('tool_type', modem)->get();
         $bbps = Tool::where('tool_type', bbp)->get();
 
-        return view('jobs/addjob', compact(
+        return view('jobs/create', compact(
                             'batteries','engineers', 'tools',
                             'modems', 'bbps'));
     }

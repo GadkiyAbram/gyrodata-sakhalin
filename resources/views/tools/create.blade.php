@@ -17,7 +17,7 @@
 		</div>
 	</div>
 
-	<form action="/tools" method="post">
+	<form action="{{ route('tools.store') }}" method="post" enctype="multipart/form-data">
 
 		<div class="row">
 			<div class="col-6">
@@ -105,6 +105,13 @@
 					<label for="tool_ccd_pos" class="col-4 col-form-label">Tool CCD pos</label>
 					<div class="col-8">
 						<input type="text" class="form-control" name="tool_ccd_pos">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="image" class="col-4 col-form-label">Tool Image</label>
+					<div class="col-8">
+						<input type="file" name="image">
 					</div>
 				</div>
 

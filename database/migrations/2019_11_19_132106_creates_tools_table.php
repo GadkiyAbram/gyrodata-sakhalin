@@ -27,6 +27,7 @@ class CreatesToolsTable extends Migration
             $table->float('tool_circHrs')->nullable()->default(0);
             $table->date('tool_last_rt')->nullable();
             $table->string('tool_comment')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

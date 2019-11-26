@@ -44,27 +44,40 @@
 		</div>
 
 		<div class="col-7">
-			<p><strong>Total Circulation: </strong>
-				{{ $tool->tool_circHrs }} hrs,	{{ $circ_remains }} until PM
-			</p>
-			<table class="table table-striped">
-				<thead>
-				<tr>
-					<th scope="col">Job involved</th>
-					<th scope="col">Circ Hrs</th>
-				</tr>
-				</thead>
-				@foreach($jobs_involved as $job)
-					<tbody>
-					<tr>
-						<td>{{ $job->jobNumber }}</td>
-						<td>{{ $job->toolCircHrs }}</td>
-					</tr>
-					</tbody>
-				@endforeach
-			</table>
+			@if($tool->tool_type === 'GWD GDP Section' ||
+				$tool->tool_type === 'GWD Modem Section' ||
+				$tool->tool_type === 'GWD Battery BullPlug')
 
-		</div>
+				<p><strong>Total Circulation: </strong>
+					{{ $tool->tool_circHrs }} hrs,	{{ $circ_remains }} until PM
+				</p>
+
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<th scope="col">Job involved</th>
+						<th scope="col">Circ Hrs</th>
+					</tr>
+					</thead>
+					@foreach($jobs_involved as $job)
+						<tbody>
+						<tr>
+							<td>{{ $job->jobNumber }}</td>
+							<td>{{ $job->toolCircHrs }}</td>
+						</tr>
+						</tbody>
+					@endforeach
+				</table>
+			@endif
+
+
+			@if($tool->image)
+				<div class="row col-12">
+					<img src="{{ asset('storage/' . $tool->image) }}"
+						 class="img-thumbnail">
+				</div>
+			@endif
+
 	</div>
 
 
