@@ -14,7 +14,7 @@ class BatteriesController extends Controller
         return view('batteries/index', compact('batteries', 'jobs'));
     }
 
-    public function addBattery()
+    public function create()
     {
         return view('batteries/addbattery');
     }

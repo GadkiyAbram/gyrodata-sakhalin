@@ -16,7 +16,7 @@ class ToolsController extends Controller
         return view('tools.index', compact('tools'));
     }
 
-    public function addTool()
+    public function create()
     {
         $items = \App\Item::all();
 

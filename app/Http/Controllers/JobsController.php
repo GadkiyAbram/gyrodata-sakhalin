@@ -20,7 +20,7 @@ class JobsController extends Controller
         return view('jobs.index', compact('jobs'));
     }
 
-    public function addJob()
+    public function create()
     {
         $batteries = Battery::where('condition', 1)->get();
         $engineers = Engineer::all();
@@ -63,7 +63,7 @@ class JobsController extends Controller
         return redirect('/jobs');
     }
 
-    public function editJob(Job $job)
+    public function edit(Job $job)
     {
         $tools = Tool::where('tool_type', gdp)->get();
         $modems = Tool::where('tool_type', modem)->get();

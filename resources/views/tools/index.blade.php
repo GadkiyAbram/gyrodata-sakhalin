@@ -19,7 +19,7 @@
 			<h3>Tools Tracking</h3>
 		</div>
 		<div>
-			<a href="/tools/addtool">Add Tool</a>
+			<a href="/tools/create">Add Tool</a>
 		</div>
 
 	</div>

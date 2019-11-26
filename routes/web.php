@@ -53,26 +53,26 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/batteries', 'BatteriesController@index');
-Route::get('/batteries/addbattery', 'BatteriesController@addBattery');
-Route::post('/batteries', 'BatteriesController@store');
+//Route::get('/batteries', 'BatteriesController@index');
+//Route::get('/batteries/create', 'BatteriesController@create');
+//Route::post('/batteries', 'BatteriesController@store');
 
-//Route::resource('batteries', 'BatteriesController');
+Route::resource('batteries', 'BatteriesController');
 
-Route::get('/jobs', 'JobsController@index');
-Route::get('/jobs/addjob', 'JobsController@addJob');
-Route::post('/jobs', 'JobsController@store');
-Route::get('/jobs/{job}', 'JobsController@show');
-Route::get('/jobs/{job}/editjob', 'JobsController@editJob');
-Route::patch('/jobs/{job}', 'JobsController@update');
+//Route::get('/jobs', 'JobsController@index');
+//Route::get('/jobs/create', 'JobsController@create');
+//Route::post('/jobs', 'JobsController@store');
+//Route::get('/jobs/{job}', 'JobsController@show');
+//Route::get('/jobs/{job}/edit', 'JobsController@edit');
+//Route::patch('/jobs/{job}', 'JobsController@update');
 
-//Route::resource('jobs', 'JobsController');
+Route::resource('jobs', 'JobsController');
 
-Route::get('/tools', 'ToolsController@index');
-Route::get('/tools/addtool', 'ToolsController@addTool');
-Route::post('/tools', 'ToolsController@store');
-Route::get('/tools/{tool}', 'ToolsController@show');
+//Route::get('/tools', 'ToolsController@index');
+//Route::get('/tools/create', 'ToolsController@create');
+//Route::post('/tools', 'ToolsController@store');
+//Route::get('/tools/{tool}', 'ToolsController@show');
 
-//Route::resource('tools', 'ToolsController');
+Route::resource('tools', 'ToolsController');
 
 Route::get('/ccd', 'CCDController@index');

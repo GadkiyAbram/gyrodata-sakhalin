@@ -11,6 +11,7 @@
 </div>
 
 
+
 <div class="pl-4 pr-4">
 
 	<div class="d-flex justify-content-between align-items-baseline">
@@ -20,7 +21,7 @@
 		</div>
 
 		<div>
-			<a href="/jobs/addjob">Add New Job</a>
+			<a href="/jobs/create">Add New Job</a>
 		</div>
 
 	</div>

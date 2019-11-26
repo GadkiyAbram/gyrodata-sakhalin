@@ -27,7 +27,7 @@
 
 		</div>
 		<div>
-			<a href="/batteries/addbattery">Add New Battery</a>
+			<a href="/batteries/create">Add New Battery</a>
 		</div>
 
 	</div>
