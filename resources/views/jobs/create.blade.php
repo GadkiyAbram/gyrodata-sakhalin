@@ -1,6 +1,13 @@
 <html>
 
-<head></head>
+<head>
+	<style>
+		.error{
+			color: red;
+			font-size: 12px;
+		}
+	</style>
+</head>
 
 <body>
 <div class="pl-3 pr-3">
@@ -26,6 +33,7 @@
 					<label for="jobNumber" class="col-4 col-form-label">Job Number</label>
 					<div class="col-4">
 						<input type="text" class="form-control" name="jobNumber" placeholder="RU0119GWD001">
+						<div class="error">{{ $errors->first('jobNumber') }}</div>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -142,6 +150,7 @@
 					<label for="toolCircHrs" class="col-4 col-form-label">Tool Hours</label>
 					<div class="col-4">
 						<input type="number" step="0.01" class="form-control" name="toolCircHrs" placeholder="43.3">
+						<div class="error">{{ $errors->first('toolCircHrs') }}</div>
 					</div>
 				</div>
 				<div class="form-group row">

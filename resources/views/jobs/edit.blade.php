@@ -27,8 +27,9 @@
 				<div class="form-group row">
 					<label for="jobNumber" class="col-4 col-form-label">Job Number</label>
 					<div class="col-4">
-						<input type="text" class="form-control" name="jobNumber" value="{{ $job->jobNumber }}">
-						@error('jobNumber') <p style="color: red">{{ $message }}</p>@enderror
+						{{--<input type="text" class="form-control" name="jobNumber" value="{{ $job->jobNumber }}">--}}
+						{{ $job->jobNumber }}
+						<!--@error('jobNumber') <p style="color: red">{{ $message }}</p>@enderror-->
 					</div>
 				</div>
 				<div class="form-group row">
@@ -71,9 +72,11 @@
 					<label for="battery" class="col-4 col-form-label">Battery</label>
 					<div class="col-4">
 						<select name="battery" id="battery" class="form-control">
-							<option value="{{ $job->battery->id }}">{{ $job->battery->serialOne }}</option>
-							@foreach($bbps as $bbp)
-								<option value="{{ $job->battery->id }}">{{ $job->battery->serialOne }}</option>
+{{--							<option value="{{ $job->battery->id }}">{{ $job->battery->serialOne }}</option>--}}
+							<option value="{{ $battery_id }}">{{ $battery_serialOne }}</option>
+							@foreach($batteries as $battery)
+{{--								<option value="{{ $job->battery->id }}">{{ $job->battery->serialOne }}</option>--}}
+								<option value="{{ $battery->id }}">{{ $battery->serialOne }}</option>
 							@endforeach
 						</select>
 					</div>
