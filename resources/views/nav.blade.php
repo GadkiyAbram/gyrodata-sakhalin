@@ -17,6 +17,7 @@
 <div class="pb-2 pl-1 pr-1">
 
 	<div class="d-flex align-items-baseline justify-content-between shadow-sm">
+		@if (Auth::user())
 		<div>
 			<nav class="navbar navbar-expand-md navbar-light bg-white">
 				<div class="py-1">
@@ -24,28 +25,28 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<!-- Left Side Of Navbar -->
 						<ul class="navbar-nav">
-							<li class="nav-item">
-								<a class="nav-link" href="/">Main</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="/news">Updates</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="/tools">Tools</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="/jobs">Job Tracking</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="/batteries">Lithium Batteries</a>
-							</li>
-						</ul>
-
+								<li class="nav-item">
+									<a class="nav-link" href="/">Main</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/news">Updates</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/tools">Tools</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/jobs">Job Tracking</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/batteries">Lithium Batteries</a>
+								</li>
+							</ul>
 					</div>
 				</div>
 			</nav>
 		</div>
-		<div>
+		@endif
+		<div class="py-1">
 			<ul class="navbar-nav ml-auto">
 				{{--<!-- Authentication Links -->--}}
 				{{--@guest--}}
@@ -78,7 +79,7 @@
 				{{--@endguest--}}
 			</ul>
 		</div>
-		<div>
+		<div class="py-1">
 			<img src="{{URL::asset('/gyrodata_logo_small.jpg')}}" height="50" width="200">
 		</div>
 

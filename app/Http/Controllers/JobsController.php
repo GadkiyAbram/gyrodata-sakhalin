@@ -15,6 +15,11 @@ use App\Engineer;
 
 class JobsController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
+
     public function index()
     {
         $jobs = Job::all();
@@ -99,6 +104,7 @@ class JobsController extends Controller
 
     public function update(Job $job)
     {
+
         $job_old = $job->toolCircHrs;
         $job_new = request('toolCircHrs');
         $gdp = request('toolNumber');
