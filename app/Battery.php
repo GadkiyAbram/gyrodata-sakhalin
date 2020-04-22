@@ -16,8 +16,8 @@ class Battery extends Model
     public function conditionOptions()
     {
         return [
-            1 => 'New',
-            0 => 'Used',
+            'New' => 'New',
+            'Used' => 'Used',
         ];
     }
 

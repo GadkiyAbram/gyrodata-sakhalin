@@ -31,7 +31,6 @@
 			<th scope="col">Tool Type</th>
 			<th scope="col">Tool A/N</th>
 			<th scope="col">Arrived</th>
-			<th scope="col">Demob</th>
 			<th scope="col">CCD</th>
 			<th scope="col">Location</th>
 			<th scope="col">Circ Hrs</th>
@@ -39,18 +38,31 @@
 			<th scope="col">###</th>
 		</tr>
 		</thead>
-		@foreach($tools as $tool)
+		{{--@for($i = 0; $i < count($items); $i++)--}}
+			{{--<tbody>--}}
+			{{--<tr>--}}
+				{{--<td>{{ $items[$i]->Item }}</td>--}}
+				{{--<td><a href="/tools/{{ $items[$i]->Id }}">{{ $items[$i]->Asset }}</a></td>--}}
+				{{--<td>{{ $items[$i]->Arrived }}</td>--}}
+				{{--<td><a href="#">{{ $items[$i]->CCD }}</a></td>--}}
+				{{--<td>{{ $items[$i]->ItemStatus }}</td>--}}
+				{{--<td>{{ $items[$i]->Circulation }}</td>--}}
+				{{--<td>{{ $items[$i]->Comment }}</td>--}}
+				{{--<td><a href="#">Edit</a></td>--}}
+			{{--</tr>--}}
+			{{--</tbody>--}}
+		{{--@endfor--}}
+		@foreach($items as $item)
 			<tbody>
 			<tr>
-				<td>{{ $tool->tool_type }}</td>
-				<td><a href="/tools/{{ $tool->id }}">{{ $tool->tool_number }}</a></td>
-				<td>{{ $tool->tool_arrived }}</td>
-				<td>{{ $tool->tool_demob }}</td>
-				<td><a href="#">{{ $tool->tool_ccd }}</a></td>
-				<td>{{ $tool->tool_location }}</td>
-				<td>{{ $tool->tool_circHrs }}</td>
-				<td>{{ $tool->tool_comment }}</td>
-				<td><a href="#">Edit</a></td>
+				<td>{{ $item->Item }}</td>
+				<td><a href="/tools/{{ $item->Id }}">{{ $item->Asset }}</a></td>
+				<td>{{ $item->Arrived }}</td>
+				<td><a href="#">{{ $item->CCD }}</a></td>
+				<td>{{ $item->ItemStatus }}</td>
+				<td>{{ $item->Circulation }}</td>
+				<td>{{ $item->Comment }}</td>
+				<td><a href="/tools/{{ $item->Id }}/edit">Edit</a></td>
 			</tr>
 			</tbody>
 		@endforeach

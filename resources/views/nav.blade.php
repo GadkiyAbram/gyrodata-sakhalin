@@ -40,6 +40,9 @@
 								<li class="nav-item">
 									<a class="nav-link" href="/batteries">Lithium Batteries</a>
 								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/preferences">Preferences</a>
+								</li>
 							</ul>
 					</div>
 				</div>

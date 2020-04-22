@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEngineersTable extends Migration
+class CreateComponentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateEngineersTable extends Migration
      */
     public function up()
     {
-        Schema::create('engineers', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name')->unique();
+        Schema::create('Components', function (Blueprint $table) {
+            $table->bigIncrements('Id');
+            $table->string('ItemName');
+            $table->integer('Quantity')->default(0);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateEngineersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('engineers');
+        Schema::dropIfExists('components');
     }
 }

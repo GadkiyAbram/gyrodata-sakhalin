@@ -46,20 +46,34 @@
 		@foreach($jobs as $job)
 			<tbody>
 			<tr>
-				<th scope="row"><a href="/jobs/{{ $job->id }}">{{ $job->jobNumber }}</a></th>
-				<td>{{ $job->toolNumber }}</td>
-				<td>{{ $job->modemNumber }}</td>
-				<td>{{ $job->bbpNumber }}</td>
-				<td>{{ $job->battery->serialOne ?? 'N/A'}}</td>
+				<th scope="row"><a href="/jobs/{{ $job->Id }}">{{ $job->JobNumber }}</a></th>
+				{{--<td>{{ $job->gdp_id }}</td>--}}
+				<td>{{ $job->GDP }}</td>
+				<td>{{ $job->Modem }}</td>
+				<td>{{ $job->Bullplug }}</td>
+				<td>{{ $job->Battery }}</td>
+				<td>{{ $job->EngineerOne }}</td>
+				<td>{{ $job->EngineerTwo }}</td>
+				<td>{{ $job->CirculationHours }}</td>
+				<td>{{ $job->Container }}</td>
+				<td>{{ $job->Comment }}</td>
+				<td><a href="/jobs/{{ $job->Id }}/edit">Edit</a></td>
 
-				<td>{{ \App\Engineer::where('id', $job->engFirst)->first()->name ?? 'Not assigned'}}</td>
+				{{--<th scope="row"><a href="/jobs/{{ $job->id }}">{{ $job->JobNumber }}</a></th>--}}
+				{{--<td>{{ $job->gdp_id }}</td>--}}
+				{{--<td>{{ \App\Item::where('Id', $job->gdp_id)->first()->Asset ?? 'N/A'}}</td>--}}
+				{{--<td>{{ \App\Item::where('Id', $job->modem_id)->first()->Asset ?? 'N/A'}}</td>--}}
+				{{--<td>{{ \App\Item::where('Id', $job->bullplug_id)->first()->Asset ?? 'N/A'}}</td>--}}
+				{{--<td>{{ \App\Battery::where('Id', $job->battery_id)->first()->serialOne ?? 'N/A'}}</td>--}}
 
-				<td>{{ \App\Engineer::where('id', $job->engSecond)->first()->name ?? 'Not assigned' }}</td>
+				{{--<td>{{ \App\Engineer::where('id', $job->eng_one)->first()->EngineerName ?? 'Not assigned'}}</td>--}}
 
-				<td>{{ $job->toolCircHrs }}</td>
-				<td>{{ $job->container }}</td>
-				<td>{{ $job->comment }}</td>
-				<td><a href="/jobs/{{ $job->id }}/edit">Edit</a></td>
+				{{--<td>{{ \App\Engineer::where('id', $job->eng_two)->first()->EngineerName ?? 'Not assigned' }}</td>--}}
+
+				{{--<td>{{ $job->toolCircHrs ?? 'N/A' }}</td>--}}
+				{{--<td>{{ $job->container ?? 'N/A' }}</td>--}}
+				{{--<td>{{ $job->comment ?? 'N/A' }}</td>--}}
+				{{--<td><a href="/jobs/{{ $job->id }}/edit">Edit</a></td>--}}
 			</tr>
 			</tbody>
 		@endforeach

@@ -72,20 +72,20 @@
 					<label for="battery" class="col-4 col-form-label">Battery</label>
 					<div class="col-4">
 						<select name="battery" id="battery" class="form-control">
-{{--							<option value="{{ $job->battery->id }}">{{ $job->battery->serialOne }}</option>--}}
-							<option value="{{ $battery_id }}">{{ $battery_serialOne }}</option>
+							<option value="{{ $job->battery->id }}">{{ $job->battery->serialOne }}</option>
+							{{--<option value="{{ $battery_id }}">{{ $battery_serialOne }}</option>--}}
 							@foreach($batteries as $battery)
-{{--								<option value="{{ $job->battery->id }}">{{ $job->battery->serialOne }}</option>--}}
-								<option value="{{ $battery->id }}">{{ $battery->serialOne }}</option>
+								<option value="{{ $job->battery->id }}">{{ $job->battery->serialOne }}</option>
+								{{--<option value="{{ $battery->id }}">{{ $battery->serialOne }}</option>--}}
 							@endforeach
 						</select>
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="firstEng" class="col-4 col-form-label">1st Engineer</label>
+					<label for="engFirst" class="col-4 col-form-label">1st Engineer</label>
 					<div class="col-4">
-						<select name="firstEng" id="firstEng" class="form-control">
+						<select name="engFirst" id="engFirst" class="form-control">
 							<option value="{{ $job->engFirst }}">{{ $job->engFirst }}</option>
 							@foreach($engineers as $engineer)
 								<option value="{{ $engineer->id }}">{{ $engineer->name }}</option>
@@ -94,9 +94,9 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="secondEng" class="col-4 col-form-label">2nd Engineer</label>
+					<label for="engSecond" class="col-4 col-form-label">2nd Engineer</label>
 					<div class="col-4">
-						<select name="secondEng" id="secondEng" class="form-control">
+						<select name="engSecond" id="engSecond" class="form-control">
 							<option value="{{ $job->engSecond }}">{{ $job->engSecond }}</option>
 							@foreach($engineers as $engineer)
 								<option value="{{ $engineer->id }}">{{ $engineer->name }}</option>

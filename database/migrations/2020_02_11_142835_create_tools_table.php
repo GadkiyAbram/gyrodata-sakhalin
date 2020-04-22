@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatesToolsTable extends Migration
+class CreateToolsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -39,6 +39,6 @@ class CreatesToolsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Tool');
+        Schema::dropIfExists('tools');
     }
 }

@@ -58,6 +58,7 @@ Auth::routes();
 //Route::post('/batteries', 'BatteriesController@store');
 
 Route::resource('batteries', 'BatteriesController');
+//->middleware('auth');
 
 //Route::get('/jobs', 'JobsController@index');
 //Route::get('/jobs/create', 'JobsController@create');
@@ -71,8 +72,15 @@ Route::resource('jobs', 'JobsController');
 //Route::get('/tools', 'ToolsController@index');
 //Route::get('/tools/create', 'ToolsController@create');
 //Route::post('/tools', 'ToolsController@store');
-//Route::get('/tools/{tool}', 'ToolsController@show');
+//Route::get('/tools/{id}', 'ToolsController@show');
+//Route::get('/tools/{tool}/edit', 'ToolsController@edit');
 
 Route::resource('tools', 'ToolsController');
 
 Route::get('/ccd', 'CCDController@index');
+
+//Route::get('/session', 'CCDController@usession');
+Route::resource('preferences', 'TokenController');
+//Route::get('/token', 'TokenController@index');
+//Route::post('/token/token', 'TokenController@store');
+//Route::post('/token/saveurlport', 'TokenController@storeurlport');

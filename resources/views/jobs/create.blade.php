@@ -30,85 +30,94 @@
 			<div class="col-6">
 
 				<div class="form-group row">
-					<label for="jobNumber" class="col-4 col-form-label">Job Number</label>
+					<label for="JobNumber" class="col-4 col-form-label">Job Number</label>
 					<div class="col-4">
-						<input type="text" class="form-control" name="jobNumber" placeholder="RU0119GWD001">
-						<div class="error">{{ $errors->first('jobNumber') }}</div>
+						<input type="text" class="form-control" name="JobNumber" placeholder="RU0119GWD001">
+						<div class="error">{{ $errors->first('JobNumber') }}</div>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="toolNumber" class="col-4 col-form-label">Tool</label>
+					<label for="client_id" class="col-4 col-form-label">Client</label>
 					<div class="col-4">
-						<select name="toolNumber" id="toolNumber" class="form-control">
-							@foreach($tools as $tool)
-								<option value="{{ $tool->tool_number }}">{{ $tool->tool_number }}</option>
+						<select name="client_id" id="client_id" class="form-control">
+							@foreach($clients as $client)
+								<option value="{{ $client->ClientName }}">{{ $client->ClientName }}</option>
+								{{--<option value="{{ $tool->Id }}">{{ $tool->Asset }}</option>--}}
 							@endforeach
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="modemNumber" class="col-4 col-form-label">Modem</label>
+					<label for="gdp_id" class="col-4 col-form-label">Tool</label>
 					<div class="col-4">
-						<select name="modemNumber" id="modemNumber" class="form-control">
+						<select name="gdp_id" id="gdp_id" class="form-control">
+							@foreach($gdps as $gdp)
+								<option value="{{ $gdp->Asset }}">{{ $gdp->Asset }}</option>
+{{--								<option value="{{ $gdp->Id }}">{{ $gdp->Asset }}</option>--}}
+							@endforeach
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="modem_id" class="col-4 col-form-label">Modem</label>
+					<div class="col-4">
+						<select name="modem_id" id="modem_id" class="form-control">
 							@foreach($modems as $modem)
-								<option value="{{ $modem->tool_number }}">{{ $modem->tool_number }}</option>
+								<option value="{{ $modem->Asset }}">{{ $modem->Asset }}</option>
 							@endforeach
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="bbpNumber" class="col-4 col-form-label">BBP Number</label>
+					<label for="bullplug_id" class="col-4 col-form-label">BBP Number</label>
 					<div class="col-4">
-						<select name="bbpNumber" id="bbpNumber" class="form-control">
+						<select name="bullplug_id" id="bullplug_id" class="form-control">
 							@foreach($bbps as $bbp)
-								<option value="{{ $bbp->tool_number }}">{{ $bbp->tool_number }}</option>
+								<option value="{{ $bbp->Asset }}">{{ $bbp->Asset }}</option>
 							@endforeach
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="battery" class="col-4 col-form-label">Battery</label>
+					<label for="battery_id" class="col-4 col-form-label">Battery</label>
 					<div class="col-4">
-						<select name="battery" id="battery" class="form-control">
+						<select name="battery_id" id="battery_id" class="form-control">
 							@foreach($batteries as $battery)
-								<option value="{{ $battery->id }}">{{ $battery->serialOne }}</option>
+								<option value="{{ $battery->serialOne }}">{{ $battery->serialOne }}</option>
 							@endforeach
 						</select>
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="firstEng" class="col-4 col-form-label">1st Engineer</label>
+					<label for="eng_one" class="col-4 col-form-label">1st Engineer</label>
 					<div class="col-4">
-						<select name="firstEng" id="firstEng" class="form-control">
-								<option value="N/A">N/A</option>
+						<select name="eng_one" id="eng_one" class="form-control">
 							@foreach($engineers as $engineer)
-								<option value="{{ $engineer->id }}">{{ $engineer->name }}</option>
+								<option value="{{ $engineer->EngineerName }}">{{ $engineer->EngineerName }}</option>
 							@endforeach
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="secondEng" class="col-4 col-form-label">2nd Engineer</label>
+					<label for="eng_two" class="col-4 col-form-label">2nd Engineer</label>
 					<div class="col-4">
-						<select name="secondEng" id="secondEng" class="form-control">
-								<option value="N/A">N/A</option>
+						<select name="eng_two" id="eng_two" class="form-control">
 							@foreach($engineers as $engineer)
-								<option value="{{ $engineer->id }}">{{ $engineer->name }}</option>
+								<option value="{{ $engineer->EngineerName }}">{{ $engineer->EngineerName }}</option>
 							@endforeach
 						</select>
 					</div>
 				</div>
+			</div>
+
+			<div class="col-6">
 				<div class="form-group row">
 					<label for="eng1ArrRig" class="col-4 col-form-label">1st Eng at Rig</label>
 					<div class="col-4">
 						<input type="date" class="form-control" name="eng1ArrRig">
 					</div>
 				</div>
-
-			</div>
-
-			<div class="col-6">
 
 				<div class="form-group row">
 					<label for="eng2ArrRig" class="col-4 col-form-label">2nd Eng at Rig</label>
@@ -147,10 +156,10 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="toolCircHrs" class="col-4 col-form-label">Tool Hours</label>
+					<label for="CirculationHours" class="col-4 col-form-label">Tool Hours</label>
 					<div class="col-4">
-						<input type="number" step="0.01" class="form-control" name="toolCircHrs" placeholder="43.3">
-						<div class="error">{{ $errors->first('toolCircHrs') }}</div>
+						<input type="number" step="0.01" class="form-control" name="CirculationHours" placeholder="43.3">
+						<div class="error">{{ $errors->first('CirculationHours') }}</div>
 					</div>
 				</div>
 				<div class="form-group row">
