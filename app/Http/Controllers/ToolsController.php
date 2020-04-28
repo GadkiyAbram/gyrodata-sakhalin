@@ -56,9 +56,7 @@ class ToolsController extends Controller
         }catch (\Exception $ex){
             dd($ex);
         }
-
         return view('tools/create', compact('components'));
-//        return view('tools/create');
     }
 
     public function store()

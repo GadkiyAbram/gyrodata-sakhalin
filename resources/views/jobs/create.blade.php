@@ -41,8 +41,7 @@
 					<div class="col-4">
 						<select name="client_id" id="client_id" class="form-control">
 							@foreach($clients as $client)
-								<option value="{{ $client->ClientName }}">{{ $client->ClientName }}</option>
-								{{--<option value="{{ $tool->Id }}">{{ $tool->Asset }}</option>--}}
+								<option value="{{ $client }}">{{ $client }}</option>
 							@endforeach
 						</select>
 					</div>
@@ -52,8 +51,7 @@
 					<div class="col-4">
 						<select name="gdp_id" id="gdp_id" class="form-control">
 							@foreach($gdps as $gdp)
-								<option value="{{ $gdp->Asset }}">{{ $gdp->Asset }}</option>
-{{--								<option value="{{ $gdp->Id }}">{{ $gdp->Asset }}</option>--}}
+								<option value="{{ $gdp }}">{{ $gdp }}</option>
 							@endforeach
 						</select>
 					</div>
@@ -63,17 +61,31 @@
 					<div class="col-4">
 						<select name="modem_id" id="modem_id" class="form-control">
 							@foreach($modems as $modem)
-								<option value="{{ $modem->Asset }}">{{ $modem->Asset }}</option>
+								<option value="{{ $modem }}">{{ $modem }}</option>
 							@endforeach
 						</select>
 					</div>
 				</div>
+                <div class="form-group row">
+                    <label for="ModemVersion" class="col-4 col-form-label">Modem Version</label>
+                    <div class="col-4">
+                        <input type="text" class="form-control" name="ModemVersion" placeholder="4.13">
+                        <div class="error">{{ $errors->first('ModemVersion') }}</div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="MaxTemp" class="col-4 col-form-label">Max Temperature</label>
+                    <div class="col-4">
+                        <input type="text" class="form-control" name="MaxTemp" placeholder="67">
+                        <div class="error">{{ $errors->first('MaxTemp') }}</div>
+                    </div>
+                </div>
 				<div class="form-group row">
 					<label for="bullplug_id" class="col-4 col-form-label">BBP Number</label>
 					<div class="col-4">
 						<select name="bullplug_id" id="bullplug_id" class="form-control">
 							@foreach($bbps as $bbp)
-								<option value="{{ $bbp->Asset }}">{{ $bbp->Asset }}</option>
+								<option value="{{ $bbp }}">{{ $bbp}}</option>
 							@endforeach
 						</select>
 					</div>
@@ -83,7 +95,7 @@
 					<div class="col-4">
 						<select name="battery_id" id="battery_id" class="form-control">
 							@foreach($batteries as $battery)
-								<option value="{{ $battery->serialOne }}">{{ $battery->serialOne }}</option>
+								<option value="{{ $battery }}">{{ $battery }}</option>
 							@endforeach
 						</select>
 					</div>
@@ -94,7 +106,7 @@
 					<div class="col-4">
 						<select name="eng_one" id="eng_one" class="form-control">
 							@foreach($engineers as $engineer)
-								<option value="{{ $engineer->EngineerName }}">{{ $engineer->EngineerName }}</option>
+								<option value="{{ $engineer }}">{{ $engineer }}</option>
 							@endforeach
 						</select>
 					</div>
@@ -104,7 +116,7 @@
 					<div class="col-4">
 						<select name="eng_two" id="eng_two" class="form-control">
 							@foreach($engineers as $engineer)
-								<option value="{{ $engineer->EngineerName }}">{{ $engineer->EngineerName }}</option>
+								<option value="{{ $engineer }}">{{ $engineer }}</option>
 							@endforeach
 						</select>
 					</div>
@@ -115,44 +127,44 @@
 				<div class="form-group row">
 					<label for="eng1ArrRig" class="col-4 col-form-label">1st Eng at Rig</label>
 					<div class="col-4">
-						<input type="date" class="form-control" name="eng1ArrRig">
+						<input type="date" class="form-control" name="eng_one_arrived">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="eng2ArrRig" class="col-4 col-form-label">2nd Eng at Rig</label>
 					<div class="col-4">
-						<input type="date" class="form-control" name="eng2ArrRig">
+						<input type="date" class="form-control" name="eng_two_arrived">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="eng1DepRig" class="col-4 col-form-label">1st Eng Left Rig</label>
 					<div class="col-4">
-						<input type="date" class="form-control" name="eng1DepRig">
+						<input type="date" class="form-control" name="eng_one_left">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="eng2DepRig" class="col-4 col-form-label">2nd Eng Left Rig</label>
 					<div class="col-4">
-						<input type="date" class="form-control" name="eng2DepRig">
+						<input type="date" class="form-control" name="eng_two_left">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="container" class="col-4 col-form-label">Container</label>
+					<label for="Container" class="col-4 col-form-label">Container</label>
 					<div class="col-4">
-						<input type="text" class="form-control" name="container" placeholder="Container N">
+						<input type="text" class="form-control" name="Container" placeholder="Container N">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="containerArrRig" class="col-4 col-form-label">Container at Rig</label>
+					<label for="ContainerArrived" class="col-4 col-form-label">Container at Rig</label>
 					<div class="col-4">
-						<input type="date" class="form-control" name="containerArrRig">
+						<input type="date" class="form-control" name="ContainerArrived">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="containerDepRig" class="col-4 col-form-label">Container Left Rig</label>
+					<label for="ContainerLeft" class="col-4 col-form-label">Container Left Rig</label>
 					<div class="col-4">
-						<input type="date" class="form-control" name="containerDepRig">
+						<input type="date" class="form-control" name="ContainerLeft">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -162,10 +174,26 @@
 						<div class="error">{{ $errors->first('CirculationHours') }}</div>
 					</div>
 				</div>
+                <div class="form-group row">
+                    <label for="Rig" class="col-4 col-form-label">Rig</label>
+                    <div class="col-4">
+                        <input type="text" class="form-control" name="Rig" placeholder="Rig">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Issues" class="col-4 col-form-label">Issues</label>
+                    <div class="col-4">
+                        <select name="Issues" id="Issues" class="form-control">
+                            <option value="" disabled>Issues</option>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+                </div>
 				<div class="form-group row">
-					<label for="comment" class="col-4 col-form-label">Comment</label>
+					<label for="Comment" class="col-4 col-form-label">Comment</label>
 					<div class="col-4">
-						<input type="comment" class="form-control" name="comment" placeholder="Comment">
+						<input type="text" class="form-control" name="Comment" placeholder="Your comment here">
 					</div>
 				</div>
 			</div>

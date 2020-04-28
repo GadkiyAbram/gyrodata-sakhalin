@@ -22,4 +22,22 @@ class APIHelper extends Controller
 
         return $path;
     }
+
+    public static function insertRecord($uri, $data)
+    {
+        $token = session()->get('Token');
+        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        try{
+            $response = $client->post($uri, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Token' => $token
+                ],
+                'body' => json_encode($data)
+            ]);
+            $battery_id = json_decode((string)$response->getBody());
+        }catch (\Exception $ex){
+            dd($ex);
+        }
+    }
 }

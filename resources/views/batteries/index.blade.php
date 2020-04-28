@@ -82,7 +82,7 @@
 					@endif
 
 				</th>
-				<td><a href="#">{{ $batteries[$i]->SerialOne }}</a></td>
+				<td><a href="/batteries/{{ $batteries[$i]->Id }}">{{ $batteries[$i]->SerialOne }}</a></td>
 				<td>{{ $batteries[$i]->SerialTwo ?? 'N/A' }}</td>
 				<td>{{ $batteries[$i]->SerialThr }}</td>
 				<td>{{ $batteries[$i]->Arrived }}</td>

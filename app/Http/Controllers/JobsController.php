@@ -39,23 +39,48 @@ class JobsController extends Controller
             {
                 array_push($this->job_numbers, $job->JobNumber);
             }
-//            dd($this->job_numbers);
         }catch (\Exception $ex){
             dd($ex);
         }
-
         return view('jobs.index', compact('jobs'));
     }
 
     public function create()
     {
-        $gdps = Item::where('Item', gdp)->get();
-        $modems = Item::where('Item', modem)->get();
-        $bbps = Item::where('Item', bbp)->get();
-        $clients = Client::all();
-        $batteries = Battery::where('BatteryCondition', 'New')->get();
-        $engineers = Engineer::all();
+//        $gdps = Item::where('Item', gdp)->get();
+//        $modems = Item::where('Item', modem)->get();
+//        $bbps = Item::where('Item', bbp)->get();
+//        $clients = Client::all();
+//        $batteries = Battery::where('BatteryCondition', 'New')->get();
+//        $engineers = Engineer::all();
+//
+//        return view('jobs/create', compact(
+//                            'batteries','engineers', 'gdps',
+//                            'modems', 'bbps', 'clients'));
 
+        $uri = 'http://192.168.0.102:8081/jobservices/jobservice.svc/GetAllDataForJobCreate';
+        $token = session()->get('Token');
+        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        try{
+            $response = $client->get($uri, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Token' => $token
+                ]
+            ]);
+            $data = json_decode((string)$response->getBody());
+            $data = (array)$data;
+//            dd($data[5]);
+            $gdps = $data[1];
+            $modems = $data[2];
+            $bbps = $data[3];
+            $clients = $data[0];
+            $batteries = $data[5];
+            $engineers = $data[4];
+
+        }catch (\Exception $ex){
+            dd($ex);
+        }
         return view('jobs/create', compact(
                             'batteries','engineers', 'gdps',
                             'modems', 'bbps', 'clients'));
@@ -81,52 +106,43 @@ class JobsController extends Controller
 
     public function store()
     {
-        $jobNumber = request('JobNumber');
-        $client = request('client_id');
-        $gdp = request('gdp_id');
-        $modem = request('modem_id');
-        $bbp = request('bullplug_id');
-        $circHrs = request('CirculationHours');
-        $battery = request('battery_id');
-        $eng_one = request('eng_one');
-        $eng_two = request('eng_two');
-
-
-//        dd($jobNumber, $client, $gdp, $modem, $circHrs, $battery, $eng_one, $eng_two);
-
-        DB::select("EXEC spJob_Insert ?,?,?,?,?,?,?,?,?",
-                        array( $jobNumber,
-                            $client,
-                            $gdp, $modem,
-                                $bbp, $circHrs, $battery, $eng_one, $eng_two) );
-
-//        dd($result);
-
-//        DB::select(DB::raw("exec spJob_Insert :JobNumber,
-//                                                :GDPAsset,
-//                                                :ModemAsset,
-//                                                :BullplugAsset,
-//                                                :CirculationHours,
-//                                                :Battery\"),[
-//                            ':JobNumber' => $job_number,
-//                            ':GDPAsset' => $toolNum,
-//                            ':ModemAsset' => $modemNum,
-//                            ':BullplugAsset' => $bbpNum,
-//                            ':CirculationHours' => $tool_circHrs,
-//                            ':Battery' => $battery,
-//                        ]);"));
-
-//        $job = Job::create($this->validatedData());
-//
-//        if (request()->has('battery_id')){
-//            $battery_find = Battery::where('Id', $battery)->first();
-//            $job->battery()->save($battery_find);
-//            $this->changBatStatus($battery_find->Id, $job_number);
-//        }
-//
-//        $this->calcCircHrsTool($toolNum, $tool_circHrs);
-//        $this->calcCircHrsTool($modemNum, $tool_circHrs);
-//        $this->calcCircHrsTool($bbpNum, $tool_circHrs);
+        $uri = 'http://192.168.0.102:8081/jobservices/jobservice.svc/AddNewJob';
+        $token = session()->get('Token');
+        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        $data = [
+            'JobNumber' => request('JobNumber'),
+            'ClientName' => request('client_id'),
+            'GDP' => request('gdp_id'),
+            'Modem' => request('modem_id'),
+            'ModemVersion' => request('ModemVersion'),
+            'MaxTemp' => request('MaxTemp'),
+            'Bullplug' => request('bullplug_id'),
+            'Battery' => request('battery_id'),
+            'EngineerOne' => request('eng_one'),
+            'EngineerTwo' => request('eng_two'),
+            'eng_one_arrived' => request('eng_one_arrived'),
+            'eng_two_arrived' => request('eng_two_arrived'),
+            'eng_one_left' => request('eng_one_left'),
+            'eng_two_left' => request('eng_two_left'),
+            'Container' => request('Container'),
+            'ContainerArrived' => request('ContainerArrived'),
+            'ContainerLeft' => request('ContainerLeft'),
+            'Rig' => request('Rig'),
+            'Issues' => request('Issues'),
+            'Comment' => request('Comment')
+        ];
+        try{
+            $response = $client->post($uri, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Token' => $token
+                ],
+                'body' => json_encode($data)
+            ]);
+            $job_id = json_decode((string)$response->getBody());
+        }catch (\Exception $ex){
+            dd($ex);
+        }
 
         return redirect('/jobs');
     }

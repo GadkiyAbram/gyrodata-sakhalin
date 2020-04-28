@@ -16,7 +16,7 @@
 			<h4>Add Battery</h4>
 		</div>
 	</div>
-		<form action="{{ route('batteries.store') }}" method="post" enctype="multipart/form-data">#
+		<form action="{{ route('batteries.store') }}" method="post" enctype="multipart/form-data">
 
 			<div class="form-group row">
 				<label for="BoxNumber" class="col-sm-2 col-form-label">Box Number</label>
@@ -54,9 +54,9 @@
 			</div>
 
 			<div class="form-group row">
-				<label for="Condition" class="col-sm-2 col-form-label">Condition</label>
+				<label for="BatteryCondition" class="col-sm-2 col-form-label">Condition</label>
 					<div class="col-sm-2">
-						<select name="Condition" id="BatteryCondition" class="form-control">
+						<select name="BatteryCondition" id="BatteryCondition" class="form-control">
 							<option value="" disabled>Condition</option>
 							<option value="New">New</option>
 							<option value="Used">Used</option>

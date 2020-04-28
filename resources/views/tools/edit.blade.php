@@ -35,42 +35,42 @@
 				<div class="form-group row">
 					<label for="Asset" class="col-4 col-form-label">Tool Asset</label>
 					<div class="col-5">
-						<input type="text" class="form-control" name="Asset" value={{ $item['Asset'] }}>
+						<input type="text" class="form-control" name="Asset" value="{{ $item['Asset'] }}">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="Arrived" class="col-4 col-form-label">Arrived</label>
 					<div class="col-5">
-						<input type="date" class="form-control" name="Arrived" value={{ $item['Arrived'] }}>
+						<input type="date" class="form-control" name="Arrived" value="{{ $item['Arrived'] }}">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="Invoice" class="col-4 col-form-label">Invoice</label>
 					<div class="col-5">
-						<input type="text" class="form-control" name="Invoice" value={{ $item['Invoice'] }}>
+						<input type="text" class="form-control" name="Invoice" value="{{ $item['Invoice'] }}">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="CCD" class="col-4 col-form-label">Custom Declaration</label>
 					<div class="col-5">
-						<input type="text" class="form-control" name="CCD" value={{ $item['CCD'] }}>
+						<input type="text" class="form-control" name="CCD" value="{{ $item['CCD'] }}">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="ItemStatus" class="col-4 col-form-label">Tool Location</label>
 					<div class="col-5">
-						<input type="text" class="form-control" name="ItemStatus" value={{ $item['ItemStatus'] }}>
+						<input type="text" class="form-control" name="ItemStatus" value="{{ $item['ItemStatus'] }}">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="Comment" class="col-4 col-form-label">Comment</label>
 					<div class="col-5">
-						<input type="text" class="form-control" name="Comment" value={{ $item['Comment'] }}>
+						<input type="text" class="form-control" name="Comment" value="{{ $item['Comment'] }}">
 					</div>
 				</div>
 
@@ -85,23 +85,23 @@
 			<div class="col-5">
 
 				<div class="form-group row">
-					<label for="tool_desc_rus" class="col-4 col-form-label">Tool desc RUS</label>
+					<label for="NameRus" class="col-4 col-form-label">Tool desc RUS</label>
 					<div class="col-8">
-						<textarea class="form-control" name="tool_desc_rus" rows="8" cols="3"></textarea>
+						<textarea class="form-control" name="NameRus" rows="8" cols="3">{{ $item['NameRus'] }}</textarea>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="Box" class="col-4 col-form-label">Box</label>
 					<div class="col-8">
-						<input type="text" class="form-control" value={{ $item['Box'] }}>
+						<input type="text" class="form-control" value="{{ $item['Box'] }}">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="PositionCCD" class="col-4 col-form-label">Tool CCD pos</label>
 					<div class="col-8">
-						<input type="text" class="form-control" value={{ $item['PositionCCD'] }}>
+						<input type="text" class="form-control" value="{{ $item['PositionCCD'] }}">
 					</div>
 				</div>
 
