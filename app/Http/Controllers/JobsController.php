@@ -150,43 +150,93 @@ class JobsController extends Controller
         // search item by Id and pass to compact
         $job = $this->getJob($job);
         $dataForJob = $this->getDataForNewJob($uriDataForJob, $token);
+        $clients = $dataForJob[0];
+        $gdps = $dataForJob[1];
+        $modems = $dataForJob[2];
+        $bbps = $dataForJob[3];
+        $batteries = $dataForJob[5];
         $engineers = $dataForJob[4];
 
-        return view('jobs.edit', compact('job', 'engineers'));
+        return view('jobs.edit', compact('job',
+            'batteries','engineers', 'gdps',
+            'modems', 'bbps', 'clients'));
     }
 
-    public function update(Job $job)
+    public function update($id)
     {
-
-        $job_old = $job->toolCircHrs;
-        $job_new = request('CirculationHours');
-        $gdp = request('gdp_id');
-        $mod = request('modem_id');
-        $bbp = request('bullplug_id');
-
-        //tool
-        $tool = Tool::where('Asset', $gdp)->first();
-        $tool_number = $tool->tool_number;
-        $tool_circ_current = $tool->tool_circHrs;
-
-        //modem
-        $modem = Tool::where('Asset', $mod)->first();
-        $modem_number = $modem->tool_number;
-        $modem_circ_current = $modem->tool_circHrs;
-
-        //bbp
-        $bbp = Tool::where('Asset', $bbp)->first();
-        $bbp_number = $bbp->tool_number;
-        $bbp_circ_current = $bbp->tool_circHrs;
-
-        $job->update($this->validatedData());
-
-        $this->circDiff($tool_number, $tool_circ_current, $job_old, $job_new);
-        $this->circDiff($modem_number, $modem_circ_current, $job_old, $job_new);
-        $this->circDiff($bbp_number, $bbp_circ_current, $job_old, $job_new);
-
+        $uri = 'http://192.168.0.102:8081/jobservices/jobservice.svc/EditJob/' . $id;
+        $token = session()->get('Token');
+        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        $data = [
+            'Id' => $id,
+            'JobNumber' => request('JobNumber'),
+            'ClientName' => request('ClientName'),
+            'GDP' => request('GDP'),
+            'Modem' => request('Modem'),
+            'Bullplug' => request('Bullplug'),
+            'Battery' => request('Battery'),
+            'CirculationHours' => request('CirculationHours'),
+            'MaxTemp' => request('MaxTemp'),
+            'EngineerOne' => request('EngineerOne'),
+            'EngineerTwo' => request('EngineerTwo'),
+            'eng_one_arrived' => request('eng_one_arrived'),
+            'eng_two_arrived' => request('eng_two_arrived'),
+            'eng_one_left' => request('eng_one_left'),
+            'eng_two_left' => request('eng_two_left'),
+            'Container' => request('Container'),
+            'ContainerArrived' => request('ContainerArrived'),
+            'ContainerLeft' => request('ContainerLeft'),
+            'Issues' => request('Issues'),
+            'Rig' => request('Rig'),
+            'Comment' => request('Comment')
+        ];
+//        dd($data);
+        try{
+            $response = $client->post($uri, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Token' => $token
+                ],
+                'body' => json_encode($data)
+            ]);
+        }catch (\Exception $ex){
+            dd($ex);
+        }
         return redirect('/jobs');
     }
+
+//    public function update(Job $job)
+//    {
+//
+//        $job_old = $job->toolCircHrs;
+//        $job_new = request('CirculationHours');
+//        $gdp = request('gdp_id');
+//        $mod = request('modem_id');
+//        $bbp = request('bullplug_id');
+//
+//        //tool
+//        $tool = Tool::where('Asset', $gdp)->first();
+//        $tool_number = $tool->tool_number;
+//        $tool_circ_current = $tool->tool_circHrs;
+//
+//        //modem
+//        $modem = Tool::where('Asset', $mod)->first();
+//        $modem_number = $modem->tool_number;
+//        $modem_circ_current = $modem->tool_circHrs;
+//
+//        //bbp
+//        $bbp = Tool::where('Asset', $bbp)->first();
+//        $bbp_number = $bbp->tool_number;
+//        $bbp_circ_current = $bbp->tool_circHrs;
+//
+//        $job->update($this->validatedData());
+//
+//        $this->circDiff($tool_number, $tool_circ_current, $job_old, $job_new);
+//        $this->circDiff($modem_number, $modem_circ_current, $job_old, $job_new);
+//        $this->circDiff($bbp_number, $bbp_circ_current, $job_old, $job_new);
+//
+//        return redirect('/jobs');
+//    }
 
     private function calcCircHrsTool($tool_number, $tool_circHrs)
     {
