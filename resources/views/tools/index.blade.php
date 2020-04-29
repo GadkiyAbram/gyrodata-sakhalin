@@ -58,7 +58,7 @@
 				<td>{{ $item->Item }}</td>
 				<td><a href="/tools/{{ $item->Id }}">{{ $item->Asset }}</a></td>
 				<td>{{ $item->Arrived }}</td>
-				<td><a href="#">{{ $item->CCD }}</a></td>
+				<td>{{ $item->CCD }}</td>
 				<td>{{ $item->ItemStatus }}</td>
 				<td>{{ $item->Circulation }}</td>
 				<td>{{ $item->Comment }}</td>

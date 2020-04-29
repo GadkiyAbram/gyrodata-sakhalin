@@ -1,33 +1,30 @@
 <html>
 
-<head>
-
-</head>
+<head></head>
 
 <body>
 <div class="pl-3 pr-3">
 	@include('nav')
 </div>
-
 <div class="pl-4 pr-4">
+
+    <div class="d-flex justify-content-between align-items-baseline">
+        <div class="align-content-center pr-3">
+            <div class="d-flex justify-content-between align-items-baseline">
+                <a href="/tools/{{ $item['Id'] }}">Go back</a>
+                <h5 class="pl-2">{{ $item['Item'] }}</h5>
+            </div>
+        </div>
+        <div>
+            <h6 class="pl-2">PM in: {{ $circulation_remains }} hours</h6>
+        </div>
+    </div>
 
 	<form action="/tools/{{ $item['Id'] }}" method="post" enctype="multipart/form-data">
 
 		@method('PATCH')
 
-		<div class="d-flex justify-content-between align-items-baseline">
 
-			<div class="align-content-center pr-3">
-				<div class="d-flex justify-content-between align-items-baseline">
-					<a href="/tools/{{ $item['Id'] }}">Go back</a>
-					<h5 class="pl-2">{{ $item['Item'] }}</h5>
-				</div>
-			</div>
-            <div>
-                <h6 class="pl-2">PM in: {{ $circulation_remains }} hours</h6>
-            </div>
-
-		</div>
 
 		<div class="row">
 			<div class="col-6">

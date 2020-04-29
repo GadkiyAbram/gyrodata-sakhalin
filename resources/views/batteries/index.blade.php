@@ -41,6 +41,8 @@
 			<th scope="col">Serial 2</th>
 			<th scope="col">Serial 3</th>
 			<th scope="col">Production Date</th>
+			<th scope="col">Invoice</th>
+			<th scope="col">CCD</th>
 			<th scope="col">Container</th>
 			<th scope="col">Comment</th>
 			<th scope="col">Action</th>
@@ -86,6 +88,8 @@
 				<td>{{ $batteries[$i]->SerialTwo ?? 'N/A' }}</td>
 				<td>{{ $batteries[$i]->SerialThr }}</td>
 				<td>{{ $batteries[$i]->Arrived }}</td>
+				<td>{{ $batteries[$i]->Invoice }}</td>
+				<td>{{ $batteries[$i]->CCD }}</td>
 				<td>{{ $batteries[$i]->Container }}</td>
 				<td>{{ $batteries[$i]->Comment }}</td>
 				<td><a href="#">Edit</a></td>

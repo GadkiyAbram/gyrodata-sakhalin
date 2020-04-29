@@ -94,10 +94,35 @@ class ToolsController extends Controller
         return redirect('/tools');
     }
 
+    public function getJobsInvolvedIn($id)
+    {
+        $uri = 'http://192.168.0.102:8081/toolservices/toolservice.svc/GetJobsInvolvedIn?item=' . $id;
+        $token = session()->get('Token');
+
+        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        try{
+            $response = $client->get($uri, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Token' => $token
+                ]
+            ]);
+            $jobsInvolvedIn = json_decode((string)$response->getBody());
+            $jobsInvolvedIn = (array)$jobsInvolvedIn;
+
+        }catch (\Exception $ex){
+            dd($ex);
+        }
+//        dd($jobsInvolvedIn);
+        return $jobsInvolvedIn;
+    }
+
     public function show($tool)
     {
         $item = $this->getItem($tool);
         $circulation = $this->getCirculation($item);
+        $jobs = $this->getJobsInvolvedIn($item['Id']);
+        $jobs = (array)$jobs;
 //        $itemimage = imagecreatefromstring(base64_decode($item['ItemImage']));
 
         // TODO - add jobs where Tool involved
@@ -113,8 +138,8 @@ class ToolsController extends Controller
 //                $jobs_involved = Job::where('bbpNumber', $tool->Asset)->get();
 //                break;
 //        }
-//
-        return view('tools.show', compact('item', 'circulation'));
+//        dd($jobs);
+        return view('tools.show', compact('item', 'circulation', 'jobs'));
     }
 
     private function getCirculation($item)

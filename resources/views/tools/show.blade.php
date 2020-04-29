@@ -26,7 +26,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-5">
+		<div class="col-4">
 			<p><strong>Asset: </strong>{{ $item['Asset'] }}</p>
 			<p><strong>Arrived: </strong>{{ $item['Arrived'] }}</p>
 			<p><strong>Invoice: </strong>{{ $item['Invoice'] }}</p>
@@ -38,36 +38,32 @@
 			<p><strong>Comment: </strong>{{ $item['Comment'] }}</p>
         </div>
 
-        <div class="col-5">
-            <p><img src="data:image/jpg|png|jpeg;base64,{{ $item['ItemImage'] }}"></p>
+        <div class="col-4">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Jobs involved</th>
+                    <th scope="col">Circ Hrs</th>
+                </tr>
+                </thead>
+                    @foreach($jobs as $job)
+                	    <tbody>
+                		    <tr>
+                			    <td>{{ $job->JobNumber }}</td>
+                                <td>{{ $job->CirculationHours }}</td>
+                            </tr>
+                        </tbody>
+                    @endforeach
+            </table>
         </div>
 
-		{{--<div class="col-7">--}}
-			{{--@if($tool->tool_type === 'GWD GDP Section' ||--}}
-				{{--$tool->tool_type === 'GWD Modem Section' ||--}}
-				{{--$tool->tool_type === 'GWD Battery BullPlug')--}}
+        <div class="col-4">
+            <p>
+                <img src="data:image/jpg|png|jpeg;base64,{{ $item['ItemImage'] }}" align="right" style="border: solid 1px" width="80%">
+            </p>
+        </div>
 
-				{{--<p><strong>Total Circulation: </strong>--}}
-					{{--{{ $tool->tool_circHrs }} hrs,	{{ $circ_remains }} until PM--}}
-				{{--</p>--}}
 
-				{{--<table class="table table-striped">--}}
-					{{--<thead>--}}
-					{{--<tr>--}}
-						{{--<th scope="col">Job involved</th>--}}
-						{{--<th scope="col">Circ Hrs</th>--}}
-					{{--</tr>--}}
-					{{--</thead>--}}
-					{{--@foreach($jobs_involved as $job)--}}
-						{{--<tbody>--}}
-						{{--<tr>--}}
-							{{--<td>{{ $job->jobNumber }}</td>--}}
-							{{--<td>{{ $job->toolCircHrs }}</td>--}}
-						{{--</tr>--}}
-						{{--</tbody>--}}
-					{{--@endforeach--}}
-				{{--</table>--}}
-			{{--@endif--}}
 
 
 			{{--@if($tool->image)--}}
@@ -76,7 +72,7 @@
 						 {{--class="img-thumbnail">--}}
 				{{--</div>--}}
 			{{--@endif--}}
-		{{--</div>--}}
+
 
 
 

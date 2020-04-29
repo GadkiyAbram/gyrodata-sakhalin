@@ -58,6 +58,7 @@ class BatteriesController extends Controller
 
     public function getBattery($id)
     {
+        //TODO - add job to battery assigned
         $uri = 'http://192.168.0.102:8081/batteryservices/batteryservice.svc/GetSelectedBatteryData/' . $id;
         $token = session()->get('Token');
         $client = new \GuzzleHttp\Client(['base_uri' => $uri]);

@@ -10,10 +10,10 @@
 
 	<div class="d-flex justify-content-start align-items-baseline">
 		<div class="align-content-center pr-3">
-			<a href="/jobs">Go back</a>
-        </div>
-        <div>
-            <h4>Edit {{ $job['JobNumber'] }}</h4>
+            <div class="d-flex justify-content-between align-items-baseline">
+                <a href="/jobs">Go back</a>
+                <h5 class="pl-2">Edit {{ $job['JobNumber'] }}</h5>
+            </div>
         </div>
 	</div>
 

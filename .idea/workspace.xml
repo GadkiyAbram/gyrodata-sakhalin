@@ -3,8 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="eb13fe00-7d51-4b8d-900e-86ae71d9dc84" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resources/views/jobs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/tools/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +214,7 @@
       <workItem from="1582623451388" duration="11778000" />
       <workItem from="1586577693909" duration="325000" />
       <workItem from="1586579180464" duration="40510000" />
-      <workItem from="1587491870411" duration="34274000" />
+      <workItem from="1587491870411" duration="41557000" />
     </task>
     <task id="LOCAL-00001" summary="Battery / Job can be added separately, now relations">
       <created>1571816280301</created>
@@ -392,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588136727822</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Set updating Engineers in Web-version.">
+      <created>1588141467115</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1588141467115</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,7 +414,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Add Job factory for testing dummy data" />
     <MESSAGE value="Partially working version of assigning battery to the Job" />
     <MESSAGE value="Assigning battery to the Job&#10;&#10;Created Engineers table" />
     <MESSAGE value="Selecting battery from db while creating the Job" />
@@ -426,13 +438,14 @@
     <MESSAGE value="sorted Russian language in CCD" />
     <MESSAGE value="place insertion (store method) in APIHelper class" />
     <MESSAGE value="Added dropdown list for engineers (while updating the Job record)&#10;go ahead for other staff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added dropdown list for engineers (while updating the Job record)&#10;go ahead for other staff" />
+    <MESSAGE value="Set updating Engineers in Web-version." />
+    <option name="LAST_COMMIT_MESSAGE" value="Set updating Engineers in Web-version." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="556" y="114" key="CommitChangelistDialog2" timestamp="1588136727012">
+    <state x="556" y="114" key="CommitChangelistDialog2" timestamp="1588167529057">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="556" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588136727012" />
+    <state x="556" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588167529057" />
     <state x="665" y="334" key="NewPhpClassDialog" timestamp="1586936810707">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -445,10 +458,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587567527385" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1588136733395">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1588141471831">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588136733395" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588141471831" />
     <state x="657" y="311" key="git4idea.merge.GitPullDialog" timestamp="1588076361788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -457,9 +470,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588080889559" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1588138423337">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1588167500490">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588138423337" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588167500490" />
   </component>
 </project>
