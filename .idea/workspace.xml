@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb13fe00-7d51-4b8d-900e-86ae71d9dc84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../resources/views/batteries/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../resources/views/batteries/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/APIHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/APIHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/batteries/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/batteries/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/tools/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config/url.php" beforeDir="false" afterPath="$PROJECT_DIR$/../config/url.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +215,7 @@
       <workItem from="1582623451388" duration="11778000" />
       <workItem from="1586577693909" duration="325000" />
       <workItem from="1586579180464" duration="40510000" />
-      <workItem from="1587491870411" duration="22069000" />
+      <workItem from="1587491870411" duration="29491000" />
     </task>
     <task id="LOCAL-00001" summary="Battery / Job can be added separately, now relations">
       <created>1571816280301</created>
@@ -387,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587567600567</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="place insertion (store method) in APIHelper class">
+      <created>1588076353968</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1588076353968</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,13 +425,14 @@
     <MESSAGE value="some manipulations with battery insertions" />
     <MESSAGE value="added authorization, only registered users can see the content" />
     <MESSAGE value="sorted Russian language in CCD" />
-    <option name="LAST_COMMIT_MESSAGE" value="sorted Russian language in CCD" />
+    <MESSAGE value="place insertion (store method) in APIHelper class" />
+    <option name="LAST_COMMIT_MESSAGE" value="place insertion (store method) in APIHelper class" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="556" y="114" key="CommitChangelistDialog2" timestamp="1587567599136">
+    <state x="556" y="114" key="CommitChangelistDialog2" timestamp="1588076353211">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="556" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587567599136" />
+    <state x="556" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588076353211" />
     <state x="665" y="334" key="NewPhpClassDialog" timestamp="1586936810707">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -439,17 +445,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587567527385" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1587567612113">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1588076368611">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1587567612113" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1587450763288">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588076368611" />
+    <state x="657" y="311" key="git4idea.merge.GitPullDialog" timestamp="1588076361788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587450763288" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1588075955200">
+    <state x="657" y="311" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588076361788" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1588080889559">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588075955200" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588080889559" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1588136620433">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588136620433" />
   </component>
 </project>

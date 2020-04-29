@@ -35,7 +35,7 @@ class APIHelper extends Controller
                 ],
                 'body' => json_encode($data)
             ]);
-            $battery_id = json_decode((string)$response->getBody());
+            $record_id = json_decode((string)$response->getBody());
         }catch (\Exception $ex){
             dd($ex);
         }

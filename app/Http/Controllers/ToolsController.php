@@ -91,18 +91,6 @@ class ToolsController extends Controller
         }catch (\Exception $ex){
             dd($ex);
         }
-
-
-//        $tool = Item::create($this->validatedData());
-//
-//        $this->storeImage($tool);
-
-        //Calculating Tool quantity
-//        $toolType = request('ItemName');
-//        $item = Component::where('ItemName', $toolType)->first();
-//        $item->quantity += 1;
-//        $item->save();
-
         return redirect('/tools');
     }
 

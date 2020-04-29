@@ -46,7 +46,7 @@
 		@foreach($jobs as $job)
 			<tbody>
 			<tr>
-				<th scope="row"><a href="/jobs/{{ $job->Id }}">{{ $job->JobNumber }}</a></th>
+				<th scope="row"><a href="/jobs/{{ $job->JobNumber }}">{{ $job->JobNumber }}</a></th>
 				{{--<td>{{ $job->gdp_id }}</td>--}}
 				<td>{{ $job->GDP }}</td>
 				<td>{{ $job->Modem }}</td>

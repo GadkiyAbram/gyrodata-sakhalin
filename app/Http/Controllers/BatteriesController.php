@@ -89,10 +89,6 @@ class BatteriesController extends Controller
         $port = \Config::get('url.port');
         $uri = "http://". $url. ":". $port. "/batteryservices/batteryservice.svc/AddBattery";
 
-
-//        $token = session()->get('Token');
-//        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-//
         $data = [
             'BoxNumber' => request('BoxNumber'),
             'BatteryCondition' => request('BatteryCondition'),
@@ -108,49 +104,6 @@ class BatteriesController extends Controller
         ];
 
         $battery_id = APIHelper::insertRecord($uri, $data);
-//
-//        try{
-//            $response = $client->post($uri, [
-//                'headers' => [
-//                    'Content-Type' => 'application/json',
-//                    'Token' => $token
-//                ],
-//                'body' => json_encode($data)
-////                'body' => json_encode(
-////                    [
-////                        'BoxNumber' => request('BoxNumber'),
-////                        'BatteryCondition' => request('BatteryCondition'),
-////                        'SerialOne' => request('serialOne'),
-////                        'SerialTwo' => request('serialTwo'),
-////                        'SerialThr' => request('serialThree'),
-////                        'CCD' => request('batteryCcd'),
-////                        'Invoice' => request('batteryInvoice'),
-////                        'Arrived' => request('date'),
-////                        'BatteryStatus' => request('batteryStatus'),
-////                        'Container' => request('Container'),
-////                        'Comment' => request('Comment')
-////                    ]
-////                )
-//            ]);
-//            $battery_id = json_decode((string)$response->getBody());
-//        }catch (\Exception $ex){
-//            dd($ex);
-//        }
-////        $data = request()->validate([
-////            'serialOne' => 'required',
-////            'condition' => 'required',
-////        ]);
-////        $battery = new \App\Battery();
-////        $battery->serialOne = request('serialOne');
-////        $battery->serialTwo = request('serialTwo') ?? 'N/A';
-////        $battery->serialThr = request('serialThr') ?? 'N/A';
-////        $battery->Arrived = request('date');
-////        $battery->Invoice = request('battery_invoice');
-////        $battery->CCD = request('battery_ccd');
-////        $battery->BatteryCondition = request('condition');
-////        $battery->Container = request('container');
-////        $battery->Comment = request('comment');
-////        $battery->save();
 
         return redirect('/batteries');
     }

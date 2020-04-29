@@ -18,6 +18,7 @@ return [
     "ToolAdd" => "/toolservices/toolservice.svc/AddNewItem",
     "ToolEdit" => "/toolservices/toolservice.svc/EditItem/",
     "ToolItems" => "/toolservices/toolservice.svc/GetItemsComponents",
+    "DataForJob" => "/jobservices/jobservice.svc/GetAllDataForJobCreate",
 
     "request" => "?what=&where=",
 

@@ -11,13 +11,13 @@
 	<div class="d-flex justify-content-start align-items-baseline">
 		<div class="align-content-center pr-3">
 			<a href="/jobs">Go back</a>
-		</div>
-		<div>
-			<h4>Edit {{ $job->jobNumber }}</h4>
-		</div>
+        </div>
+        <div>
+            <h4>Edit {{ $job['JobNumber'] }}</h4>
+        </div>
 	</div>
 
-	<form action="/jobs/{{ $job->id }}" method="post">
+	<form action="/jobs/{{ $job['Id'] }}" method="post">
 
 		@method('PATCH')
 
@@ -25,142 +25,127 @@
 			<div class="col-6">
 
 				<div class="form-group row">
-					<label for="jobNumber" class="col-4 col-form-label">Job Number</label>
+                    <label for="GDP" class="col-4 col-form-label">GDP Sections</label>
 					<div class="col-4">
-						{{--<input type="text" class="form-control" name="jobNumber" value="{{ $job->jobNumber }}">--}}
-						{{ $job->jobNumber }}
-						<!--@error('jobNumber') <p style="color: red">{{ $message }}</p>@enderror-->
+                        <p>{{ $job['GDP'] }}</p>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="toolNumber" class="col-4 col-form-label">Tool</label>
-					<div class="col-4">
-						<select name="toolNumber" id="toolNumber" class="form-control">
-							<option value="{{ $job->toolNumber }}">{{ $job->toolNumber }}</option>
-							@foreach($tools as $tool)
-								<option value="{{ $tool->tool_number }}">{{ $tool->tool_number }}</option>
-							@endforeach
-						</select>
-						@error('toolNumber') <p style="color: red">{{ $message }}</p>@enderror
-					</div>
+					<label for="Modem" class="col-4 col-form-label">Modem</label>
+                    <div class="col-4">
+                        <p>{{ $job['Modem'] }}</p>
+                    </div>
 				</div>
 				<div class="form-group row">
-					<label for="modemNumber" class="col-4 col-form-label">Modem</label>
-					<div class="col-4">
-						<select name="modemNumber" id="modemNumber" class="form-control">
-							<option value="{{ $job->modemNumber }}">{{ $job->modemNumber }}</option>
-							@foreach($modems as $modem)
-								<option value="{{ $modem->tool_number }}">{{ $modem->tool_number }}</option>
-							@endforeach
-						</select>
-						@error('modemNumber') <p style="color: red">{{ $message }}</p>@enderror
-					</div>
+					<label for="BBP" class="col-4 col-form-label">BBP Number</label>
+                    <div class="col-4">
+                        <p>{{ $job['Bullplug'] }}</p>
+                    </div>
 				</div>
 				<div class="form-group row">
-					<label for="bbpNumber" class="col-4 col-form-label">BBP Number</label>
-					<div class="col-4">
-						<select name="bbpNumber" id="bbpNumber" class="form-control">
-							<option value="{{ $job->bbpNumber }}">{{ $job->bbpNumber }}</option>
-							@foreach($bbps as $bbp)
-								<option value="{{ $bbp->tool_number }}">{{ $bbp->tool_number }}</option>
-							@endforeach
-						</select>
-						@error('bbpNumber') <p style="color: red">{{ $message }}</p>@enderror
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="battery" class="col-4 col-form-label">Battery</label>
-					<div class="col-4">
-						<select name="battery" id="battery" class="form-control">
-							<option value="{{ $job->battery->id }}">{{ $job->battery->serialOne }}</option>
-							{{--<option value="{{ $battery_id }}">{{ $battery_serialOne }}</option>--}}
-							@foreach($batteries as $battery)
-								<option value="{{ $job->battery->id }}">{{ $job->battery->serialOne }}</option>
-								{{--<option value="{{ $battery->id }}">{{ $battery->serialOne }}</option>--}}
-							@endforeach
-						</select>
-					</div>
+					<label for="Battery" class="col-4 col-form-label">Battery</label>
+                    <div class="col-4">
+                        <p>{{ $job['Battery'] }}</p>
+                    </div>
 				</div>
 
 				<div class="form-group row">
-					<label for="engFirst" class="col-4 col-form-label">1st Engineer</label>
+					<label for="EngineerOne" class="col-4 col-form-label">1st Engineer</label>
 					<div class="col-4">
-						<select name="engFirst" id="engFirst" class="form-control">
-							<option value="{{ $job->engFirst }}">{{ $job->engFirst }}</option>
+						<select name="EngineerOne" id="EngineerOne" class="form-control">
+							<option value="{{ $job['EngineerOne'] }}">{{ $job['EngineerOne'] }}</option>
 							@foreach($engineers as $engineer)
-								<option value="{{ $engineer->id }}">{{ $engineer->name }}</option>
+								<option value="{{ $engineer }}">{{ $engineer }}</option>
 							@endforeach
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="engSecond" class="col-4 col-form-label">2nd Engineer</label>
+					<label for="EngineerTwo" class="col-4 col-form-label">2nd Engineer</label>
 					<div class="col-4">
-						<select name="engSecond" id="engSecond" class="form-control">
-							<option value="{{ $job->engSecond }}">{{ $job->engSecond }}</option>
-							@foreach($engineers as $engineer)
-								<option value="{{ $engineer->id }}">{{ $engineer->name }}</option>
-							@endforeach
+						<select name="EngineerTwo" id="EngineerTwo" class="form-control">
+							<option value="{{ $job['EngineerTwo'] }}">{{ $job['EngineerTwo'] }}</option>
+                            @foreach($engineers as $engineer)
+                                <option value="{{ $engineer }}">{{ $engineer }}</option>
+                            @endforeach
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="eng1ArrRig" class="col-4 col-form-label">1st Eng at Rig</label>
+					<label for="eng_one_arrived" class="col-4 col-form-label">1st Eng at Rig</label>
 					<div class="col-4">
-						<input type="date" class="form-control" name="eng1ArrRig">
+						<input type="date" class="form-control" name="eng_one_arrived" value="{{ $job['eng_one_arrived'] }}">
 					</div>
 				</div>
+                <div class="form-group row">
+                    <label for="eng_two_arrived" class="col-4 col-form-label">2nd Eng at Rig</label>
+                    <div class="col-4">
+                        <input type="date" class="form-control" name="eng_two_arrived" value="{{ $job['eng_two_arrived'] }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="eng_one_left" class="col-4 col-form-label">1st Eng Left Rig</label>
+                    <div class="col-4">
+                        <input type="date" class="form-control" name="eng_one_left" value="{{ $job['eng_one_left'] }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="eng_two_left" class="col-4 col-form-label">2nd Eng Left Rig</label>
+                    <div class="col-4">
+                        <input type="date" class="form-control" name="eng_two_left" value="{{ $job['eng_two_left'] }}">
+                    </div>
+                </div>
 
 			</div>
 
 			<div class="col-6">
 
 				<div class="form-group row">
-					<label for="eng2ArrRig" class="col-4 col-form-label">2nd Eng at Rig</label>
+					<label for="Container" class="col-4 col-form-label">Container</label>
 					<div class="col-4">
-						<input type="date" class="form-control" name="eng2ArrRig">
+						<input type="text" class="form-control" name="Container" placeholder="Container N" value="{{ $job['Container'] }}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="eng1DepRig" class="col-4 col-form-label">1st Eng Left Rig</label>
+					<label for="ContainerArrived" class="col-4 col-form-label">Container at Rig</label>
 					<div class="col-4">
-						<input type="date" class="form-control" name="eng1DepRig">
+						<input type="date" class="form-control" name="ContainerArrived" value="{{ $job['ContainerArrived'] }}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="eng2DepRig" class="col-4 col-form-label">2nd Eng Left Rig</label>
+					<label for="ContainerLeft" class="col-4 col-form-label">Container Left Rig</label>
 					<div class="col-4">
-						<input type="date" class="form-control" name="eng2DepRig">
+						<input type="date" class="form-control" name="ContainerLeft" value="{{ $job['ContainerLeft'] }}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="container" class="col-4 col-form-label">Container</label>
+					<label for="CirculationHours" class="col-4 col-form-label">Tool Hours</label>
 					<div class="col-4">
-						<input type="text" class="form-control" name="container" placeholder="Container N">
+						<input type="number" step="0.01" class="form-control" name="CirculationHours" value="{{ $job['CirculationHours'] }}">
 					</div>
 				</div>
+                <div class="form-group row">
+                    <label for="MaxTemp" class="col-4 col-form-label">Max Temp</label>
+                    <div class="col-4">
+                        <input type="number" step="0.01" class="form-control" name="MaxTemp" value="{{ $job['MaxTemp'] }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Rig" class="col-4 col-form-label">Rig</label>
+                    <div class="col-4">
+                        <input type="text" step="0.01" class="form-control" name="Rig" value="{{ $job['Rig'] }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Issues" class="col-4 col-form-label">Issues</label>
+                    <div class="col-4">
+                        <input type="text" step="0.01" class="form-control" name="Issues" value="{{ $job['Issues'] }}">
+                    </div>
+                </div>
 				<div class="form-group row">
-					<label for="containerArrRig" class="col-4 col-form-label">Container at Rig</label>
+					<label for="Comment" class="col-4 col-form-label">Comment</label>
 					<div class="col-4">
-						<input type="date" class="form-control" name="containerArrRig">
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="containerDepRig" class="col-4 col-form-label">Container Left Rig</label>
-					<div class="col-4">
-						<input type="date" class="form-control" name="containerDepRig">
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="toolCircHrs" class="col-4 col-form-label">Tool Hours</label>
-					<div class="col-4">
-						<input type="number" step="0.01" class="form-control" name="toolCircHrs" value="{{ $job->toolCircHrs }}">
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="comment" class="col-4 col-form-label">Comment</label>
-					<div class="col-4">
-						<input type="comment" class="form-control" name="comment" placeholder="Comment">
+						<input type="text" class="form-control" name="Comment" value="{{ $job['Comment'] }}">
 					</div>
 				</div>
 			</div>

@@ -21,6 +21,8 @@ class JobsController extends Controller
 {
     private $job_numbers = [];
 
+    private $dataForJobCreate;      // Data for Job create (gdp / modems / batteries etc)
+
     public function index()
     {
         $uri = APIHelper::getUrl('JobsAll'). "?what=&where=";
@@ -45,21 +47,8 @@ class JobsController extends Controller
         return view('jobs.index', compact('jobs'));
     }
 
-    public function create()
+    private function getDataForNewJob($uri, $token)
     {
-//        $gdps = Item::where('Item', gdp)->get();
-//        $modems = Item::where('Item', modem)->get();
-//        $bbps = Item::where('Item', bbp)->get();
-//        $clients = Client::all();
-//        $batteries = Battery::where('BatteryCondition', 'New')->get();
-//        $engineers = Engineer::all();
-//
-//        return view('jobs/create', compact(
-//                            'batteries','engineers', 'gdps',
-//                            'modems', 'bbps', 'clients'));
-
-        $uri = 'http://192.168.0.102:8081/jobservices/jobservice.svc/GetAllDataForJobCreate';
-        $token = session()->get('Token');
         $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
         try{
             $response = $client->get($uri, [
@@ -68,19 +57,28 @@ class JobsController extends Controller
                     'Token' => $token
                 ]
             ]);
-            $data = json_decode((string)$response->getBody());
-            $data = (array)$data;
-//            dd($data[5]);
-            $gdps = $data[1];
-            $modems = $data[2];
-            $bbps = $data[3];
-            $clients = $data[0];
-            $batteries = $data[5];
-            $engineers = $data[4];
-
+            $this->dataForJobCreate = json_decode((string)$response->getBody());
+            $this->dataForJobCreate = (array)$this->dataForJobCreate;
         }catch (\Exception $ex){
             dd($ex);
         }
+
+        return $this->dataForJobCreate;
+    }
+
+    public function create()
+    {
+        $uri = APIHelper::getUrl('DataForJob');
+        $token = session()->get('Token');
+
+        $data = $this->getDataForNewJob($uri, $token);
+        $gdps = $data[1];
+        $modems = $data[2];
+        $bbps = $data[3];
+        $clients = $data[0];
+        $batteries = $data[5];
+        $engineers = $data[4];
+
         return view('jobs/create', compact(
                             'batteries','engineers', 'gdps',
                             'modems', 'bbps', 'clients'));
@@ -88,27 +86,35 @@ class JobsController extends Controller
 
     public function show($job)
     {
-        $job = Job::find($job);
+        $job = $this->getJob($job);
 
-//        $battery_id = $job->battery->id;
-//        $battery_serialOne = $job->battery->serialOne;
+        return view('jobs.show', compact('job'));
+    }
 
-        if ($job->battery === null){
-            $battery_id = na;
-            $battery_serialOne = na;
-        }else{
-            $battery_id = $job->battery->id;
-            $battery_serialOne = $job->battery->serialOne;
+    public function getJob($jobnumber)
+    {
+        $uriGetSelectedJob = 'http://192.168.0.102:8081/jobservices/jobservice.svc/GetSelectedJobData/' . $jobnumber;
+        $token = session()->get('Token');
+        $client = new \GuzzleHttp\Client(['base_uri' => $uriGetSelectedJob]);
+        try {
+            $response = $client->get($uriGetSelectedJob, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Token' => $token
+                ]
+            ]);
+            $job = json_decode((string)$response->getBody());
+            $job = (array)$job[0];
+
+        } catch (\Exception $ex) {
+            dd($ex);
         }
-
-        return view('jobs.show', compact('job', 'battery_id', 'battery_serialOne'));
+        return $job;
     }
 
     public function store()
     {
         $uri = 'http://192.168.0.102:8081/jobservices/jobservice.svc/AddNewJob';
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
         $data = [
             'JobNumber' => request('JobNumber'),
             'ClientName' => request('client_id'),
@@ -131,41 +137,22 @@ class JobsController extends Controller
             'Issues' => request('Issues'),
             'Comment' => request('Comment')
         ];
-        try{
-            $response = $client->post($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ],
-                'body' => json_encode($data)
-            ]);
-            $job_id = json_decode((string)$response->getBody());
-        }catch (\Exception $ex){
-            dd($ex);
-        }
+
+        $job_id = APIHelper::insertRecord($uri, $data);
 
         return redirect('/jobs');
     }
 
-    public function edit(Job $job)
+    public function edit($job)
     {
-        $tools = Tool::where('tool_type', gdp)->get();
-        $modems = Tool::where('tool_type', modem)->get();
-        $bbps = Tool::where('tool_type', bbp)->get();
-        $batteries = Battery::where('condition', 1)->get();
-        $engineers = Engineer::all();
+        $uriDataForJob = APIHelper::getUrl('DataForJob');
+        $token = session()->get('Token');
+        // search item by Id and pass to compact
+        $job = $this->getJob($job);
+        $dataForJob = $this->getDataForNewJob($uriDataForJob, $token);
+        $engineers = $dataForJob[4];
 
-        if ($job->battery === null){
-            $battery_id = na;
-            $battery_serialOne = na;
-        }else{
-            $battery_id = $job->battery->Id;
-            $battery_serialOne = $job->battery->serialOne;
-        }
-
-        return view('jobs.edit', compact('job', 'tools',
-                                    'modems', 'bbps', 'batteries',
-                                    'engineers', 'battery_id', 'battery_serialOne'));
+        return view('jobs.edit', compact('job', 'engineers'));
     }
 
     public function update(Job $job)

@@ -20,7 +20,6 @@
 			</div>
 		</div>
 		<div>
-			{{--<a href="/tools/{{ $item['Id'] }}/edit">Edit Tool</a>--}}
 			<a href="/tools/{{ $item['Id'] }}/edit">Edit Tool</a>
 		</div>
 
