@@ -2,15 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb13fe00-7d51-4b8d-900e-86ae71d9dc84" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../resources/js/components/Dashboard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../resources/js/components/Profile.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../resources/js/components/Users.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../resources/views/layouts/master.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../resources/views/search/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/tools/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/../public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/nav.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,27 +164,28 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/wamp/bin/php/php7.2.25/php.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../resources/js/components" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\database\migrations" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\public" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views\jobs" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views\tools" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\public\img" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Aleksandr.Abramovski\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\app" />
       <recent name="C:\Users\Aleksandr.Abramovski\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\app\Providers" />
       <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views" />
       <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\public" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\js\components" />
+      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\database\migrations" />
+      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\public" />
+      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views\jobs" />
+      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views\tools" />
     </key>
   </component>
   <component name="RunManager">
@@ -214,7 +226,9 @@
       <workItem from="1582623451388" duration="11778000" />
       <workItem from="1586577693909" duration="325000" />
       <workItem from="1586579180464" duration="40510000" />
-      <workItem from="1587491870411" duration="41557000" />
+      <workItem from="1587491870411" duration="41731000" />
+      <workItem from="1588499445343" duration="3920000" />
+      <workItem from="1588503937461" duration="23467000" />
     </task>
     <task id="LOCAL-00001" summary="Battery / Job can be added separately, now relations">
       <created>1571816280301</created>
@@ -405,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588141467115</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="some improvement prior to use Vue js">
+      <created>1588167555898</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1588167555898</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,7 +435,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Partially working version of assigning battery to the Job" />
     <MESSAGE value="Assigning battery to the Job&#10;&#10;Created Engineers table" />
     <MESSAGE value="Selecting battery from db while creating the Job" />
     <MESSAGE value="added: tools&#10;&#10;selecting tools (GPDM, BBP) / Batteries &amp; Engs while creating a Job&#10;&#10;Calculating circulation hours for GDPM &amp; BBP&#10;&#10;changing batt condition after job created (switch to USED one)" />
@@ -439,13 +459,22 @@
     <MESSAGE value="place insertion (store method) in APIHelper class" />
     <MESSAGE value="Added dropdown list for engineers (while updating the Job record)&#10;go ahead for other staff" />
     <MESSAGE value="Set updating Engineers in Web-version." />
-    <option name="LAST_COMMIT_MESSAGE" value="Set updating Engineers in Web-version." />
+    <MESSAGE value="some improvement prior to use Vue js" />
+    <option name="LAST_COMMIT_MESSAGE" value="some improvement prior to use Vue js" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="556" y="114" key="CommitChangelistDialog2" timestamp="1588167529057">
+    <state x="556" y="114" key="CommitChangelistDialog2" timestamp="1588167555247">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="556" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588167529057" />
+    <state x="556" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588167555247" />
+    <state x="595" y="298" key="EditFileWatcherDialog" timestamp="1588571752588">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="595" y="298" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588571752588" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1588568592341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588568592341" />
     <state x="665" y="334" key="NewPhpClassDialog" timestamp="1586936810707">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -454,14 +483,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="795" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588046878670" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1587567527385">
+    <state x="461" y="162" key="SettingsEditor" timestamp="1588571748216">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587567527385" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1588141471831">
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588571748216" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1588167560718">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588141471831" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588167560718" />
     <state x="657" y="311" key="git4idea.merge.GitPullDialog" timestamp="1588076361788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -470,9 +499,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588080889559" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1588167500490">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1588655406662">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588167500490" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588655406662" />
   </component>
 </project>

@@ -84,3 +84,12 @@ Route::resource('preferences', 'TokenController')->middleware('auth');
 //Route::get('/token', 'TokenController@index');
 //Route::post('/token/token', 'TokenController@store');
 //Route::post('/token/saveurlport', 'TokenController@storeurlport');
+
+//Route::resource('search', 'SearchController')->middleware('auth');
+Route::get('master', 'SearchController@index')->middleware('auth');
+
+Route::get('{path}', "SearchController@index");
+//->where('path', '([A-z\d-\/_.]+)?' );
+//    ->middleware('auth');
+
+

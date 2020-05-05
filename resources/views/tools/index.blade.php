@@ -24,6 +24,20 @@
 
 	</div>
 
+    <!-- SEARCH FORM -->
+    <div class="input-group input-group-sm mt-1 mb-3">
+        <input class="form-control form-control-navbar"
+               {{--                   @keyup="searchit" v-model="search" type="search" --}}
+               placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+            <button class="btn btn-navbar"
+                {{--                        @click="searchit"--}}
+            >
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+
 
 	<table class="table table-striped">
 		<thead>
