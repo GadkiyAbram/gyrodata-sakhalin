@@ -7,12 +7,34 @@ window.Vue = require('vue');
 import moment from 'moment';
 import { Form, HasError, AlertError } from 'vform';
 
-Vue.component(HasError.name, HasError)
-Vue.component(AlertError.name, AlertError)
+import swal from 'sweetalert2';
+window.swal = swal;
+
+const toast = swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+});
+
+window.toast = toast;
+
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
 
 window.Form = Form;
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
+
+import VueProgressBar from 'vue-progressbar';
+
+const options = {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '3px'
+};
+
+Vue.use(VueProgressBar, options);
 
 let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
@@ -32,6 +54,8 @@ Vue.filter('upText', function (text) {
 Vue.filter('myDate', function (created) {
     return moment(created).format('MMMM Do YYYY');
 });
+
+window.Fire = new Vue();
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 

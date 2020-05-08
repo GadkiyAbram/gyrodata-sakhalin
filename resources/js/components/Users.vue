@@ -7,7 +7,7 @@
                         <h3 class="box-title">Users Table</h3>
 
                         <div class="card-tools">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New
+                            <button class="btn btn-success" @click="newModal" data-target="#addNew">Add New
                             <i class="fas fa-user-plus fa-fw"></i>
                             </button>
                         </div>
@@ -31,11 +31,11 @@
                                 <td>{{user.type | upText}}</td>
                                 <td>{{user.created_at | myDate}}</td>
                                 <td>
-                                    <a href="">
+                                    <a href="#" @click="editModal(user)">
                                         <i class="fa fa-edit blue">Edit</i>
                                     </a>
                                     /
-                                    <a href="">
+                                    <a href="#" @click="deleteUser(user.id)">
                                         <i class="fa fa-trash red">Trash</i>
                                     </a>
                                 </td>
@@ -53,12 +53,13 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addNewLabel">Add New</h5>
+                        <h5 class="modal-title" v-show="!editmode" id="addNewLabel">Add New</h5>
+                        <h5 class="modal-title" v-show="editmode" id="addNewLabel">Update User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="createUser">
+                    <form @submit.prevent="editmode ? updateUser() : createUser()">
                         <div class="modal-body">
                             <div class="form-group">
                                 <input v-model="form.name" type="text" name="name"
@@ -100,7 +101,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button v-show="editmode" type="submit" class="btn btn-success">Update</button>
+                            <button v-show="!editmode" type="submit" class="btn btn-primary">Create</button>
                         </div>
                     </form>
                 </div>
@@ -111,12 +113,15 @@
 
 </template>
 
+
 <script>
     export default {
         data(){
             return {
+                editmode: false,
                 users: {},
                 form: new Form({
+                    id: '',
                     name : '',
                     email: '',
                     password: '',
@@ -126,16 +131,94 @@
                 })
             }
         },
+
         methods: {
+            updateUser(){
+                this.$Progress.start();
+                // console.log('Editing data');
+                this.form.put('api/user/' + this.form.id)
+                    .then(() => {
+                        // success
+                        $('#addNew').modal('hide');
+                        swal.fire(
+                            'Updated!',
+                            // this.form.name + ' Information has been updated',
+                            'Information has been updated',
+                            'success'
+                        )
+                        this.$Progress.finish();
+                        Fire.$emit('AfterCreate');
+                })
+                    .catch(() => {
+                        this.$Progress.fail();
+                });
+            },
+            editModal(user){
+                this.editmode = true;
+                this.form.reset();
+                $('#addNew').modal('show');
+                this.form.fill(user)
+            },
+            newModal(){
+                this.editmode = false;
+                this.form.reset();
+                $('#addNew').modal('show');
+            },
+            deleteUser(id){
+                swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+
+                    // send request to the server
+                    if (result.value) {
+                        this.form.delete('api/user/' + id).then(() => {
+
+                            swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            Fire.$emit('AfterCreate');
+                        }).catch(() => {
+                            swal("Failed!", "There was smth wrong", "warning");
+                        });
+                    }
+                })
+            },
             loadUsers(){
                 axios.get("api/user").then(({ data }) => (this.users = data));
             },
             createUser(){
-                this.form.post('api/user');
+                this.$Progress.start();
+                this.form.post('api/user').
+                then(() => {
+                    Fire.$emit('AfterCreate');
+                    $('#addNew').modal('hide');
+
+                    toast.fire({
+                        icon: 'success',
+                        title: 'User created successfully'
+                    });
+
+                    this.$Progress.finish();
+                }).
+                catch(() => {
+
+                })
             }
         },
-       created() {
+        created() {
             this.loadUsers();
+            Fire.$on('AfterCreate', () => {
+                this.loadUsers();
+            });
+            // setInterval(() => this.loadUsers(),3000);        //will get the data every 3 sec - not mostly appropriately
         }
     }
 </script>
