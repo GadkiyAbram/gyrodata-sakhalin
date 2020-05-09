@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        //Previous
+        $this->middleware('api');
+        //Now
+        $this->middleware('auth:api');
+    }
     /**
      * Display a listing of the resource.
      *
