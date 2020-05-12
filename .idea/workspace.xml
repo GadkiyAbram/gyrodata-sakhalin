@@ -2,23 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb13fe00-7d51-4b8d-900e-86ae71d9dc84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../resources/js/components/Developer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/gyrodata-sakhalin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/gyrodata-sakhalin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../resources/js/components/Tools.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../resources/views/tools/data.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/API/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/../composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/../config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config/url.php" beforeDir="false" afterPath="$PROJECT_DIR$/../config/url.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resources/js/components/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/js/components/Profile.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/tools/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +41,13 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -178,25 +181,25 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../resources/js/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../resources/views/tools" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\js\components" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\database\migrations" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\public" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views\jobs" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views\tools" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Aleksandr.Abramovski\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\app" />
       <recent name="C:\Users\Aleksandr.Abramovski\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\app\Providers" />
       <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views" />
       <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\public" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\views\tools" />
+      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\js\components" />
+      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\database\migrations" />
+      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\public" />
+      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views\jobs" />
     </key>
   </component>
   <component name="RunManager">
@@ -240,7 +243,13 @@
       <workItem from="1587491870411" duration="41731000" />
       <workItem from="1588499445343" duration="3920000" />
       <workItem from="1588503937461" duration="44882000" />
-      <workItem from="1589042076386" duration="7140000" />
+      <workItem from="1589042076386" duration="27095000" />
+      <workItem from="1589265265663" duration="937000" />
+      <workItem from="1589268262185" duration="1662000" />
+      <workItem from="1589271851302" duration="5443000" />
+      <workItem from="1589289059451" duration="2061000" />
+      <workItem from="1589294972568" duration="902000" />
+      <workItem from="1589303964945" duration="2727000" />
     </task>
     <task id="LOCAL-00001" summary="Battery / Job can be added separately, now relations">
       <created>1571816280301</created>
@@ -452,7 +461,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588933375537</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added Profile Vue &amp;&amp; Laravel Passport">
+      <created>1589051678969</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1589051678969</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,7 +477,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="added: tools&#10;&#10;selecting tools (GPDM, BBP) / Batteries &amp; Engs while creating a Job&#10;&#10;Calculating circulation hours for GDPM &amp; BBP&#10;&#10;changing batt condition after job created (switch to USED one)" />
     <MESSAGE value="displaying only NEW batteries when creating a New Job&#10;&#10;when NEW job created, NEW battery condition switches to USED&#10;&#10;displaying j/n in battery list, if one was assigned" />
     <MESSAGE value="calculating tool quantity when adding new one&#10;&#10;changing battery status from NEW to USED while assigning battery to the JOB" />
     <MESSAGE value="adding Tool by $data-&gt;request-&gt;validate([])&#10;&#10;\App\Tool::create($data);" />
@@ -486,13 +501,18 @@
     <MESSAGE value="some improvement prior to use Vue js" />
     <MESSAGE value="testing Vuejs" />
     <MESSAGE value="adding update user in VueJs" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding update user in VueJs" />
+    <MESSAGE value="Added Profile Vue &amp;&amp; Laravel Passport" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Profile Vue &amp;&amp; Laravel Passport" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="556" y="114" key="CommitChangelistDialog2" timestamp="1588933374489">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589210657955">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="556" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588933374489" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589210657955" />
+    <state x="556" y="114" key="CommitChangelistDialog2" timestamp="1589051676670">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="556" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589051676670" />
     <state x="595" y="298" key="EditFileWatcherDialog" timestamp="1588571752588">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -505,29 +525,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="665" y="334" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586936810707" />
-    <state x="795" y="443" key="NewPhpFileDialog" timestamp="1588046878670">
+    <state x="795" y="443" key="NewPhpFileDialog" timestamp="1589210607772">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="795" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588046878670" />
+    <state x="795" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589210607772" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1588571748216">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588571748216" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1588933381887">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1589051681971">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588933381887" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589051681971" />
     <state x="657" y="311" key="git4idea.merge.GitPullDialog" timestamp="1588076361788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="657" y="311" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588076361788" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1588080889559">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1589287836526">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588080889559" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589047569559">
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589287836526" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589268592281">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589047569559" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589268592281" />
   </component>
 </project>

@@ -15,6 +15,7 @@ return [
     //Tools
     "ToolsAll" => "/toolservices/toolservice.svc/GetCustomItems",
     "ToolCustom" => "/toolservices/toolservice.svc/GetCustomItem/",
+    "ToolsCustom" => "/toolservices/toolservice.svc/GetCustomItems/",   // Search
     "ToolAdd" => "/toolservices/toolservice.svc/AddNewItem",
     "ToolEdit" => "/toolservices/toolservice.svc/EditItem/",
     "ToolItems" => "/toolservices/toolservice.svc/GetItemsComponents",

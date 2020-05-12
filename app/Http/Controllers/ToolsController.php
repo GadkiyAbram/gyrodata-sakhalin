@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Component;
-use App\Job;
-use App\Item;
-use Intervention\Image\Facades\Image;
+use Illuminate\Http\Request;
 
 define('GDP', 'GDP Sections');
 define('MODEM', 'GWD Modem');
@@ -15,10 +12,48 @@ class ToolsController extends Controller
 {
     public function index()
     {
-        $uri = APIHelper::getUrl('ToolsAll'). "?what=&where=";
+//        $uri = APIHelper::getUrl('ToolsAll'). "?what=&where=";
+//
+//        $token = session()->get('Token');
+//
+//        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+//        try{
+//            $response = $client->get($uri, [
+//                'headers' => [
+//                    'Content-Type' => 'application/json',
+//                    'Token' => $token
+//                ]
+//            ]);
+//            $items = json_decode((string)$response->getBody());
+//            $items = (array)$items;
+//
+//        }catch (\Exception $ex){
+//            dd($ex);
+//        }
+//        return view('tools.index', compact('items'));
+        return view('tools.index');
+    }
 
+    public function searchItems(Request $request)
+    {
+        $what = $request->search_data;
+        $where = 'Asset';
+
+        if (empty($request->search_data))
+        {
+            $items = $this->fetchData('', '');
+        }else
+        {
+            $items = $this->fetchData($what, $where);
+        }
+
+        return view('tools.data', compact('items'));
+    }
+
+    public function fetchData($what, $where)
+    {
+        $uri = "http://192.168.0.102:8081/toolservices/toolservice.svc/GetCustomItems?what=" . $what . "&where=" . $where;
         $token = session()->get('Token');
-
         $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
         try{
             $response = $client->get($uri, [
@@ -33,10 +68,7 @@ class ToolsController extends Controller
         }catch (\Exception $ex){
             dd($ex);
         }
-
-//        $tools = Item::all();
-
-        return view('tools.index', compact('items'));
+        return $items;
     }
 
     public function create()

@@ -43,9 +43,9 @@
 								<li class="nav-item">
 									<a class="nav-link" href="/preferences">Preferences</a>
 								</li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/master">Search</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/master">Search</a>
+                                </li>
 							</ul>
 					</div>
 				</div>

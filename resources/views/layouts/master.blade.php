@@ -41,6 +41,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
         </div>
 
+        <div class="d-flex align-items-baseline justify-content-between shadow-sm">
+
+            <div class="py-1">
+                <img src="{{URL::asset('/gyrodata_logo_small.jpg')}}" height="50" width="200">
+            </div>
+
+        </div>
+
     </nav>
     <!-- /.navbar -->
 
@@ -79,7 +87,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <i class="nav-icon fas fa-tachometer-alt blue"></i>
                             <p>
                                 Dashboard
-
                             </p>
                         </router-link>
                     </li>
@@ -121,7 +128,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </router-link>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault();

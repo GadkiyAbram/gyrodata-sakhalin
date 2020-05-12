@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
@@ -69,13 +70,17 @@ Route::resource('batteries', 'BatteriesController')->middleware('auth');
 
 Route::resource('jobs', 'JobsController')->middleware('auth');
 
-//Route::get('/tools', 'ToolsController@index');
-//Route::get('/tools/create', 'ToolsController@create');
-//Route::post('/tools', 'ToolsController@store');
-//Route::get('/tools/{id}', 'ToolsController@show');
-//Route::get('/tools/{tool}/edit', 'ToolsController@edit');
+Route::get('/tools', 'ToolsController@index')->name('tools.index');
+// TODO - remove
+Route::post('/tools', 'ToolsController@searchItems')->name('tools.index');
+Route::get('/tools/create', 'ToolsController@create');
+//TODO - sort it, add route
+Route::post('/tools/create', 'ToolsController@store')->name('tools.store');
+Route::get('/tools/{id}', 'ToolsController@show');
+Route::get('/tools/{tool}/edit', 'ToolsController@edit');
 
-Route::resource('tools', 'ToolsController')->middleware('auth');
+
+//Route::resource('tools', 'ToolsController')->middleware('auth');
 
 Route::get('/ccd', 'CCDController@index');
 
