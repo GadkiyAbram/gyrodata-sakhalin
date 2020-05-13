@@ -12,25 +12,6 @@ class ToolsController extends Controller
 {
     public function index()
     {
-//        $uri = APIHelper::getUrl('ToolsAll'). "?what=&where=";
-//
-//        $token = session()->get('Token');
-//
-//        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-//        try{
-//            $response = $client->get($uri, [
-//                'headers' => [
-//                    'Content-Type' => 'application/json',
-//                    'Token' => $token
-//                ]
-//            ]);
-//            $items = json_decode((string)$response->getBody());
-//            $items = (array)$items;
-//
-//        }catch (\Exception $ex){
-//            dd($ex);
-//        }
-//        return view('tools.index', compact('items'));
         return view('tools.index');
     }
 
@@ -38,38 +19,22 @@ class ToolsController extends Controller
     {
         $what = $request->search_data;
         $where = $request->search_where;
-//        $where = 'Asset';
 
+        //TODO - refactor, rmeove if-else struct
         if (empty($request->search_data))
         {
-            $items = $this->fetchData('', '');
+            $items = $this->getToolData('', '');
         }else
         {
-            $items = $this->fetchData($what, $where);
+            $items = $this->getToolData($what, $where);
         }
 
         return view('tools.data', compact('items'));
     }
 
-    public function fetchData($what, $where)
+    public function getToolData($what, $where)
     {
-        $uri = "http://192.168.0.102:8081/toolservices/toolservice.svc/GetCustomItems?what=" . $what . "&where=" . $where;
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-        try{
-            $response = $client->get($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ]
-            ]);
-            $items = json_decode((string)$response->getBody());
-            $items = (array)$items;
-
-        }catch (\Exception $ex){
-            dd($ex);
-        }
-        return $items;
+        return APIHelper::getToolData($what, $where);
     }
 
     public function create()

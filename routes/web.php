@@ -54,13 +54,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/batteries', 'BatteriesController@index');
-//Route::get('/batteries/create', 'BatteriesController@create');
+// BATTERIES ROUTES
+//Route::resource('batteries', 'BatteriesController')->middleware('auth');
+Route::get('/batteries', 'BatteriesController@index')->name('batteries.index');
+Route::post('/batteries', 'BatteriesController@searchBatteries')->name('batteries.index');
+Route::get('/batteries/create', 'BatteriesController@create');
 //Route::post('/batteries', 'BatteriesController@store');
 
-Route::resource('batteries', 'BatteriesController')->middleware('auth');
-//->middleware('auth');
-
+// JOBS ROUTES
+Route::resource('jobs', 'JobsController')->middleware('auth');
 //Route::get('/jobs', 'JobsController@index');
 //Route::get('/jobs/create', 'JobsController@create');
 //Route::post('/jobs', 'JobsController@store');
@@ -68,8 +70,8 @@ Route::resource('batteries', 'BatteriesController')->middleware('auth');
 //Route::get('/jobs/{job}/edit', 'JobsController@edit');
 //Route::patch('/jobs/{job}', 'JobsController@update');
 
-Route::resource('jobs', 'JobsController')->middleware('auth');
-
+// TOOLS ROUTES
+//Route::resource('tools', 'ToolsController')->middleware('auth');
 Route::get('/tools', 'ToolsController@index')->name('tools.index');
 Route::post('/tools', 'ToolsController@searchItems')->name('tools.index');
 Route::get('/tools/create', 'ToolsController@create');
@@ -77,8 +79,6 @@ Route::post('/tools/create', 'ToolsController@store')->name('tools.store');
 Route::get('/tools/{id}', 'ToolsController@show');
 Route::get('/tools/{tool}/edit', 'ToolsController@edit');
 Route::patch('/tools/{id}', 'ToolsController@update');
-
-//Route::resource('tools', 'ToolsController')->middleware('auth');
 
 Route::get('/ccd', 'CCDController@index');
 

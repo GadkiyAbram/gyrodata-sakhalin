@@ -15,21 +15,21 @@
         <div class="d-flex justify-content-between align-items-baseline">
             <div>
                 <h3>Tools Tracking</h3>
+
             </div>
             <div>
                 <a href="/tools/create">Add Tool</a>
             </div>
-
         </div>
 
-    <!-- SEARCH FORM -->
+         <!-- SEARCH FORM -->
         <div class="d-flex justify-content-between align-items-baseline">
             <div class="row">
                 <div class="row mb-2 ml-3 mr-3">
                     <input type="search" id="item_data" placeholder="Search..." class="form-control">
                 </div>
                 <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
+                    <label class="btn btn-secondary">
                         <input type="radio" class="search_where" name="search_where" value="Item" checked>Item
                     </label>
 
@@ -46,7 +46,6 @@
                     </label>
                 </div>
             </div>
-
         </div>
         <p class="ml-3 mr-3" id="output"></p>
 

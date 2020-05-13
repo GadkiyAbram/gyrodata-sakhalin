@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb13fe00-7d51-4b8d-900e-86ae71d9dc84" name="Default Changelist" comment="Added AJAX search for Tools">
+    <list default="true" id="eb13fe00-7d51-4b8d-900e-86ae71d9dc84" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../resources/views/batteries/data.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/APIHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/APIHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/batteries/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resources/views/tools/data.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/data.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/tools/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/web.php" afterDir="false" />
     </list>
@@ -173,25 +176,25 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../resources/views/tools" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../resources/views/batteries" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\views\batteries" />
+      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\views\tools" />
+      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\js\components" />
+      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\database\migrations" />
+      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Aleksandr.Abramovski\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\app" />
       <recent name="C:\Users\Aleksandr.Abramovski\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\app\Providers" />
       <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views" />
       <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\public" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\views\tools" />
-      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\js\components" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\database\migrations" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\public" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views\jobs" />
     </key>
   </component>
   <component name="RunManager">
@@ -242,7 +245,7 @@
       <workItem from="1589289059451" duration="2061000" />
       <workItem from="1589294972568" duration="902000" />
       <workItem from="1589303964945" duration="4764000" />
-      <workItem from="1589346633067" duration="4693000" />
+      <workItem from="1589346633067" duration="9970000" />
     </task>
     <task id="LOCAL-00001" summary="Battery / Job can be added separately, now relations">
       <created>1571816280301</created>
@@ -468,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589306810327</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="AJAX search with Item, Asset, CCD, Invoice for Tools">
+      <created>1589352320310</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1589352320310</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,7 +487,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="calculating tool quantity when adding new one&#10;&#10;changing battery status from NEW to USED while assigning battery to the JOB" />
     <MESSAGE value="adding Tool by $data-&gt;request-&gt;validate([])&#10;&#10;\App\Tool::create($data);" />
     <MESSAGE value="displaying:&#10;-tool details&#10;-jobs tool involved (&amp;&amp; cir hrs)&#10;-tool circulation hrs in total" />
     <MESSAGE value="added switch case to select the Tool: GDP / M / BBP and further displaying the Job Log tool involved" />
@@ -502,17 +511,18 @@
     <MESSAGE value="adding update user in VueJs" />
     <MESSAGE value="Added Profile Vue &amp;&amp; Laravel Passport" />
     <MESSAGE value="Added AJAX search for Tools" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added AJAX search for Tools" />
+    <MESSAGE value="AJAX search with Item, Asset, CCD, Invoice for Tools" />
+    <option name="LAST_COMMIT_MESSAGE" value="AJAX search with Item, Asset, CCD, Invoice for Tools" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589210657955">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589210657955" />
-    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2" timestamp="1589307285234">
+    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2" timestamp="1589352319213">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589307285234" />
+    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589352319213" />
     <state x="595" y="298" key="EditFileWatcherDialog" timestamp="1588571752588">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -533,10 +543,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589306984282" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1589306828733">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1589352327727">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589306828733" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589352327727" />
     <state x="657" y="311" key="git4idea.merge.GitPullDialog" timestamp="1588076361788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -545,9 +555,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589287836526" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589346789450">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589361936015">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589346789450" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589361936015" />
   </component>
 </project>

@@ -23,6 +23,27 @@ class APIHelper extends Controller
         return $path;
     }
 
+    public static function getToolData($what, $where)
+    {
+        $uri = APIHelper::getUrl('ToolsAll'). "?what=" . $what . "&where=" . $where;
+        $token = session()->get('Token');
+        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        try{
+            $response = $client->get($uri, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Token' => $token
+                ]
+            ]);
+            $items = json_decode((string)$response->getBody());
+            $items = (array)$items;
+
+        }catch (\Exception $ex){
+            dd($ex);
+        }
+        return $items;
+    }
+
     public static function insertRecord($uri, $data)
     {
         $token = session()->get('Token');
