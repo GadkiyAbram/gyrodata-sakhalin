@@ -24,9 +24,29 @@
 
     <!-- SEARCH FORM -->
         <div class="d-flex justify-content-between align-items-baseline">
-            <div class="row mb-2 ml-0">
-                <input type="search" id="user_data" placeholder="Search..." class="form-control">
+            <div class="row">
+                <div class="row mb-2 ml-3 mr-3">
+                    <input type="search" id="item_data" placeholder="Search..." class="form-control">
+                </div>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="radio" class="search_where" name="search_where" value="Item" checked>Item
+                    </label>
+
+                    <label class="btn btn-secondary">
+                        <input type="radio" class="search_where" name="search_where" value="Asset" >Asset
+                    </label>
+
+                    <label class="btn btn-secondary">
+                        <input type="radio" class="search_where" name="search_where" value="CCD" >CCD
+                    </label>
+
+                    <label class="btn btn-secondary">
+                        <input type="radio" class="search_where" name="search_where" value="Invoice" >Invoice
+                    </label>
+                </div>
             </div>
+
         </div>
         <p class="ml-3 mr-3" id="output"></p>
 
@@ -72,18 +92,25 @@
         }
     });
     $(document).ready(function () {
-        $('#user_data').keyup(function (e) {
-            var search_data = $('#user_data').val();
+        var search_where = $(".search_where:checked").val();
+        $('input[type="radio"]').click(function () {
+            search_where = $(this).val();
+        });
+
+        $('#item_data').keyup(function (e) {
+            var search_data = $('#item_data').val();
             e.preventDefault();
             $.ajax({
                 type: 'POST',
                 url: "{{ route('tools.index') }}",
-                data: { search_data: search_data },
+                data: { search_data: search_data,
+                    search_where: search_where
+                },
                 success: function($data){
                     $('#output').html($data);
                 }
             });
         });
-        $('#user_data').keyup();
+        $('#item_data').keyup();
     });
 </script>

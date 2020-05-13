@@ -71,14 +71,12 @@ Route::resource('batteries', 'BatteriesController')->middleware('auth');
 Route::resource('jobs', 'JobsController')->middleware('auth');
 
 Route::get('/tools', 'ToolsController@index')->name('tools.index');
-// TODO - remove
 Route::post('/tools', 'ToolsController@searchItems')->name('tools.index');
 Route::get('/tools/create', 'ToolsController@create');
-//TODO - sort it, add route
 Route::post('/tools/create', 'ToolsController@store')->name('tools.store');
 Route::get('/tools/{id}', 'ToolsController@show');
 Route::get('/tools/{tool}/edit', 'ToolsController@edit');
-
+Route::patch('/tools/{id}', 'ToolsController@update');
 
 //Route::resource('tools', 'ToolsController')->middleware('auth');
 

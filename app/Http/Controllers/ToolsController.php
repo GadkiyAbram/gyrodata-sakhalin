@@ -37,7 +37,8 @@ class ToolsController extends Controller
     public function searchItems(Request $request)
     {
         $what = $request->search_data;
-        $where = 'Asset';
+        $where = $request->search_where;
+//        $where = 'Asset';
 
         if (empty($request->search_data))
         {

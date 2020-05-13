@@ -12,6 +12,7 @@
             <th scope="col">Tool A/N</th>
             <th scope="col">Arrived</th>
             <th scope="col">CCD</th>
+            <th scope="col">Invoice</th>
             <th scope="col">Location</th>
             <th scope="col">Circ Hrs</th>
             <th scope="col">Comment</th>
@@ -25,6 +26,7 @@
                 <td><a href="/tools/{{ $item->Id }}">{{ $item->Asset }}</a></td>
                 <td>{{ $item->Arrived }}</td>
                 <td>{{ $item->CCD }}</td>
+                <td>{{ $item->Invoice }}</td>
                 <td>{{ $item->ItemStatus }}</td>
                 <td>{{ $item->Circulation }}</td>
                 <td>{{ $item->Comment }}</td>
@@ -34,8 +36,6 @@
         @endforeach
     </table>
 </div>
-
-
 
 </body>
 </html>

@@ -20,11 +20,9 @@
         </div>
     </div>
 
-	<form action="/tools/{{ $item['Id'] }}" method="post" enctype="multipart/form-data">
+    <form action="/tools/{{ $item['Id'] }}" method="post" enctype="multipart/form-data">
 
 		@method('PATCH')
-
-
 
 		<div class="row">
 			<div class="col-6">
