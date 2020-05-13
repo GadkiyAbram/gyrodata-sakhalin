@@ -41,9 +41,10 @@ class BatteriesController extends Controller
 
     public function searchBatteries(Request $request)
     {
+//        return view('batteries.data');
         $what = $request->search_data;
         $where = $request->search_where;
-//        $uri = 'http://192.168.0.102:8081/batteryservices/batteryservice.svc/GetSelectedBatteries?what=&where=';
+//        $uri = "http://192.168.0.102:8081/batteryservices/batteryservice.svc/GetSelectedBatteries?what=" . $what . "&where=" . $where;
         $uri = APIHelper::getUrl('BatteriesAll'). "?what=" . $what . "&where=" . $where;
         $token = session()->get('Token');
         $client = new \GuzzleHttp\Client(['base_uri' => $uri]);

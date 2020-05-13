@@ -54,21 +54,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+// TODO - add middleware auth
 // BATTERIES ROUTES
 //Route::resource('batteries', 'BatteriesController')->middleware('auth');
 Route::get('/batteries', 'BatteriesController@index')->name('batteries.index');
 Route::post('/batteries', 'BatteriesController@searchBatteries')->name('batteries.index');
 Route::get('/batteries/create', 'BatteriesController@create');
-//Route::post('/batteries', 'BatteriesController@store');
-
-// JOBS ROUTES
-Route::resource('jobs', 'JobsController')->middleware('auth');
-//Route::get('/jobs', 'JobsController@index');
-//Route::get('/jobs/create', 'JobsController@create');
-//Route::post('/jobs', 'JobsController@store');
-//Route::get('/jobs/{job}', 'JobsController@show');
-//Route::get('/jobs/{job}/edit', 'JobsController@edit');
-//Route::patch('/jobs/{job}', 'JobsController@update');
+Route::post('/batteries/create', 'BatteriesController@store')->name('batteries.store');
+Route::get('/batteries/{id}', 'BatteriesController@show');
+Route::get('/batteries/{id}/edit', 'BatteriesController@edit');
+Route::patch('/batteries/{id}', 'BatteriesController@update');
 
 // TOOLS ROUTES
 //Route::resource('tools', 'ToolsController')->middleware('auth');
@@ -79,6 +75,18 @@ Route::post('/tools/create', 'ToolsController@store')->name('tools.store');
 Route::get('/tools/{id}', 'ToolsController@show');
 Route::get('/tools/{tool}/edit', 'ToolsController@edit');
 Route::patch('/tools/{id}', 'ToolsController@update');
+
+// JOBS ROUTES
+//Route::resource('jobs', 'JobsController')->middleware('auth');
+Route::get('/jobs', 'JobsController@index')->name('jobs.index');
+Route::post('/jobs', 'JobsController@searchJobs')->name('jobs.index');
+Route::get('/jobs/create', 'JobsController@create');
+Route::post('/jobs/create', 'JobsController@store')->name('jobs.store');
+Route::get('/jobs/{job}', 'JobsController@show');
+Route::get('/jobs/{job}/edit', 'JobsController@edit');
+Route::patch('/jobs/{job}', 'JobsController@update');
+
+
 
 Route::get('/ccd', 'CCDController@index');
 

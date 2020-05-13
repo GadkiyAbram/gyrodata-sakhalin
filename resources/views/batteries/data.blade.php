@@ -40,7 +40,7 @@
                 <td>{{ $battery->CCD }}</td>
                 <td>{{ $battery->Container }}</td>
                 <td>{{ $battery->Comment }}</td>
-                <td><a href="#">Edit</a></td>
+                <td><a href="/batteries/{{ $battery->Id }}/edit">Edit</a></td>
             </tr>
             </tbody>
         @endforeach

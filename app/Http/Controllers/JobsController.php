@@ -3,19 +3,17 @@
 namespace App\Http\Controllers;
 use App\Client;
 use App\Http\Component;
-use \App\Item;
+use Illuminate\Http\Request;
 use DB;
+use App\Battery;
+use App\Job;
+use App\Tool;
+use App\Engineer;
 
 define('gdp', 'GDP Section');
 define('modem', 'GWD Modem');
 define('bbp', 'GWD Bullplug');
 define('na', 'Not assigned');
-
-use App\Battery;
-use App\Job;
-use App\Tool;
-use App\Engineer;
-use GuzzleHttp\Psr7\Request;
 
 class JobsController extends Controller
 {
@@ -25,7 +23,36 @@ class JobsController extends Controller
 
     public function index()
     {
-        $uri = APIHelper::getUrl('JobsAll'). "?what=&where=";
+//        $uri = APIHelper::getUrl('JobsAll'). "?what=&where=";
+//        $token = session()->get('Token');
+//        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+//        try{
+//            $response = $client->get($uri, [
+//                'headers' => [
+//                    'Content-Type' => 'application/json',
+//                    'Token' => $token
+//                ]
+//            ]);
+//            $jobs = json_decode((string)$response->getBody());
+//            $jobs = (array)$jobs;
+//            foreach ($jobs as $job)
+//            {
+//                array_push($this->job_numbers, $job->JobNumber);
+//            }
+//        }catch (\Exception $ex){
+//            dd($ex);
+//        }
+//        return view('jobs.index', compact('jobs'));
+        return view('jobs.index');
+    }
+
+    public function searchJobs(Request $request)
+    {
+        $what = $request->search_data;
+        $where = $request->search_where;
+
+        $uri = APIHelper::getUrl('JobsAll'). "?what=" . $what . "&where=" . $where;
+//        $uri = "http://192.168.0.102:8081/jobservices/jobservice.svc/GetCustomJobData?what=" . $what . "&where=" . $where;
         $token = session()->get('Token');
         $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
         try{
@@ -37,14 +64,10 @@ class JobsController extends Controller
             ]);
             $jobs = json_decode((string)$response->getBody());
             $jobs = (array)$jobs;
-            foreach ($jobs as $job)
-            {
-                array_push($this->job_numbers, $job->JobNumber);
-            }
         }catch (\Exception $ex){
             dd($ex);
         }
-        return view('jobs.index', compact('jobs'));
+        return view('jobs.data', compact('jobs'));
     }
 
     private function getDataForNewJob($uri, $token)
