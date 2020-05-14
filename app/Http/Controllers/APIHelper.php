@@ -23,9 +23,9 @@ class APIHelper extends Controller
         return $path;
     }
 
-    public static function getData($service, $what, $where)
+//    public static function getRecord($service, $what, $where)
+    public static function getRecord($uri)
     {
-        $uri = APIHelper::getUrl($service). "?what=" . $what . "&where=" . $where;
         $token = session()->get('Token');
         $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
         try{
@@ -35,13 +35,51 @@ class APIHelper extends Controller
                     'Token' => $token
                 ]
             ]);
-            $items = json_decode((string)$response->getBody());
-            $items = (array)$items;
+            $data = json_decode((string)$response->getBody());
+            $data = (array)$data;
 
         }catch (\Exception $ex){
             dd($ex);
         }
-        return $items;
+        return $data;
+    }
+
+    public static function updateRecord($uri, $data)
+    {
+        $token = session()->get('Token');
+        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        try{
+            $response = $client->post($uri, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Token' => $token
+                ],
+                'body' => json_encode($data)
+            ]);
+        }catch (\Exception $ex){
+            dd($ex);
+        }
+    }
+
+    public static function getComponentsForTools($service)
+    {
+        $uri = APIHelper::getUrl($service);
+        $token = session()->get('Token');
+        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        try{
+            $response = $client->get($uri, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Token' => $token
+                ]
+            ]);
+            $components = json_decode((string)$response->getBody());
+            $components = (array)$components;
+
+        }catch (\Exception $ex){
+            dd($ex);
+        }
+        return $components;
     }
 
     public static function insertRecord($uri, $data)
@@ -60,5 +98,6 @@ class APIHelper extends Controller
         }catch (\Exception $ex){
             dd($ex);
         }
+        return $record_id;
     }
 }

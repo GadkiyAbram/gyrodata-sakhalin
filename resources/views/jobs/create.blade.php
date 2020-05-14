@@ -24,7 +24,7 @@
 		</div>
 	</div>
 
-	<form action="/jobs" method="post">
+	<form action="{{ route('jobs.store') }}" method="post">
 
 		<div class="row">
 			<div class="col-6">

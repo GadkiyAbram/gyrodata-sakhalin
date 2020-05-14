@@ -12,7 +12,7 @@
         <div class="align-content-center pr-3">
             <div class="d-flex justify-content-between align-items-baseline">
                 <a href="/tools/{{ $item['Id'] }}">Go back</a>
-                <h5 class="pl-2">{{ $item['Item'] }}</h5>
+                <h5 class="pl-2" name="Item">{{ $item['Item'] }}</h5>
             </div>
         </div>
         <div>
