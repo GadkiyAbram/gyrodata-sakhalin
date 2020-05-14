@@ -34,7 +34,7 @@ class ToolsController extends Controller
 
     public function getToolData($what, $where)
     {
-        return APIHelper::getToolData($what, $where);
+        return APIHelper::getData('ToolsAll', $what, $where);
     }
 
     public function create()

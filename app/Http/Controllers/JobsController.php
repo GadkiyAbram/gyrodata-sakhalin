@@ -48,26 +48,43 @@ class JobsController extends Controller
 
     public function searchJobs(Request $request)
     {
+//        $what = $request->search_data;
+//        $where = $request->search_where;
+//
+//        $uri = APIHelper::getUrl('JobsAll'). "?what=" . $what . "&where=" . $where;
+////        $uri = "http://192.168.0.102:8081/jobservices/jobservice.svc/GetCustomJobData?what=" . $what . "&where=" . $where;
+//        $token = session()->get('Token');
+//        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+//        try{
+//            $response = $client->get($uri, [
+//                'headers' => [
+//                    'Content-Type' => 'application/json',
+//                    'Token' => $token
+//                ]
+//            ]);
+//            $jobs = json_decode((string)$response->getBody());
+//            $jobs = (array)$jobs;
+//        }catch (\Exception $ex){
+//            dd($ex);
+//        }
         $what = $request->search_data;
         $where = $request->search_where;
 
-        $uri = APIHelper::getUrl('JobsAll'). "?what=" . $what . "&where=" . $where;
-//        $uri = "http://192.168.0.102:8081/jobservices/jobservice.svc/GetCustomJobData?what=" . $what . "&where=" . $where;
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-        try{
-            $response = $client->get($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ]
-            ]);
-            $jobs = json_decode((string)$response->getBody());
-            $jobs = (array)$jobs;
-        }catch (\Exception $ex){
-            dd($ex);
+        //TODO - refactor, rmeove if-else struct
+        if (empty($request->search_data))
+        {
+            $jobs = $this->getJobData('', '');
+        }else
+        {
+            $jobs = $this->getJobData($what, $where);
         }
+
         return view('jobs.data', compact('jobs'));
+    }
+
+    public function getJobData($what, $where)
+    {
+        return APIHelper::getData('JobsAll', $what, $where);
     }
 
     private function getDataForNewJob($uri, $token)

@@ -23,9 +23,9 @@ class APIHelper extends Controller
         return $path;
     }
 
-    public static function getToolData($what, $where)
+    public static function getData($service, $what, $where)
     {
-        $uri = APIHelper::getUrl('ToolsAll'). "?what=" . $what . "&where=" . $where;
+        $uri = APIHelper::getUrl($service). "?what=" . $what . "&where=" . $where;
         $token = session()->get('Token');
         $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
         try{

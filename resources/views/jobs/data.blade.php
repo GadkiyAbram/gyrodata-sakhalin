@@ -9,6 +9,7 @@
         <thead>
         <tr>
             <th scope="col">Job Number</th>
+            <th scope="col">Client</th>
             <th scope="col">Tool</th>
             <th scope="col">Modem</th>
             <th scope="col">BBP</th>
@@ -25,6 +26,7 @@
             <tbody>
             <tr>
                 <th scope="row"><a href="/jobs/{{ $job->JobNumber }}">{{ $job->JobNumber }}</a></th>
+                <td>{{ $job->ClientName }}</td>
                 <td>{{ $job->GDP }}</td>
                 <td>{{ $job->Modem }}</td>
                 <td>{{ $job->Bullplug }}</td>

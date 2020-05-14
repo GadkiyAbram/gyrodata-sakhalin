@@ -42,32 +42,49 @@ class BatteriesController extends Controller
     public function searchBatteries(Request $request)
     {
 //        return view('batteries.data');
+//        $what = $request->search_data;
+//        $where = $request->search_where;
+////        $uri = "http://192.168.0.102:8081/batteryservices/batteryservice.svc/GetSelectedBatteries?what=" . $what . "&where=" . $where;
+//        $uri = APIHelper::getUrl('BatteriesAll'). "?what=" . $what . "&where=" . $where;
+//        $token = session()->get('Token');
+//        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+//        try{
+//            $response = $client->get($uri, [
+//                'headers' => [
+//                    'Content-Type' => 'application/json',
+//                    'Token' => $token
+//                ]
+//            ]);
+//            $batteries = json_decode((string)$response->getBody());
+//            $batteries = (array)$batteries;
+//            foreach ($batteries as $serial)
+//            {
+//                array_push($this->batt_serials, $serial->SerialOne);
+//            }
+////            dd($this->batt_serials);
+//            $count = count($batteries);
+//        }catch (\Exception $ex){
+//            dd($ex);
+//        }
+
         $what = $request->search_data;
         $where = $request->search_where;
-//        $uri = "http://192.168.0.102:8081/batteryservices/batteryservice.svc/GetSelectedBatteries?what=" . $what . "&where=" . $where;
-        $uri = APIHelper::getUrl('BatteriesAll'). "?what=" . $what . "&where=" . $where;
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-        try{
-            $response = $client->get($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ]
-            ]);
-            $batteries = json_decode((string)$response->getBody());
-            $batteries = (array)$batteries;
-            foreach ($batteries as $serial)
-            {
-                array_push($this->batt_serials, $serial->SerialOne);
-            }
-//            dd($this->batt_serials);
-            $count = count($batteries);
-        }catch (\Exception $ex){
-            dd($ex);
+
+        //TODO - refactor, rmeove if-else struct
+        if (empty($request->search_data))
+        {
+            $batteries = $this->getBatteryData('', '');
+        }else
+        {
+            $batteries = $this->getBatteryData($what, $where);
         }
 
         return view('batteries.data', compact('batteries'));
+    }
+
+    public function getBatteryData($what, $where)
+    {
+        return APIHelper::getData('BatteriesAll', $what, $where);
     }
 
     public function edit($id)
