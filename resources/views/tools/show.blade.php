@@ -1,6 +1,30 @@
 <html>
 
 <head>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+    <script src={{URL::asset('js/jquery.zoom.js')}}></script>
+    <style>
+        .zoom {
+            display:inline-block;
+            position: relative;
+        }
+
+        .zoom:after {
+            content:'';
+            display:block;
+            width:33px;
+            height:33px;
+            position:absolute;
+            top:0;
+            right:0;
+        }
+
+        .zoom img::selection { background-color: transparent; }
+
+        .zoom img {
+            display: block;
+        }
+    </style>
 
 </head>
 
@@ -58,29 +82,23 @@
         </div>
 
         <div class="col-4">
-            <p>
-                <img src="data:image/jpg|png|jpeg;base64,{{ $item['ItemImage'] }}" align="right" style="border: solid 1px" width="80%">
-            </p>
+            <span class='zoom' id='zoom-on-grab'>
+		    <img src="data:image/jpg|png|jpeg;base64,{{ $item['ItemImage'] }}" align="right" style="border: solid 1px" width="80%"/>
+	        </span>
         </div>
-
-
-
-
-			{{--@if($tool->image)--}}
-				{{--<div class="row col-12">--}}
-					{{--<img src="{{ asset('storage/' . $tool->image) }}"--}}
-						 {{--class="img-thumbnail">--}}
-				{{--</div>--}}
-			{{--@endif--}}
-
-
-
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	</div>
 </div>
-
 </body>
-
 </html>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#zoom-on-hover').zoom();
+        $('#zoom-on-grab').zoom({ on:'grab' });
+        $('#zoom-on-click').zoom({ on:'click' });
+        $('#zoom-on-toggle').zoom({ on:'toggle' });
+    });
+</script>

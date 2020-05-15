@@ -23,8 +23,8 @@ return [
     "ToolsAll" => "/toolservices/toolservice.svc/GetCustomItems",
 
     // TODO - remove when checked
-    "ToolCustom" => "/toolservices/toolservice.svc/GetCustomItem/",
-    "ToolsCustom" => "/toolservices/toolservice.svc/GetCustomItems/",   // Search
+//    "ToolCustom" => "/toolservices/toolservice.svc/GetCustomItem/",
+//    "ToolsCustom" => "/toolservices/toolservice.svc/GetCustomItems/",   // Search
     //
     "ToolAdd" => "/toolservices/toolservice.svc/AddNewItem",
     "ToolEdit" => "/toolservices/toolservice.svc/EditItem/",

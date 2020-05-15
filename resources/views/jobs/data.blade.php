@@ -36,7 +36,7 @@
                 <td>{{ $job->CirculationHours }}</td>
                 <td>{{ $job->Container }}</td>
                 <td>{{ $job->Comment }}</td>
-                <td><a href="/jobs/{{ $job->Id }}/edit">Edit</a></td>
+                <td><a href="/jobs/{{ $job->JobNumber }}/edit">Edit</a></td>
             </tr>
             </tbody>
         @endforeach

@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -14,7 +10,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body class="hold-transition sidebar-mini">
+
 <div class="wrapper" id="app">
+    <div class="pl-3 pr-3">
+        @include('nav')
+    </div>
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
@@ -24,7 +24,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
-
         </ul>
 
         <!-- SEARCH FORM -->
@@ -40,15 +39,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </button>
             </div>
         </div>
-
-        <div class="d-flex align-items-baseline justify-content-between shadow-sm">
-
-            <div class="py-1">
-                <img src="{{URL::asset('/gyrodata_logo_small.jpg')}}" height="50" width="200">
-            </div>
-
-        </div>
-
     </nav>
     <!-- /.navbar -->
 

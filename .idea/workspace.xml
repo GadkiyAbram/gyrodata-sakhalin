@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb13fe00-7d51-4b8d-900e-86ae71d9dc84" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../public/js/jquery.zoom.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/APIHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/APIHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/BatteriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/JobsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/ToolsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../config/url.php" beforeDir="false" afterPath="$PROJECT_DIR$/../config/url.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/tools/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/data.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/data.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/jobs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/jobs/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +42,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -176,25 +178,25 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../resources/views/jobs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../public/js" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\views\jobs" />
-      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\views\batteries" />
-      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\views\tools" />
-      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\js\components" />
-      <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\database\migrations" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Aleksandr.Abramovski\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\app" />
       <recent name="C:\Users\Aleksandr.Abramovski\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\app\Providers" />
       <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\resources\views" />
       <recent name="C:\Users\Aleksandr.Abramovski\gyrodata-sakhalin\public" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\public\js" />
+      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\views\jobs" />
+      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\views\batteries" />
+      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\views\tools" />
+      <recent name="C:\Users\PROJECTS\PHP_PROJECTS\gyrodata-sakhalin\resources\js\components" />
     </key>
   </component>
   <component name="RunManager">
@@ -245,7 +247,8 @@
       <workItem from="1589289059451" duration="2061000" />
       <workItem from="1589294972568" duration="902000" />
       <workItem from="1589303964945" duration="4764000" />
-      <workItem from="1589346633067" duration="28074000" />
+      <workItem from="1589346633067" duration="38151000" />
+      <workItem from="1589519414668" duration="1985000" />
     </task>
     <task id="LOCAL-00001" summary="Battery / Job can be added separately, now relations">
       <created>1571816280301</created>
@@ -499,7 +502,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589434350810</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="refactored: ToolsController, JobsController, BatteryController">
+      <created>1589453587916</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1589453587916</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -508,7 +518,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="displaying Engs in index / show job views" />
     <MESSAGE value="working version prior to implode OneToOne Relationship" />
     <MESSAGE value="assigning battery to Job&#10;&#10;need to update status changing function" />
     <MESSAGE value="assigning battery to Job&#10;&#10;changing status &amp;&amp; assigning j/n" />
@@ -533,17 +542,18 @@
     <MESSAGE value="added AJAX search with Serial 1, Status, CCD, Invoice for Batteries" />
     <MESSAGE value="added AJAX search with Job Number, GDP Sections, Modem, Bullplug, Battery for Jobs" />
     <MESSAGE value="prior refactoring ToolsController" />
-    <option name="LAST_COMMIT_MESSAGE" value="prior refactoring ToolsController" />
+    <MESSAGE value="refactored: ToolsController, JobsController, BatteryController" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored: ToolsController, JobsController, BatteryController" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589376658104">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589376658104" />
-    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2" timestamp="1589434350203">
+    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2" timestamp="1589453587342">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589434350203" />
+    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589453587342" />
     <state x="595" y="298" key="EditFileWatcherDialog" timestamp="1588571752588">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -564,10 +574,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589306984282" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1589434357692">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1589453595381">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589434357692" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589453595381" />
     <state x="657" y="311" key="git4idea.merge.GitPullDialog" timestamp="1588076361788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -576,9 +586,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589376541494" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589453239596">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589463180467">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589453239596" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589463180467" />
   </component>
 </project>
