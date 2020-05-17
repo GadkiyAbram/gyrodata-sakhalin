@@ -44,6 +44,26 @@ class APIHelper extends Controller
         return $data;
     }
 
+    public static function getRecordItemAsset($uri)
+    {
+        $token = session()->get('Token');
+        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        try{
+            $response = $client->get($uri, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Token' => $token
+                ]
+            ]);
+            $data = json_decode((string)$response->getBody());
+            $data = (array)$data;
+
+        }catch (\Exception $ex){
+            dd($ex);
+        }
+        return $data;
+    }
+
     public static function updateRecord($uri, $data)
     {
         $token = session()->get('Token');

@@ -90,6 +90,29 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
+    function loadData(){
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('tools.index') }}",
+
+            success: function($data){
+                $('#output').html($data);
+            },
+        });
+    }
+
     $(document).ready(function () {
         var search_where = $(".search_where:checked").val();
         $('input[type="radio"]').click(function () {
@@ -107,9 +130,12 @@
                 },
                 success: function($data){
                     $('#output').html($data);
-                }
+                },
             });
         });
         $('#item_data').keyup();
+
+
+        setInterval(loadData, 10000);
     });
 </script>

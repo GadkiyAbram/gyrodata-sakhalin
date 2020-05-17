@@ -83,7 +83,7 @@
 
         <div class="col-4">
             <span class='zoom' id='zoom-on-grab'>
-		    <img src="data:image/jpg|png|jpeg;base64,{{ $item['ItemImage'] }}" align="right" style="border: solid 1px" width="80%"/>
+		    <img src="data:image/jpg|png|jpeg;base64,{{ $item['ItemImage'] }}" align="right" style="border: solid 1px" width="100%"/>
 	        </span>
         </div>
 

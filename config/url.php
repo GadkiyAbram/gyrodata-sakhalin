@@ -31,6 +31,7 @@ return [
     "ToolItems" => "/toolservices/toolservice.svc/GetItemsComponents",
     "ToolInvolvedInJobs" => "/toolservices/toolservice.svc/GetJobsInvolvedIn?item=",
     "ToolGetLRL" => "/toolservices/toolservice.svc/GetSelectedItemLRL?item=",
+    "ToolGetItemAsset" => "/toolservices/toolservice.svc/GetSelectedItem",
 
     "request" => "?what=&where=",
 

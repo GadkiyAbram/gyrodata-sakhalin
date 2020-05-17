@@ -56,6 +56,7 @@
 </html>
 
 <script type="text/javascript">
+    // TODO - add periodical data refresh to batteries
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

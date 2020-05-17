@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rules\ValidItem;
 
 define('GDP', 'GDP Sections');
 define('MODEM', 'GWD Modem');
@@ -10,6 +11,11 @@ define('BBP', 'GWD Bullplug');
 
 class ToolsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return view('tools.index');
@@ -42,6 +48,8 @@ class ToolsController extends Controller
 
     public function store()
     {
+        $this->validatedData();
+
         $service = 'ToolAdd';
         $uri = APIHelper::getUrl($service);
         $data = [
@@ -55,12 +63,50 @@ class ToolsController extends Controller
             'ItemStatus' => request('ItemStatus'),
             'Box' => request('Box'),
             'Container' => request('Container'),
-            'ItemImage' => base64_encode(file_get_contents(request(('image')))),
+//            'ItemImage' => base64_encode(file_get_contents(request(('image')))),
             'Comment' => request('Comment')
         ];
 
+        if (request()->hasFile('image'))
+        {
+            $imageArray = array('ItemImage' => base64_encode(file_get_contents(request(('image')))));
+            $data = array_merge($data, $imageArray);
+        }
+
+//         if (count($this->getItemItemAsset(request('Item'), request('Asset'))) == 0)
+//         {
+//             $item_id = APIHelper::insertRecord($uri, $data);
+//             return redirect('/tools');
+//         }else
+//         {
+            
+//         }
         $item_id = APIHelper::insertRecord($uri, $data);
         return redirect('/tools');
+    }
+
+    private function validatedData()
+    {
+        return tap(request()->validate([
+            'Item' => 'required',
+//             'Asset' => 'required',
+            'Asset' => ['required', new ValidItem(request('Item'), request('Asset'))],
+            'Arrived' => 'nullable|date',
+            'Invoice' => 'nullable',
+            'CCD' => 'nullable',
+            'NameRus' => 'nullable',
+            'PositionCCD' => 'nullable',
+            'ItemStatus' => 'nullable',
+            'Box' => 'nullable',
+            'image' => 'nullable',
+            'Comment' => 'nullable',
+        ]), function () {
+            if (request()->hasFile('image')){
+                request()->validate([
+                    'image' => 'file|image|max:50',
+                ]);
+            }
+        });
     }
 
     public function getJobsInvolvedIn($id)
@@ -107,10 +153,11 @@ class ToolsController extends Controller
         return view('tools.edit', compact('item', 'circulation_remains'));
     }
 
-    public function update($id)
+    public function update($id, Request $request)
     {
         $itemName = $this->getItem($id)['Item'];        // move it in the data array
         $uri = APIHelper::getUrl('ToolEdit') . $id;
+        $imageArray = null;
         $data = [
             'Id' => $id,
             'Item' => $itemName,
@@ -123,34 +170,18 @@ class ToolsController extends Controller
             'ItemStatus' => request('ItemStatus'),
             'Box' => request('Box'),
             'Container' => request('Container'),
-            'ItemImage' => base64_encode(file_get_contents(request(('image')))),
+//            'ItemImage' => base64_encode(file_get_contents(request(('image')))),
             'Comment' => request('Comment')
         ];
+        if ($request->hasFile('image'))
+        {
+            $imageArray = array('ItemImage' => base64_encode(file_get_contents(request(('image')))));
+            $data = array_merge($data, $imageArray);
+        }
+
         APIHelper::updateRecord($uri, $data);
 
         return redirect('/tools');
-    }
-
-    private function validatedData()
-    {
-        return tap(request()->validate([
-            'Item' => 'required',
-            'Asset' => 'required',
-            'Arrived' => 'nullable|date',
-            'Invoice' => 'nullable',
-            'CCD' => 'nullable',
-//            'tool_desc_rus' => 'nullable',
-            'PositionCCD' => 'nullable',
-            'ItemStatus' => 'nullable',
-            'Box' => 'nullable',
-            'Comment' => 'nullable',
-        ]), function () {
-            if (request()->hasFile('image')){
-                request()->validate([
-                    'image' => 'file|image|max:5000',
-                ]);
-            }
-        });
     }
 
     public function getItem($id)
@@ -158,5 +189,12 @@ class ToolsController extends Controller
         $service = 'ToolGetLRL';
         $uri = APIHelper::getUrl($service) . $id;
         return (array)(APIHelper::getRecord($uri)[0]);
+    }
+
+    public function getItemItemAsset($item, $asset)
+    {
+        $service = 'ToolGetItemAsset';
+        $uri = APIHelper::getUrl($service) . "?item=" . $item . "&asset=" . $asset;
+        return APIHelper::getRecordItemAsset($uri);
     }
 }

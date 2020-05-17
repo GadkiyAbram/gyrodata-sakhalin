@@ -36,6 +36,10 @@
 					<label for="Asset" class="col-4 col-form-label">Tool Asset</label>
 					<div class="col-4">
 						<input type="text" class="form-control" name="Asset" placeholder="G0001">
+                        @if($errors->has('Asset'))
+                            <div class="error">{{ $errors->first('Asset') }}</div>
+                        @endif
+
 					</div>
 				</div>
 
@@ -107,6 +111,9 @@
 					<label for="image" class="col-4 col-form-label">Tool Image (<= 5 Mb)</label>
 					<div class="col-8">
 						<input type="file" name="image">
+                        @if($errors->has('image'))
+                            <div class="error">{{ $errors->first('image') }}</div>
+                        @endif
 					</div>
 				</div>
 
@@ -114,6 +121,27 @@
 		</div>
 		@csrf
 	</form>
+	
+	<!--Modal-->
+	<div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 </div>
 

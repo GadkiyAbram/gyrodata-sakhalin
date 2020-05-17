@@ -89,14 +89,14 @@
 				<div class="form-group row">
 					<label for="Box" class="col-4 col-form-label">Box</label>
 					<div class="col-8">
-						<input type="text" class="form-control" value="{{ $item['Box'] }}">
+						<input type="text" class="form-control" name="Box" value="{{ $item['Box'] }}">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="PositionCCD" class="col-4 col-form-label">Tool CCD pos</label>
 					<div class="col-8">
-						<input type="text" class="form-control" value="{{ $item['PositionCCD'] }}">
+						<input type="text" class="form-control" name="PositionCCD" value="{{ $item['PositionCCD'] }}">
 					</div>
 				</div>
 
