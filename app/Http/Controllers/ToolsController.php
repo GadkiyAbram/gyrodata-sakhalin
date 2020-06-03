@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Rules\ValidItem;
+use App\Rules\ValidInvoice;
+use App\Rules\ValidCCD;
+use App\Rules\ValidPositionCCD;
+use App\Rules\IfAssetNeeded;
 
 define('GDP', 'GDP Sections');
 define('MODEM', 'GWD Modem');
@@ -48,7 +52,7 @@ class ToolsController extends Controller
 
     public function store()
     {
-        $this->validatedData();
+        $this->validatedDataStore();
 
         $service = 'ToolAdd';
         $uri = APIHelper::getUrl($service);
@@ -63,7 +67,6 @@ class ToolsController extends Controller
             'ItemStatus' => request('ItemStatus'),
             'Box' => request('Box'),
             'Container' => request('Container'),
-//            'ItemImage' => base64_encode(file_get_contents(request(('image')))),
             'Comment' => request('Comment')
         ];
 
@@ -73,37 +76,50 @@ class ToolsController extends Controller
             $data = array_merge($data, $imageArray);
         }
 
-//         if (count($this->getItemItemAsset(request('Item'), request('Asset'))) == 0)
-//         {
-//             $item_id = APIHelper::insertRecord($uri, $data);
-//             return redirect('/tools');
-//         }else
-//         {
-            
-//         }
         $item_id = APIHelper::insertRecord($uri, $data);
         return redirect('/tools');
     }
 
-    private function validatedData()
+    private function validatedDataStore()
     {
         return tap(request()->validate([
             'Item' => 'required',
-//             'Asset' => 'required',
-            'Asset' => ['required', new ValidItem(request('Item'), request('Asset'))],
-            'Arrived' => 'nullable|date',
-            'Invoice' => 'nullable',
-            'CCD' => 'nullable',
+            'Asset' => [new ValidItem(request('Item'), request('Asset')), new IfAssetNeeded(request('Item'), request('Asset'))],
+            'Arrived' => 'required|date',
+            'Invoice' => ['nullable', new ValidInvoice(request('Invoice'))],
+            'CCD' => ['nullable', new ValidCCD(request('CCD'))],                    
             'NameRus' => 'nullable',
-            'PositionCCD' => 'nullable',
-            'ItemStatus' => 'nullable',
+            'PositionCCD' => ['nullable', new ValidPositionCCD(request('PositionCCD'))],        
+            'ItemStatus' => 'required',
             'Box' => 'nullable',
             'image' => 'nullable',
             'Comment' => 'nullable',
         ]), function () {
             if (request()->hasFile('image')){
                 request()->validate([
-                    'image' => 'file|image|max:50',
+                    'image' => 'file|image|max:2048',
+                ]);
+            }
+        });
+    }
+    
+    private function validatedDataUpdate($itemItem)
+    {
+        return tap(request()->validate([
+            'Asset' => [new IfAssetNeeded($itemItem, request('Asset'))],
+            'Arrived' => 'required|date',
+            'Invoice' => ['nullable', new ValidInvoice(request('Invoice'))],
+            'CCD' => ['nullable', new ValidCCD(request('CCD'))],
+            'NameRus' => 'nullable',
+            'PositionCCD' => ['nullable', new ValidPositionCCD(request('PositionCCD'))],
+            'ItemStatus' => 'required',
+            'Box' => 'nullable',
+            'image' => 'nullable',
+            'Comment' => 'nullable',
+        ]), function () {
+            if (request()->hasFile('image')){
+                request()->validate([
+                    'image' => 'file|image|max:2048',
                 ]);
             }
         });
@@ -156,6 +172,9 @@ class ToolsController extends Controller
     public function update($id, Request $request)
     {
         $itemName = $this->getItem($id)['Item'];        // move it in the data array
+        
+        $this->validatedDataUpdate($itemName);
+        
         $uri = APIHelper::getUrl('ToolEdit') . $id;
         $imageArray = null;
         $data = [
@@ -170,7 +189,6 @@ class ToolsController extends Controller
             'ItemStatus' => request('ItemStatus'),
             'Box' => request('Box'),
             'Container' => request('Container'),
-//            'ItemImage' => base64_encode(file_get_contents(request(('image')))),
             'Comment' => request('Comment')
         ];
         if ($request->hasFile('image'))

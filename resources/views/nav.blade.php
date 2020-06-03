@@ -17,7 +17,6 @@
 <div class="pb-2 pl-1 pr-1">
 
 	<div class="d-flex align-items-baseline justify-content-between shadow-sm">
-		@if (Auth::user())
 		<div>
 			<nav class="navbar navbar-expand-md navbar-light bg-white">
 				<div class="py-1">
@@ -51,48 +50,29 @@
 				</div>
 			</nav>
 		</div>
-		@endif
-		<div class="py-1">
-			<ul class="navbar-nav ml-auto">
-				{{--<!-- Authentication Links -->--}}
-				{{--@guest--}}
-					{{--<li class="nav-item">--}}
-						{{--<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
-					{{--</li>--}}
-					{{--@if (Route::has('register'))--}}
-						{{--<li class="nav-item">--}}
-							{{--<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
-						{{--</li>--}}
-					{{--@endif--}}
-				{{--@else--}}
-					{{--<li class="nav-item dropdown">--}}
-						{{--<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
-							{{--{{ Auth::user()->name }} <span class="caret"></span>--}}
-						{{--</a>--}}
-
-						{{--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
-							{{--<a class="dropdown-item" href="{{ route('logout') }}"--}}
-							   {{--onclick="event.preventDefault();--}}
-                                                     {{--document.getElementById('logout-form').submit();">--}}
-								{{--{{ __('Logout') }}--}}
-							{{--</a>--}}
-
-							{{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-								{{--@csrf--}}
-							{{--</form>--}}
-						{{--</div>--}}
-					{{--</li>--}}
-				{{--@endguest--}}
-			</ul>
-		</div>
-		<div class="py-1">
-			<img src="{{URL::asset('/gyrodata_logo_small.jpg')}}" height="50" width="200">
+		
+		<div class="d-flex align-items-baseline justify-content-between">
+			@if (Auth::user())
+			<div class="nav-item">
+				<p>{{ Auth::user()->name }}</p>
+    		</div>
+    		<div class="nav-item">
+    			<a class="nav-link" href="{{ route('logout') }}"
+                	onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    	<p>{{ __('Logout') }}</p>
+    			</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    	@csrf
+                    </form>
+    		</div>
+    		@endif
+    		<div class="py-1">
+    			<img src="{{URL::asset('/gyrodata_logo_small.jpg')}}" height="50" width="200">
+    		</div>
 		</div>
 
 	</div>
-
-
-
 </div>
 
 </body>

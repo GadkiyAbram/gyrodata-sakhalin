@@ -1,6 +1,12 @@
 <html>
 
-<head></head>
+<head>
+	<style>
+	   .error {
+	       background-color: gainsboro;
+	   }
+	</style>
+</head>
 
 <body>
 <div class="pl-3 pr-3">
@@ -39,7 +45,6 @@
                         @if($errors->has('Asset'))
                             <div class="error">{{ $errors->first('Asset') }}</div>
                         @endif
-
 					</div>
 				</div>
 
@@ -47,6 +52,9 @@
 					<label for="Arrived" class="col-4 col-form-label">Arrived</label>
 					<div class="col-4">
 						<input type="date" class="form-control" name="Arrived">
+						@if($errors->has('Arrived'))
+                            <div class="error">{{ $errors->first('Arrived') }}</div>
+                        @endif
 					</div>
 				</div>
 
@@ -54,6 +62,9 @@
 					<label for="Invoice" class="col-4 col-form-label">Invoice</label>
 					<div class="col-4">
 						<input type="text" class="form-control" name="Invoice" placeholder="O/01/16">
+						@if($errors->has('Invoice'))
+                            <div class="error">{{ $errors->first('Invoice') }}</div>
+                        @endif
 					</div>
 				</div>
 
@@ -61,6 +72,19 @@
 					<label for="CCD" class="col-4 col-form-label">Custom Declaration</label>
 					<div class="col-4">
 						<input type="text" class="form-control" name="CCD" placeholder="10707090-021017-0013452">
+						@if($errors->has('CCD'))
+                            <div class="error">{{ $errors->first('CCD') }}</div>
+                        @endif
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="PositionCCD" class="col-4 col-form-label">Tool CCD pos</label>
+					<div class="col-4">
+						<input type="text" class="form-control" name="PositionCCD" placeholder="Item position in CCD">
+						@if($errors->has('PositionCCD'))
+                            <div class="error">{{ $errors->first('PositionCCD') }}</div>
+                        @endif
 					</div>
 				</div>
 
@@ -68,20 +92,17 @@
 					<label for="ItemStatus" class="col-4 col-form-label">Tool Location</label>
 					<div class="col-4">
 						<input type="text" class="form-control" name="ItemStatus" placeholder="Sakhalin">
+						@if($errors->has('ItemStatus'))
+                            <div class="error">{{ $errors->first('ItemStatus') }}</div>
+                        @endif
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="Comment" class="col-4 col-form-label">Comment</label>
 					<div class="col-4">
-						<input type="text" class="form-control" name="Comment" placeholder="Your comment here">
+						<button type="submit" class="btn btn-primary">Add Tool</button>
 					</div>
 				</div>
-
-				<div class="col-4">
-					<button type="submit" class="btn btn-primary">Add Tool</button>
-				</div>
-
 			</div>
 
 			<div class="col-5">
@@ -89,21 +110,21 @@
 				<div class="form-group row">
 					<label for="NameRus" class="col-4 col-form-label">Tool desc RUS</label>
 					<div class="col-8">
-						<textarea class="form-control" name="NameRus" rows="8" cols="3"></textarea>
+						<textarea class="form-control" name="NameRus" placeholder="Item description in Russian" rows="8" cols="3"></textarea>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="Box" class="col-4 col-form-label">Box</label>
 					<div class="col-8">
-						<input type="text" class="form-control" name="Box">
+						<input type="text" class="form-control" name="Box" placeholder="Box the Item stored">
 					</div>
-				</div>
-
+				</div>		
+				
 				<div class="form-group row">
-					<label for="PositionCCD" class="col-4 col-form-label">Tool CCD pos</label>
+					<label for="Comment" class="col-4 col-form-label">Comment</label>
 					<div class="col-8">
-						<input type="text" class="form-control" name="PositionCCD">
+						<input type="text" class="form-control" name="Comment" placeholder="Your comment here">
 					</div>
 				</div>
 
@@ -116,7 +137,6 @@
                         @endif
 					</div>
 				</div>
-
 			</div>
 		</div>
 		@csrf

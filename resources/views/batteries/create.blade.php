@@ -79,7 +79,7 @@
 			</div>
 
 			<div class="form-group row">
-				<label for="batteryStatus" class="col-sm-2 col-form-label">CCD</label>
+				<label for="batteryStatus" class="col-sm-2 col-form-label">Location</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="batteryStatus" placeholder="Location">
 					</div>
