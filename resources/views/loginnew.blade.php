@@ -31,7 +31,8 @@
         </div>
         <div class="user signupBx">
             <div class="formBx">
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login.request') }}">
+{{--                <form>--}}
                     @csrf
                     <h2>Request an account</h2>
                     <input type="text" name="first_name" placeholder="First Name">
