@@ -77,7 +77,8 @@ class UserController extends Controller
             $name = time().'.' . explode('/', explode(':', substr($request->photo, 0, strpos
                 ($request->photo, ';')))[1])[1];
 
-            \Image::make($request->photo)->save(public_path('img/profile/').$name);
+            \Image::make($request->photo)->save(public_path
+                ('img/profile/').$name);
 
             $request->merge(['photo' => $name]);
         }

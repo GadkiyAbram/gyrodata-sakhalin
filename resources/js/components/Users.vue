@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row mt-5">
+        <div class="row mt-1">
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
@@ -86,7 +86,7 @@
                                 <select name="type" v-model="form.type" id="type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }">
                                     <option value="">Select User Role</option>
                                     <option value="admin">Admin</option>
-                                    <option value="user">Standard User</option>
+                                    <option value="user">User</option>
                                     <option value="author">Author</option>
                                 </select>
                                 <has-error :form="form" field="type"></has-error>

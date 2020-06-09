@@ -1,5 +1,9 @@
-<html>
+@if (Auth::user())
+	@include('nav')
+@endif
 
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 	<style>
 	   .error {
@@ -9,9 +13,6 @@
 </head>
 
 <body>
-<div class="pl-3 pr-3">
-	@include('nav')
-</div>
 <div class="pl-4 pr-4">
 
 	<div class="d-flex justify-content-start align-items-baseline">
@@ -168,5 +169,4 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-
 </html>

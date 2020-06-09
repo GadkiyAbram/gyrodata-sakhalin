@@ -1,7 +1,6 @@
 @if (Auth::user())
-@include('nav')
+	@include('nav')
 @endif
-
 
         <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -64,11 +63,9 @@
 
    <div class="content">
 
-
         <div class="title m-b-md">
             Gyrodata Sakhalin
         </div>
-
 
         <div>
         @if (Auth::guest())
@@ -78,24 +75,25 @@
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
+{{--                    @if (Route::has('register'))--}}
+{{--                        <a href="{{ route('register') }}">Register</a>--}}
+{{--                    @endif--}}
                 @endauth
                 </div>
             @endif
         @else
-        	<div class="center-content links"> 
-				<a class="nav-link" href="{{ route('logout') }}" 
-					onclick="event.preventDefault();
-					document.getElementById('logout-form').submit();">
-						<p> {{ __('Logout') }} </p>
-				</a>
+{{--            TODO - remove logout--}}
+{{--        	<div class="center-content links">--}}
+{{--				<a class="nav-link" href="{{ route('logout') }}"--}}
+{{--					onclick="event.preventDefault();--}}
+{{--					document.getElementById('logout-form').submit();">--}}
+{{--						<p> {{ __('Logout') }} </p>--}}
+{{--				</a>--}}
 
-				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-					@csrf
-				</form>
-        	</div>
+{{--				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+{{--					@csrf--}}
+{{--				</form>--}}
+{{--        	</div>--}}
        @endif
         </div>
     </div>

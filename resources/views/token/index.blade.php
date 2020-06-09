@@ -31,8 +31,7 @@
                         <div>
                             <input type="text" class="form-control" name="Password" placeholder="pass1">
                         </div>
-
-                        <div>
+                        <div class="mt-3">
                             <button type="submit" class="btn btn-primary">Get Token</button>
                         </div>
                     </div>

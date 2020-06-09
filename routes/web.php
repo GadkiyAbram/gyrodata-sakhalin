@@ -86,7 +86,7 @@ Route::get('/jobs/{job}', 'JobsController@show');
 Route::get('/jobs/{job}/edit', 'JobsController@edit');
 Route::patch('/jobs/{job}', 'JobsController@update');
 
-
+//LOGIN REGISTER ROUTES
 
 Route::get('/ccd', 'CCDController@index');
 

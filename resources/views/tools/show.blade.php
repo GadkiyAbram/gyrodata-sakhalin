@@ -95,7 +95,10 @@
 </html>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+
+    var $j = jQuery.noConflict();
+
+    $j(document).ready(function(){
         $('#zoom-on-hover').zoom();
         $('#zoom-on-grab').zoom({ on:'grab' });
         $('#zoom-on-click').zoom({ on:'click' });

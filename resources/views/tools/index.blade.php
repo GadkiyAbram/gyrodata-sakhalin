@@ -48,7 +48,6 @@
         </div>
         <p class="ml-3 mr-3" id="output"></p>
 
-
 {{--    	<table class="table table-striped">--}}
 {{--    		<thead>--}}
 {{--    		<tr>--}}
@@ -85,6 +84,9 @@
 </html>
 
 <script type="text/javascript">
+
+    var $a = jQuery.noConflict();
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -113,14 +115,14 @@
         });
     }
 
-    $(document).ready(function () {
-        var search_where = $(".search_where:checked").val();
-        $('input[type="radio"]').click(function () {
+    $a(document).ready(function () {
+        var search_where = $a(".search_where:checked").val();
+        $a('input[type="radio"]').click(function () {
             search_where = $(this).val();
         });
 
-        $('#item_data').keyup(function (e) {
-            var search_data = $('#item_data').val();
+        $a('#item_data').keyup(function (e) {
+            var search_data = $a('#item_data').val();
             e.preventDefault();
             $.ajax({
                 type: 'POST',
@@ -129,12 +131,11 @@
                     search_where: search_where
                 },
                 success: function($data){
-                    $('#output').html($data);
+                    $a('#output').html($data);
                 },
             });
         });
-        $('#item_data').keyup();
-
+        $a('#item_data').keyup();
 
         setInterval(loadData, 10000);
     });
