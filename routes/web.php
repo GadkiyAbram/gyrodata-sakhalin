@@ -87,6 +87,7 @@ Route::get('/jobs/{job}/edit', 'JobsController@edit');
 Route::patch('/jobs/{job}', 'JobsController@update');
 
 //LOGIN REGISTER ROUTES
+Route::post('/login', 'UsersPendingController@store')->name('login');
 
 Route::get('/ccd', 'CCDController@index');
 

@@ -83,6 +83,7 @@ class UserController extends Controller
             $request->merge(['photo' => $name]);
         }
 
+
         $user->update($request->all());
         return ['message' => 'Success'];
     }
@@ -96,15 +97,30 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+//        $user = User::findOrFail($id);
+//
+//        $this->validate($request, [
+//            'name' => 'required|string|max:191',
+//            'email' => 'required|string|email|max:191|unique:users,email,'.$user->id,
+//            'password' => 'sometimes|min:8'
+//        ]);
+//
+//        $user->update($request->all());
+//
+//        return ['message' => 'Updating the user info'];
 
+        $user = User::findOrFail($id);
 
         $this->validate($request, [
             'name' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users,email,'.$user->id,
             'password' => 'sometimes|min:8'
         ]);
-        $user->update($request->all());
+
+        $userData = $request->all();
+        $userData['password'] = Hash::make($userData['password']);
+
+        $user->update($userData);
 
         return ['message' => 'Updating the user info'];
     }

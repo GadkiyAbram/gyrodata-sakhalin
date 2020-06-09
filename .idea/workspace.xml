@@ -2,26 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb13fe00-7d51-4b8d-900e-86ae71d9dc84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../public/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../public/js/dropmenu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../public/surveying-left.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../public/surveying-right.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../resources/views/loginnew.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../resources/views/loginold.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/API/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resources/js/components/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/js/components/Users.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/nav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/token/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/token/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/tools/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/tools/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/views/loginnew.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/loginnew.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/web.php" afterDir="false" />
     </list>
@@ -267,6 +254,7 @@
       <workItem from="1591295670067" duration="906000" />
       <workItem from="1591297191250" duration="46000" />
       <workItem from="1591297287712" duration="38077000" />
+      <workItem from="1591722076508" duration="6638000" />
     </task>
     <task id="LOCAL-00001" summary="Battery / Job can be added separately, now relations">
       <created>1571816280301</created>
@@ -571,14 +559,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="added Image Zoom, while showing the Item" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589376658104">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591726776520">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589376658104" />
-    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2" timestamp="1589521661259">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591726776520" />
+    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2" timestamp="1591682156325">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589521661259" />
+    <state x="319" y="114" width="1374" height="874" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591682156325" />
     <state x="595" y="298" key="EditFileWatcherDialog" timestamp="1588571752588">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -599,10 +587,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589306984282" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1591682102877">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1591682165298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591682102877" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591682165298" />
     <state x="657" y="311" key="git4idea.merge.GitPullDialog" timestamp="1588076361788">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -611,9 +599,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589376541494" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1591681359680">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1591727762870">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591681359680" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591727762870" />
   </component>
 </project>

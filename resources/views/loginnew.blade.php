@@ -31,11 +31,12 @@
         </div>
         <div class="user signupBx">
             <div class="formBx">
-                <form>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
                     <h2>Request an account</h2>
-                    <input type="text" name="" placeholder="First Name">
-                    <input type="text" name="" placeholder="Last Name">
-                    <input type="email" name="" placeholder="Email">
+                    <input type="text" name="first_name" placeholder="First Name">
+                    <input type="text" name="last_name" placeholder="Last Name">
+                    <input type="email" name="email" placeholder="Email">
                     <input type="submit" name="" value="Request">
                     <p class="signup">Already with Us ? <a href="#" onclick="toggleForm();">Log In</a></p>
                 </form>
@@ -48,6 +49,12 @@
     function toggleForm(){
         var container = document.querySelector('.container');
         container.classList.toggle('active');
+    }
+
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
     }
 </script>
 </body>

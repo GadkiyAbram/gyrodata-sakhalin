@@ -65199,6 +65199,7 @@ var render = function() {
                           attrs: {
                             type: "password",
                             name: "password",
+                            placeholder: "Password",
                             id: "password"
                           },
                           domProps: { value: _vm.form.password },
