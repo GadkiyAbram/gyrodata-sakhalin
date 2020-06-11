@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
+    if(Auth::check()) {
+        return view('welcome');
+    } else {
+        return view('auth.login');
+    }
+
 //    $eng = factory(\App\Engineer::class)->create();
 
 //    $tool = factory(\App\Tool::class)->create();
@@ -49,7 +55,7 @@ Route::get('/', function () {
 //    $battery->condition = 1;
 //    $battery->save();
 
-    return view('welcome');
+//    return view('welcome');
 });
 
 Auth::routes();
@@ -88,6 +94,7 @@ Route::patch('/jobs/{job}', 'JobsController@update');
 
 //LOGIN REGISTER ROUTES
 Route::post('/login/request', 'UsersPendingController@store')->name('login.request');
+Route::post('/userspending', 'UsersPendingController@index');
 
 Route::get('/ccd', 'CCDController@index');
 

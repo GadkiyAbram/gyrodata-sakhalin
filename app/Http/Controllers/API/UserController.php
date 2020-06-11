@@ -12,7 +12,7 @@ class UserController extends Controller
     public function __construct()
     {
         //Previous
-        $this->middleware('api');
+//        $this->middleware('api');
         //Now
         $this->middleware('auth:api');
     }
@@ -37,6 +37,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
            'name' => 'required|string|max:191',
+           'lastname' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:8'
         ]);
@@ -44,6 +45,7 @@ class UserController extends Controller
         return User::create(
             [
                 'name' => $request['name'],
+                'lastname' => $request['lastname'],
                 'email' => $request['email'],
                 'type' => $request['type'],
                 'bio' => $request['bio'],

@@ -82,10 +82,15 @@
                                 <li class="nav-item">
                                     <router-link to="/users" class="nav-link">
                                         <i class="fas fa-users nav-icon"></i>
-                                        <p>Users</p>
+                                        <p>Users Approved</p>
                                     </router-link>
                                 </li>
-
+                                <li class="nav-item">
+                                    <router-link to="/userspending" class="nav-link">
+                                        <i class="fas fa-users nav-icon"></i>
+                                        <p>Users Pending</p>
+                                    </router-link>
+                                </li>
                             </ul>
                         </li>
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersPendingsTable extends Migration
+class AddLastnameFieldToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateUsersPendingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_pendings', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
+        Schema::table('users', function (Blueprint $table) {
             $table->string('lastname');
-            $table->string('email');
-            $table->timestamps();
         });
     }
 
@@ -29,6 +25,8 @@ class CreateUsersPendingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_pendings');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('lastname');
+        });
     }
 }

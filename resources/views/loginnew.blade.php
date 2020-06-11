@@ -35,8 +35,8 @@
 {{--                <form>--}}
                     @csrf
                     <h2>Request an account</h2>
-                    <input type="text" name="first_name" placeholder="First Name">
-                    <input type="text" name="last_name" placeholder="Last Name">
+                    <input type="text" name="name" placeholder="First Name">
+                    <input type="text" name="lastname" placeholder="Last Name">
                     <input type="email" name="email" placeholder="Email">
                     <input type="submit" name="" value="Request">
                     <p class="signup">Already with Us ? <a href="#" onclick="toggleForm();">Log In</a></p>
