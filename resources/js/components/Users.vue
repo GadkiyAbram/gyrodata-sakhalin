@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Users Table</h3>
+                        <h5 class="box-title">Users Table</h5>
 
                         <div class="card-tools">
                             <button class="btn btn-success" @click="newModal" data-target="#addNew">Add New

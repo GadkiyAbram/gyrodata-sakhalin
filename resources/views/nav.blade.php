@@ -62,9 +62,9 @@
 								<li class="nav-item">
 									<a class="nav-link" href="/batteries">Lithium Batteries</a>
 								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="/preferences">Preferences</a>
-								</li>
+{{--								<li class="nav-item">--}}
+{{--									<a class="nav-link" href="/preferences">Preferences</a>--}}
+{{--								</li>--}}
                                 @can('isAdmin')
                                 <li class="nav-item">
                                     <a class="nav-link" href="/master">Admin Panel</a>

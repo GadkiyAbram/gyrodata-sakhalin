@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Tool;
+use App\UsersGranted;
 use Illuminate\Http\Request;
 use App\Rules\ValidItem;
 use App\Rules\ValidInvoice;
@@ -87,9 +89,9 @@ class ToolsController extends Controller
             'Asset' => [new ValidItem(request('Item'), request('Asset')), new IfAssetNeeded(request('Item'), request('Asset'))],
             'Arrived' => 'required|date',
             'Invoice' => ['nullable', new ValidInvoice(request('Invoice'))],
-            'CCD' => ['nullable', new ValidCCD(request('CCD'))],                    
+            'CCD' => ['nullable', new ValidCCD(request('CCD'))],
             'NameRus' => 'nullable',
-            'PositionCCD' => ['nullable', new ValidPositionCCD(request('PositionCCD'))],        
+            'PositionCCD' => ['nullable', new ValidPositionCCD(request('PositionCCD'))],
             'ItemStatus' => 'required',
             'Box' => 'nullable',
             'image' => 'nullable',
@@ -102,7 +104,7 @@ class ToolsController extends Controller
             }
         });
     }
-    
+
     private function validatedDataUpdate($itemItem)
     {
         return tap(request()->validate([
@@ -172,9 +174,9 @@ class ToolsController extends Controller
     public function update($id, Request $request)
     {
         $itemName = $this->getItem($id)['Item'];        // move it in the data array
-        
+
         $this->validatedDataUpdate($itemName);
-        
+
         $uri = APIHelper::getUrl('ToolEdit') . $id;
         $imageArray = null;
         $data = [

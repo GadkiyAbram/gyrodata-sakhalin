@@ -2595,8 +2595,10 @@ __webpack_require__.r(__webpack_exports__);
         id: '',
         name: '',
         lastname: '',
+        password: '',
         email: '',
-        created_at: ''
+        created_at: '',
+        approved_id: ''
       }) // form: new Form({
       //     id: '',
       //     first_name : '',
@@ -2618,7 +2620,11 @@ __webpack_require__.r(__webpack_exports__);
     approveUser: function approveUser() {
       var _this = this;
 
+      // var approved_id = window.user.id;
+      this.form.approved_id = window.user.id;
+      console.log(this.form.approved_id);
       console.log(this.form.id);
+      console.log(this.form.password);
       this.form.post('api/approve/' + this.form.id).then(function () {
         Fire.$emit('AfterCreate');
         $('#addNew').modal('hide');
@@ -2663,7 +2669,11 @@ __webpack_require__.r(__webpack_exports__);
     this.loadUsers();
     Fire.$on('AfterCreate', function () {
       _this3.loadUsers();
-    }); // axios.get("api/userspending").then(({ data }) => (this.users = data));
+    }, 15000);
+    axios.get("api/userspending").then(function (_ref2) {
+      var data = _ref2.data;
+      return _this3.users = data;
+    }); // setInterval(() => this.loadUsers(),5000);        //will get the data every 3 sec - not mostly appropriately
   }
 });
 
@@ -65063,7 +65073,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "box" }, [
           _c("div", { staticClass: "box-header" }, [
-            _c("h3", { staticClass: "box-title" }, [_vm._v("Users Table")]),
+            _c("h5", { staticClass: "box-title" }, [_vm._v("Users Table")]),
             _vm._v(" "),
             _c("div", { staticClass: "card-tools" }, [
               _c(
@@ -66006,7 +66016,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header" }, [
-      _c("h3", { staticClass: "box-title" }, [_vm._v("Pending Users Table")])
+      _c("h5", { staticClass: "box-title" }, [_vm._v("Pending Users Table")])
     ])
   },
   function() {

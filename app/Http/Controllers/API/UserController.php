@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Lcobucci\JWT\Signer\Rsa\Sha256;
 
 class UserController extends Controller
 {
@@ -50,7 +51,9 @@ class UserController extends Controller
                 'type' => $request['type'],
                 'bio' => $request['bio'],
                 'photo' => $request['photo'],
-                'password' => Hash::make($request['password'])
+                'password' => Hash::make($request['password']),
+//                'password' => hash('sah256', $request['password'] . 'salt'),
+                'Salt' => 'salt'
             ]
         );
     }
