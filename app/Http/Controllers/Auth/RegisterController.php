@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Lcobucci\JWT\Signer\Rsa\Sha256;
 
 class RegisterController extends Controller
 {
@@ -74,7 +75,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+//            'password' => Hash::make($data['password']),
+            'password' => hash('sha256', $data['password'] . 'salt'),
         ]);
     }
 }

@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Pending Users Table</h3>
+                        <h5 class="box-title">Pending Users Table</h5>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive no-padding">
@@ -127,8 +127,10 @@
                     id: '',
                     name : '',
                     lastname : '',
+                    password : '',
                     email: '',
-                    created_at: ''
+                    created_at: '',
+                    approved_id: ''
                 })
                 // form: new Form({
                 //     id: '',
@@ -139,6 +141,7 @@
                 // })
             }
         },
+
         methods: {
             editModal(user){
                 // this.editmode = true;
@@ -148,7 +151,11 @@
                 console.log(user);
             },
             approveUser(){
+                // var approved_id = window.user.id;
+                this.form.approved_id = window.user.id;
+                console.log(this.form.approved_id);
                 console.log(this.form.id);
+                console.log(this.form.password);
                 this.form.post('api/approve/' + this.form.id).
                 then(() => {
                     Fire.$emit('AfterCreate');
@@ -190,8 +197,9 @@
             this.loadUsers();
             Fire.$on('AfterCreate', () => {
                 this.loadUsers();
-            });
-            // axios.get("api/userspending").then(({ data }) => (this.users = data));
+            }, 15000);
+            axios.get("api/userspending").then(({ data }) => (this.users = data));
+            // setInterval(() => this.loadUsers(),5000);        //will get the data every 3 sec - not mostly appropriately
         },
     }
 </script>

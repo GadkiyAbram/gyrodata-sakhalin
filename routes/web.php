@@ -105,7 +105,7 @@ Route::resource('preferences', 'TokenController')->middleware('auth');
 //Route::post('/token/saveurlport', 'TokenController@storeurlport');
 
 //Route::resource('search', 'SearchController')->middleware('auth');
-Route::get('master', 'SearchController@index')->middleware('auth');
+Route::get('/master', 'SearchController@index')->middleware('auth');
 
 Route::get('/home', 'SearchController@index')->name('home');
 Route::get('{path}', "SearchController@index");
