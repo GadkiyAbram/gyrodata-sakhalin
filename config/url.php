@@ -1,8 +1,11 @@
 <?php
 
 return [
+    
+    //  DO NOT FORGET TO RUN "PHP ARTISAN CONFIG:CACHE" //
+
     "scheme" => "http://",
-    "url" => "192.168.0.102",
+    "url" => "192.168.1.105",
     "port" => "8081",
 
     "Auth" => "/authservices/authservice.svc/Authenticate",

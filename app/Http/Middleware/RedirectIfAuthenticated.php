@@ -34,6 +34,8 @@ class RedirectIfAuthenticated
         $password_sha = hash('sha256', $password . 'salt');
 //        dd($password_sha);
         $uri = APIHelper::getUrl('Auth');
+        // $uri = "http://192.168.1.105:8081/authservices/authservice.svc/authenticate";
+        // dd($uri);
         $client = new \GuzzleHttp\Client([
             'headers' => ['Content-Type' => 'application/json']
         ]);
