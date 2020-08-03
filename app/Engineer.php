@@ -8,8 +8,8 @@ class Engineer extends Model
 {
     protected $guarded = [];
 
-//    public function job()
-//    {
-//        return $this->belongsTo(Job::class);
-//    }
+    public function job()
+    {
+        return $this->belongsToMany(Job::class);
+    }
 }

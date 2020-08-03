@@ -10,4 +10,8 @@ class CCDController extends Controller
     {
         return view('ccd.index');
     }
+
+//    public function usession(Request $request){
+//        $request->session()->flash('Name', 'GadkiyAbram');
+//    }
 }

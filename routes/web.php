@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
@@ -34,7 +35,7 @@ Route::get('/', function () {
 //        $item->name = $line;
 //        $item->save();
 //    }
-
+//
 //    foreach (file(public_path('/personnel.txt')) as $line)
 //    {
 //        $line = str_replace("\r\n", '', $line);
@@ -43,25 +44,65 @@ Route::get('/', function () {
 //        $eng->save();
 //    }
 
+//    $battery = new \App\Battery();
+//    $battery->serialOne = 'S1-0652-N-0001';
+//    $battery->condition = 1;
+//    $battery->save();
+
     return view('welcome');
 });
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/batteries', 'BatteriesController@index');
-Route::get('/batteries/addbattery', 'BatteriesController@addBattery');
-Route::post('/batteries', 'BatteriesController@store');
+// TODO - add middleware auth
+// BATTERIES ROUTES
+//Route::resource('batteries', 'BatteriesController')->middleware('auth');
+Route::get('/batteries', 'BatteriesController@index')->name('batteries.index');
+Route::post('/batteries', 'BatteriesController@searchBatteries')->name('batteries.index');
+Route::get('/batteries/create', 'BatteriesController@create');
+Route::post('/batteries/create', 'BatteriesController@store')->name('batteries.store');
+Route::get('/batteries/{id}', 'BatteriesController@show');
+Route::get('/batteries/{id}/edit', 'BatteriesController@edit');
+Route::patch('/batteries/{id}', 'BatteriesController@update');
 
-Route::get('/jobs', 'JobsController@index');
-Route::get('/jobs/addjob', 'JobsController@addJob');
-Route::post('/jobs', 'JobsController@store');
+// TOOLS ROUTES
+//Route::resource('tools', 'ToolsController')->middleware('auth');
+Route::get('/tools', 'ToolsController@index')->name('tools.index');
+Route::post('/tools', 'ToolsController@searchItems')->name('tools.index');
+Route::get('/tools/create', 'ToolsController@create');
+Route::post('/tools/create', 'ToolsController@store')->name('tools.store');
+Route::get('/tools/{id}', 'ToolsController@show');
+Route::get('/tools/{tool}/edit', 'ToolsController@edit');
+Route::patch('/tools/{id}', 'ToolsController@update');
+
+// JOBS ROUTES
+//Route::resource('jobs', 'JobsController')->middleware('auth');
+Route::get('/jobs', 'JobsController@index')->name('jobs.index');
+Route::post('/jobs', 'JobsController@searchJobs')->name('jobs.index');
+Route::get('/jobs/create', 'JobsController@create');
+Route::post('/jobs/create', 'JobsController@store')->name('jobs.store');
 Route::get('/jobs/{job}', 'JobsController@show');
+Route::get('/jobs/{job}/edit', 'JobsController@edit');
+Route::patch('/jobs/{job}', 'JobsController@update');
 
-Route::get('/tools', 'ToolsController@index');
-Route::get('/tools/addtool', 'ToolsController@addTool');
-Route::post('/tools', 'ToolsController@store');
-Route::get('/tools/{tool}', 'ToolsController@show');
+
 
 Route::get('/ccd', 'CCDController@index');
+
+//Route::get('/session', 'CCDController@usession');
+Route::resource('preferences', 'TokenController')->middleware('auth');
+//Route::get('/token', 'TokenController@index');
+//Route::post('/token/token', 'TokenController@store');
+//Route::post('/token/saveurlport', 'TokenController@storeurlport');
+
+//Route::resource('search', 'SearchController')->middleware('auth');
+Route::get('master', 'SearchController@index')->middleware('auth');
+
+Route::get('/home', 'SearchController@index')->name('home');
+Route::get('{path}', "SearchController@index");
+//->where('path', '([A-z\d-\/_.]+)?' );
+//    ->middleware('auth');
+
+
+

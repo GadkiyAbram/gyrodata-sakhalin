@@ -16,37 +16,40 @@
 	<div class="d-flex justify-content-between align-items-baseline">
 
 		<div class="align-content-center pr-3">
-			<a href="/jobs">Go back</a>
+            <div class="d-flex justify-content-between align-items-baseline">
+                <a href="/jobs">Go back</a>
+                <h5>{{ $job['JobNumber'] }}</h5>
+            </div>
 		</div>
 		<div>
-			<h5>{{ $job->jobNumber }}</h5>
-		</div>
-		<div>
-			<a href="#">Edit Job</a>
+			<a href="/jobs/{{ $job['JobNumber'] }}/edit">Edit Job</a>
 		</div>
 
 	</div>
 
 	<div class="row">
 		<div class="col-4">
-			<p><strong>GWD Tool: </strong>{{ $job->toolNumber }}</p>
-			<p><strong>Modem: </strong>{{ $job->modemNumber }}</p>
-			<p><strong>Battery: </strong>{{ \App\Battery::where('id', $job->battery_id)->first()->serialOne }}</p>
-			<p><strong>GWD BBP: </strong>{{ $job->bbpNumber }}</p>
-			<p><strong>First Eng: </strong>{{ \App\Engineer::where('id', $job->engFirst)->first()->name ?? 'Not assigned'}}</p>
-			<p><strong>Second Eng: </strong>{{ \App\Engineer::where('id', $job->engSecond)->first()->name ?? 'Not assigned' }}</p>
-			<p><strong>Eng1 Arrived: </strong>{{ $job->eng1ArrRig }}</p>
-			<p><strong>Eng2 Arrived: </strong>{{ $job->eng2ArrRig }}</p>
-
+			<p><strong>GWD Tool: </strong>{{ $job['GDP'] }}</p>
+			<p><strong>Modem: </strong>{{ $job['Modem'] }}</p>
+			<p><strong>Modem Version: </strong>{{ $job['ModemVersion'] }}</p>
+			<p><strong>Max Temperature </strong>{{ $job['MaxTemp'] }}</p>
+			<p><strong>GWD BBP: </strong>{{ $job['Bullplug'] }}</p>
+			<p><strong>Battery: </strong>{{ $job['Battery'] }}</p>
+			<p><strong>First Eng: </strong>{{ $job['EngineerOne'] ?? 'Not assigned'}}</p>
+			<p><strong>Second Eng: </strong>{{ $job['EngineerTwo'] ?? 'Not assigned'}}</p>
+			<p><strong>Eng1 Arrived: </strong>{{ $job['eng_one_arrived'] }}</p>
+			<p><strong>Eng2 Arrived: </strong>{{ $job['eng_two_arrived'] }}</p>
 		</div>
 		<div class="col-6">
-			<p><strong>Eng1 Depart: </strong>{{ $job->eng1DepRig }}</p>
-			<p><strong>Eng2 Depart: </strong>{{ $job->eng2DepRig }}</p>
-			<p><strong>Container: </strong>{{ $job->container }}</p>
-			<p><strong>Container arrived: </strong>{{ $job->containerArrRig }}</p>
-			<p><strong>Container depart: </strong>{{ $job->containerDepRig }}</p>
-			<p><strong>Circ Hrs: </strong>{{ $job->toolCircHrs }}</p>
-			<p><strong>Comment: </strong>{{ $job->comment }}</p>
+			<p><strong>Eng1 Depart: </strong>{{ $job['eng_one_left'] }}</p>
+			<p><strong>Eng2 Depart: </strong>{{ $job['eng_two_left'] }}</p>
+			<p><strong>Container: </strong>{{ $job['Container'] }}</p>
+			<p><strong>Container arrived: </strong>{{ $job['ContainerArrived'] }}</p>
+			<p><strong>Container depart: </strong>{{ $job['ContainerLeft'] }}</p>
+			<p><strong>Circ Hrs: </strong>{{ $job['CirculationHours'] }}</p>
+			<p><strong>Rig: </strong>{{ $job['Rig'] }}</p>
+			<p><strong>Issues: </strong>{{ $job['Issues'] }}</p>
+			<p><strong>Comment: </strong>{{ $job['Comment'] }}</p>
 		</div>
 	</div>
 

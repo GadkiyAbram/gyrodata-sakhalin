@@ -8,13 +8,28 @@ class Job extends Model
 {
     protected $guarded = [];
 
-    public function battery()
+    public function client()
     {
-        return $this->hasOne(Battery::class);
+        return $this->hasOne(Client::class, 'Id');
     }
 
-//    public function engineers()
+    public function battery()
+    {
+        return $this->hasOne(Battery::class, 'Id');
+    }
+
+//    public function items()
 //    {
-//        return $this->hasMany(Engineer::class);
+//        return $this->hasMany(Item::class, 'Id');
 //    }
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class, 'Id');
+    }
+
+    public function engineers()
+    {
+        return $this->hasMany(Engineer::class, 'Id');
+    }
 }
