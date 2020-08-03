@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <div class="row mt-5">
+        <div class="row mt-1">
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Users Table</h3>
+                        <h5 class="box-title">Users Table</h5>
 
                         <div class="card-tools">
                             <button class="btn btn-success" @click="newModal" data-target="#addNew">Add New
@@ -19,6 +19,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Last Name</th>
                                 <th>Email</th>
                                 <th>Type</th>
                                 <th>Registered At</th>
@@ -27,6 +28,7 @@
                             <tr v-for="user in users.data" :key="user.id">
                                 <td>{{user.id}}</td>
                                 <td>{{user.name}}</td>
+                                <td>{{user.lastname}}</td>
                                 <td>{{user.email}}</td>
                                 <td>{{user.type | upText}}</td>
                                 <td>{{user.created_at | myDate}}</td>
@@ -40,7 +42,8 @@
                                     </a>
                                 </td>
                             </tr>
-                            </tbody></table>
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -69,6 +72,13 @@
                             </div>
 
                             <div class="form-group">
+                                <input v-model="form.lastname" type="text" name="name"
+                                       placeholder="Last Name"
+                                       class="form-control" :class="{ 'is-invalid': form.errors.has('lastname') }">
+                                <has-error :form="form" field="name"></has-error>
+                            </div>
+
+                            <div class="form-group">
                                 <input v-model="form.email" type="email" name="name"
                                        placeholder="Email Address"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
@@ -86,14 +96,14 @@
                                 <select name="type" v-model="form.type" id="type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }">
                                     <option value="">Select User Role</option>
                                     <option value="admin">Admin</option>
-                                    <option value="user">Standard User</option>
+                                    <option value="user">User</option>
                                     <option value="author">Author</option>
                                 </select>
                                 <has-error :form="form" field="type"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <input v-model="form.password" type="password" name="password" id="password"
+                                <input v-model="form.password" type="password" name="password" placeholder="Password" id="password"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
                                 <has-error :form="form" field="password"></has-error>
                             </div>
@@ -108,7 +118,7 @@
                 </div>
             </div>
         </div>
-
+        <!-- End Modal -->
     </div>
 
 </template>
@@ -123,6 +133,7 @@
                 form: new Form({
                     id: '',
                     name : '',
+                    lastname : '',
                     email: '',
                     password: '',
                     type: '',

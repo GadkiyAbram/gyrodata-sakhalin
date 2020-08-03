@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Lcobucci\JWT\Signer\Rsa\Sha256;
 
 class UserController extends Controller
 {
     public function __construct()
     {
         //Previous
-        $this->middleware('api');
+//        $this->middleware('api');
         //Now
         $this->middleware('auth:api');
     }
@@ -37,6 +38,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
            'name' => 'required|string|max:191',
+           'lastname' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:8'
         ]);
@@ -44,11 +46,14 @@ class UserController extends Controller
         return User::create(
             [
                 'name' => $request['name'],
+                'lastname' => $request['lastname'],
                 'email' => $request['email'],
                 'type' => $request['type'],
                 'bio' => $request['bio'],
                 'photo' => $request['photo'],
-                'password' => Hash::make($request['password'])
+                'password' => Hash::make($request['password']),
+//                'password' => hash('sah256', $request['password'] . 'salt'),
+                'Salt' => 'salt'
             ]
         );
     }
@@ -77,10 +82,12 @@ class UserController extends Controller
             $name = time().'.' . explode('/', explode(':', substr($request->photo, 0, strpos
                 ($request->photo, ';')))[1])[1];
 
-            \Image::make($request->photo)->save(public_path('img/profile/').$name);
+            \Image::make($request->photo)->save(public_path
+                ('img/profile/').$name);
 
             $request->merge(['photo' => $name]);
         }
+
 
         $user->update($request->all());
         return ['message' => 'Success'];
@@ -95,15 +102,30 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+//        $user = User::findOrFail($id);
+//
+//        $this->validate($request, [
+//            'name' => 'required|string|max:191',
+//            'email' => 'required|string|email|max:191|unique:users,email,'.$user->id,
+//            'password' => 'sometimes|min:8'
+//        ]);
+//
+//        $user->update($request->all());
+//
+//        return ['message' => 'Updating the user info'];
 
+        $user = User::findOrFail($id);
 
         $this->validate($request, [
             'name' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users,email,'.$user->id,
             'password' => 'sometimes|min:8'
         ]);
-        $user->update($request->all());
+
+        $userData = $request->all();
+        $userData['password'] = Hash::make($userData['password']);
+
+        $user->update($userData);
 
         return ['message' => 'Updating the user info'];
     }

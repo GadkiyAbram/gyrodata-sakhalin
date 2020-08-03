@@ -5,10 +5,6 @@ use App\Client;
 use App\Http\Component;
 use Illuminate\Http\Request;
 use DB;
-use App\Battery;
-use App\Job;
-use App\Tool;
-use App\Engineer;
 
 define('gdp', 'GDP Section');
 define('modem', 'GWD Modem');
@@ -19,105 +15,46 @@ class JobsController extends Controller
 {
     private $job_numbers = [];
 
-    private $dataForJobCreate;      // Data for Job create (gdp / modems / batteries etc)
+//    private $dataForJobCreate;      // Data for Job create (gdp / modems / batteries etc)
 
     public function index()
     {
-//        $uri = APIHelper::getUrl('JobsAll'). "?what=&where=";
-//        $token = session()->get('Token');
-//        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-//        try{
-//            $response = $client->get($uri, [
-//                'headers' => [
-//                    'Content-Type' => 'application/json',
-//                    'Token' => $token
-//                ]
-//            ]);
-//            $jobs = json_decode((string)$response->getBody());
-//            $jobs = (array)$jobs;
-//            foreach ($jobs as $job)
-//            {
-//                array_push($this->job_numbers, $job->JobNumber);
-//            }
-//        }catch (\Exception $ex){
-//            dd($ex);
-//        }
-//        return view('jobs.index', compact('jobs'));
         return view('jobs.index');
     }
 
     public function searchJobs(Request $request)
     {
-//        $what = $request->search_data;
-//        $where = $request->search_where;
-//
-//        $uri = APIHelper::getUrl('JobsAll'). "?what=" . $what . "&where=" . $where;
-////        $uri = "http://192.168.0.102:8081/jobservices/jobservice.svc/GetCustomJobData?what=" . $what . "&where=" . $where;
-//        $token = session()->get('Token');
-//        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-//        try{
-//            $response = $client->get($uri, [
-//                'headers' => [
-//                    'Content-Type' => 'application/json',
-//                    'Token' => $token
-//                ]
-//            ]);
-//            $jobs = json_decode((string)$response->getBody());
-//            $jobs = (array)$jobs;
-//        }catch (\Exception $ex){
-//            dd($ex);
-//        }
         $what = $request->search_data;
         $where = $request->search_where;
 
-        //TODO - refactor, rmeove if-else struct
-        if (empty($request->search_data))
-        {
-            $jobs = $this->getJobData('', '');
-        }else
-        {
-            $jobs = $this->getJobData($what, $where);
-        }
+        $jobs = $this->getJobData($what, $where);
 
         return view('jobs.data', compact('jobs'));
     }
 
     public function getJobData($what, $where)
     {
-        return APIHelper::getData('JobsAll', $what, $where);
+        $service = ('JobsAll');
+        $uri = APIHelper::getUrl($service). "?what=" . $what . "&where=" . $where;
+        return APIHelper::getRecord($uri);
     }
 
-    private function getDataForNewJob($uri, $token)
+    private function getDataForNewJob($uri)
     {
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-        try{
-            $response = $client->get($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ]
-            ]);
-            $this->dataForJobCreate = json_decode((string)$response->getBody());
-            $this->dataForJobCreate = (array)$this->dataForJobCreate;
-        }catch (\Exception $ex){
-            dd($ex);
-        }
-
-        return $this->dataForJobCreate;
+        return APIHelper::getRecord($uri);
     }
 
     public function create()
     {
         $uri = APIHelper::getUrl('DataForJob');
-        $token = session()->get('Token');
 
-        $data = $this->getDataForNewJob($uri, $token);
-        $gdps = $data[1];
-        $modems = $data[2];
-        $bbps = $data[3];
-        $clients = $data[0];
-        $batteries = $data[5];
-        $engineers = $data[4];
+        $data = $this->getDataForNewJob($uri);
+        $gdps = $data[1];                       // GDP Sections
+        $modems = $data[2];                     // Modems
+        $bbps = $data[3];                       // Bullplugs
+        $clients = $data[0];                    // clients
+        $batteries = $data[5];                  // batteries
+        $engineers = $data[4];                  // engineers
 
         return view('jobs/create', compact(
                             'batteries','engineers', 'gdps',
@@ -127,34 +64,19 @@ class JobsController extends Controller
     public function show($job)
     {
         $job = $this->getJob($job);
-
         return view('jobs.show', compact('job'));
     }
 
     public function getJob($jobnumber)
     {
-        $uriGetSelectedJob = 'http://192.168.0.102:8081/jobservices/jobservice.svc/GetSelectedJobData/' . $jobnumber;
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uriGetSelectedJob]);
-        try {
-            $response = $client->get($uriGetSelectedJob, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ]
-            ]);
-            $job = json_decode((string)$response->getBody());
-            $job = (array)$job[0];
-
-        } catch (\Exception $ex) {
-            dd($ex);
-        }
-        return $job;
+        $service = 'JobCustom';
+        $uri = APIHelper::getUrl($service) . $jobnumber;
+        return (array)(APIHelper::getRecord($uri)[0]);
     }
 
     public function store()
     {
-        $uri = 'http://192.168.0.102:8081/jobservices/jobservice.svc/AddNewJob';
+        $service = 'JobAdd';
         $data = [
             'JobNumber' => request('JobNumber'),
             'ClientName' => request('client_id'),
@@ -178,18 +100,17 @@ class JobsController extends Controller
             'Comment' => request('Comment')
         ];
 
+        $uri = APIHelper::getUrl($service);
         $job_id = APIHelper::insertRecord($uri, $data);
-
         return redirect('/jobs');
     }
 
     public function edit($job)
     {
-        $uriDataForJob = APIHelper::getUrl('DataForJob');
-        $token = session()->get('Token');
+        $uri = APIHelper::getUrl('DataForJob');
+        $dataForJob = $this->getDataForNewJob($uri);
         // search item by Id and pass to compact
         $job = $this->getJob($job);
-        $dataForJob = $this->getDataForNewJob($uriDataForJob, $token);
         $clients = $dataForJob[0];
         $gdps = $dataForJob[1];
         $modems = $dataForJob[2];
@@ -204,15 +125,15 @@ class JobsController extends Controller
 
     public function update($id)
     {
-        $uri = 'http://192.168.0.102:8081/jobservices/jobservice.svc/EditJob/' . $id;
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        $service = 'JobEdit';
+        $uri = APIHelper::getUrl($service) . $id;
         $data = [
             'Id' => $id,
             'JobNumber' => request('JobNumber'),
             'ClientName' => request('ClientName'),
             'GDP' => request('GDP'),
             'Modem' => request('Modem'),
+            'ModemVersion' => request('ModemVersion'),
             'Bullplug' => request('Bullplug'),
             'Battery' => request('Battery'),
             'CirculationHours' => request('CirculationHours'),
@@ -230,87 +151,8 @@ class JobsController extends Controller
             'Rig' => request('Rig'),
             'Comment' => request('Comment')
         ];
-        try{
-            $response = $client->post($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ],
-                'body' => json_encode($data)
-            ]);
-        }catch (\Exception $ex){
-            dd($ex);
-        }
+        APIHelper::updateRecord($uri, $data);
         return redirect('/jobs');
-    }
-
-//    public function update(Job $job)
-//    {
-//
-//        $job_old = $job->toolCircHrs;
-//        $job_new = request('CirculationHours');
-//        $gdp = request('gdp_id');
-//        $mod = request('modem_id');
-//        $bbp = request('bullplug_id');
-//
-//        //tool
-//        $tool = Tool::where('Asset', $gdp)->first();
-//        $tool_number = $tool->tool_number;
-//        $tool_circ_current = $tool->tool_circHrs;
-//
-//        //modem
-//        $modem = Tool::where('Asset', $mod)->first();
-//        $modem_number = $modem->tool_number;
-//        $modem_circ_current = $modem->tool_circHrs;
-//
-//        //bbp
-//        $bbp = Tool::where('Asset', $bbp)->first();
-//        $bbp_number = $bbp->tool_number;
-//        $bbp_circ_current = $bbp->tool_circHrs;
-//
-//        $job->update($this->validatedData());
-//
-//        $this->circDiff($tool_number, $tool_circ_current, $job_old, $job_new);
-//        $this->circDiff($modem_number, $modem_circ_current, $job_old, $job_new);
-//        $this->circDiff($bbp_number, $bbp_circ_current, $job_old, $job_new);
-//
-//        return redirect('/jobs');
-//    }
-
-    private function calcCircHrsTool($tool_number, $tool_circHrs)
-    {
-        $tool = Component::where('Asset', $tool_number)->first();
-
-        $tool_current_circHrs = $tool->tool_circHrs;
-
-        $tool_total_circHrs = $tool_current_circHrs + $tool_circHrs;
-
-        $tool->tool_circHrs = $tool_total_circHrs;
-
-        $tool->save();
-    }
-
-    private function changBatStatus($batt_id, $jobNumber)
-    {
-        $battery = Battery::where('Id', $batt_id)->first();
-
-        $battery->BatteryCondition = 'Used';    //0 - USED, 1 - NEW
-
-//        $battery->job_assigned = $jobNumber;
-
-        $battery->save();
-    }
-
-    public function circDiff($tool_number, $tool_circ_current, $job_old, $job_new)
-    {
-        $tool = Component::where('Asset', $tool_number)->first();
-
-        $tool_circ_total = ($job_new - $job_old) + $tool_circ_current;
-
-        $tool->tool_circHrs = $tool_circ_total;
-
-        $tool->save();
-
     }
 
     protected function validatedData()

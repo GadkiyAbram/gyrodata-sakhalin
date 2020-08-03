@@ -66,6 +66,14 @@
                         </select>
                     </div>
 				</div>
+
+                <div class="form-group row">
+                    <label for="ModemVersion" class="col-4 col-form-label">Modem Version</label>
+                    <div class="col-4">
+                        <input type="text" class="form-control" name="ModemVersion" value="{{ $job['ModemVersion'] }}">
+                    </div>
+                </div>
+
 				<div class="form-group row">
 					<label for="BBP" class="col-4 col-form-label">BBP Number</label>
                     <div class="col-4">

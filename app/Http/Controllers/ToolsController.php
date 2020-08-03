@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Tool;
+use App\UsersGranted;
 use Illuminate\Http\Request;
+use App\Rules\ValidItem;
+use App\Rules\ValidInvoice;
+use App\Rules\ValidCCD;
+use App\Rules\ValidPositionCCD;
+use App\Rules\IfAssetNeeded;
 
 define('GDP', 'GDP Sections');
 define('MODEM', 'GWD Modem');
@@ -10,6 +17,11 @@ define('BBP', 'GWD Bullplug');
 
 class ToolsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return view('tools.index');
@@ -20,48 +32,32 @@ class ToolsController extends Controller
         $what = $request->search_data;
         $where = $request->search_where;
 
-        //TODO - refactor, rmeove if-else struct
-        if (empty($request->search_data))
-        {
-            $items = $this->getToolData('', '');
-        }else
-        {
-            $items = $this->getToolData($what, $where);
-        }
+        $items = $this->getToolData($what, $where);
 
         return view('tools.data', compact('items'));
     }
 
     public function getToolData($what, $where)
     {
-        return APIHelper::getData('ToolsAll', $what, $where);
+        $service = 'ToolsAll';
+        $uri = APIHelper::getUrl($service). "?what=" . $what . "&where=" . $where;
+        return APIHelper::getRecord($uri);
     }
 
     public function create()
     {
-        $uri = APIHelper::getUrl('ToolItems');
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-        try{
-            $response = $client->get($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ]
-            ]);
-            $components = json_decode((string)$response->getBody());
-            $components = (array)$components;
-        }catch (\Exception $ex){
-            dd($ex);
-        }
+        $service = 'ToolItems';
+        $components = APIHelper::getComponentsForTools($service);
+
         return view('tools/create', compact('components'));
     }
 
     public function store()
     {
-        $uri = 'http://192.168.0.102:8081/toolservices/toolservice.svc/AddNewItem';
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        $this->validatedDataStore();
+
+        $service = 'ToolAdd';
+        $uri = APIHelper::getUrl($service);
         $data = [
             'Item' => request('Item'),
             'Asset' => request('Asset'),
@@ -73,46 +69,69 @@ class ToolsController extends Controller
             'ItemStatus' => request('ItemStatus'),
             'Box' => request('Box'),
             'Container' => request('Container'),
-            'ItemImage' => base64_encode(file_get_contents(request(('image')))),
             'Comment' => request('Comment')
         ];
-//        dd($data);
-        try{
-            $response = $client->post($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ],
-                'body' => json_encode($data)
-            ]);
-            $tool_id = json_decode((string)$response->getBody());
-        }catch (\Exception $ex){
-            dd($ex);
+
+        if (request()->hasFile('image'))
+        {
+            $imageArray = array('ItemImage' => base64_encode(file_get_contents(request(('image')))));
+            $data = array_merge($data, $imageArray);
         }
+
+        $item_id = APIHelper::insertRecord($uri, $data);
         return redirect('/tools');
+    }
+
+    private function validatedDataStore()
+    {
+        return tap(request()->validate([
+            'Item' => 'required',
+            'Asset' => [new ValidItem(request('Item'), request('Asset')), new IfAssetNeeded(request('Item'), request('Asset'))],
+            'Arrived' => 'required|date',
+            'Invoice' => ['nullable', new ValidInvoice(request('Invoice'))],
+            'CCD' => ['nullable', new ValidCCD(request('CCD'))],
+            'NameRus' => 'nullable',
+            'PositionCCD' => ['nullable', new ValidPositionCCD(request('PositionCCD'))],
+            'ItemStatus' => 'required',
+            'Box' => 'nullable',
+            'image' => 'nullable',
+            'Comment' => 'nullable',
+        ]), function () {
+            if (request()->hasFile('image')){
+                request()->validate([
+                    'image' => 'file|image|max:2048',
+                ]);
+            }
+        });
+    }
+
+    private function validatedDataUpdate($itemItem)
+    {
+        return tap(request()->validate([
+            'Asset' => [new IfAssetNeeded($itemItem, request('Asset'))],
+            'Arrived' => 'required|date',
+            'Invoice' => ['nullable', new ValidInvoice(request('Invoice'))],
+            'CCD' => ['nullable', new ValidCCD(request('CCD'))],
+            'NameRus' => 'nullable',
+            'PositionCCD' => ['nullable', new ValidPositionCCD(request('PositionCCD'))],
+            'ItemStatus' => 'required',
+            'Box' => 'nullable',
+            'image' => 'nullable',
+            'Comment' => 'nullable',
+        ]), function () {
+            if (request()->hasFile('image')){
+                request()->validate([
+                    'image' => 'file|image|max:2048',
+                ]);
+            }
+        });
     }
 
     public function getJobsInvolvedIn($id)
     {
-        $uri = 'http://192.168.0.102:8081/toolservices/toolservice.svc/GetJobsInvolvedIn?item=' . $id;
-        $token = session()->get('Token');
-
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-        try{
-            $response = $client->get($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ]
-            ]);
-            $jobsInvolvedIn = json_decode((string)$response->getBody());
-            $jobsInvolvedIn = (array)$jobsInvolvedIn;
-
-        }catch (\Exception $ex){
-            dd($ex);
-        }
-//        dd($jobsInvolvedIn);
-        return $jobsInvolvedIn;
+        $service = 'ToolInvolvedInJobs';
+        $uri = APIHelper::getUrl($service) . $id;
+        return APIHelper::getRecord($uri);
     }
 
     public function show($tool)
@@ -121,22 +140,7 @@ class ToolsController extends Controller
         $circulation = $this->getCirculation($item);
         $jobs = $this->getJobsInvolvedIn($item['Id']);
         $jobs = (array)$jobs;
-//        $itemimage = imagecreatefromstring(base64_decode($item['ItemImage']));
 
-        // TODO - add jobs where Tool involved
-//        $tool = Item::find($tool);
-//        switch ($tool->Item){
-//            case 'GDP Sections':
-//                $jobs_involved = Job::where('toolNumber', $tool->Asset)->get();
-//                break;
-//            case 'GWD Modem Section':
-//                $jobs_involved = Job::where('modemNumber', $tool->Asset)->get();
-//                break;
-//            case 'GWD Battery BullPlug':
-//                $jobs_involved = Job::where('bbpNumber', $tool->Asset)->get();
-//                break;
-//        }
-//        dd($jobs);
         return view('tools.show', compact('item', 'circulation', 'jobs'));
     }
 
@@ -167,15 +171,17 @@ class ToolsController extends Controller
         return view('tools.edit', compact('item', 'circulation_remains'));
     }
 
-    public function update($id)
+    public function update($id, Request $request)
     {
-        $uri = 'http://192.168.0.102:8081/toolservices/toolservice.svc/EditItem/' . $id;
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        $itemName = $this->getItem($id)['Item'];        // move it in the data array
+
+        $this->validatedDataUpdate($itemName);
+
+        $uri = APIHelper::getUrl('ToolEdit') . $id;
+        $imageArray = null;
         $data = [
             'Id' => $id,
-//            'Item' => request('Item'),
-            'Item' => $this->getItem($id)['Item'],      //  refactor this, place it as local var!!
+            'Item' => $itemName,
             'Asset' => request('Asset'),
             'Arrived' => request('Arrived'),
             'Invoice' => request('Invoice'),
@@ -185,82 +191,30 @@ class ToolsController extends Controller
             'ItemStatus' => request('ItemStatus'),
             'Box' => request('Box'),
             'Container' => request('Container'),
-            'ItemImage' => base64_encode(file_get_contents(request(('image')))),
             'Comment' => request('Comment')
         ];
-//        dd($data);
-        try{
-            $response = $client->post($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ],
-                'body' => json_encode($data)
-            ]);
-        }catch (\Exception $ex){
-            dd($ex);
+        if ($request->hasFile('image'))
+        {
+            $imageArray = array('ItemImage' => base64_encode(file_get_contents(request(('image')))));
+            $data = array_merge($data, $imageArray);
         }
+
+        APIHelper::updateRecord($uri, $data);
+
         return redirect('/tools');
     }
 
-    private function validatedData()
-    {
-        return tap(request()->validate([
-            'Item' => 'required',
-            'Asset' => 'required',
-            'Arrived' => 'nullable|date',
-            'Invoice' => 'nullable',
-            'CCD' => 'nullable',
-//            'tool_desc_rus' => 'nullable',
-            'PositionCCD' => 'nullable',
-            'ItemStatus' => 'nullable',
-            'Box' => 'nullable',
-            'Comment' => 'nullable',
-        ]), function () {
-            if (request()->hasFile('image')){
-                request()->validate([
-                    'image' => 'file|image|max:5000',
-                ]);
-            }
-        });
-    }
-//    public function storeImage($tool)
-//    {
-//        if (request()->has('image')){
-//            $tool->update([
-//                'image' => request()->image->store('uploads', 'public'),
-//            ]);
-//
-//            $image = Image::make(public_path('storage/' . $tool->image));
-//            if ($image->getWidth() < $image->getHeight()){
-//                $image->rotate(90);
-//            }
-//            $image->fit(650, 400);
-//            $image->save();
-//        }
-//    }
-
     public function getItem($id)
     {
-//        $uri = APIHelper::getUrl('ToolCustom'). $id;
-        $uri = 'http://192.168.0.102:8081/toolservices/toolservice.svc/GetSelectedItemLRL?item=' . $id;
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-        try{
-            $response = $client->get($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ]
-            ]);
-            $item = json_decode((string)$response->getBody());
-            $item = (array)$item[0];
+        $service = 'ToolGetLRL';
+        $uri = APIHelper::getUrl($service) . $id;
+        return (array)(APIHelper::getRecord($uri)[0]);
+    }
 
-        }catch (\Exception $ex){
-            dd($ex);
-        }
-//        dd($token);
-//        dd($data);
-        return $item;
+    public function getItemItemAsset($item, $asset)
+    {
+        $service = 'ToolGetItemAsset';
+        $uri = APIHelper::getUrl($service) . "?item=" . $item . "&asset=" . $asset;
+        return APIHelper::getRecordItemAsset($uri);
     }
 }

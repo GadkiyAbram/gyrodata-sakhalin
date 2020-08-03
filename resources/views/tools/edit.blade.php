@@ -1,6 +1,12 @@
 <html>
 
-<head></head>
+<head>
+	<style>
+	   .error {
+	       background-color: gainsboro;
+	   }
+	</style>
+</head>
 
 <body>
 <div class="pl-3 pr-3">
@@ -12,7 +18,7 @@
         <div class="align-content-center pr-3">
             <div class="d-flex justify-content-between align-items-baseline">
                 <a href="/tools/{{ $item['Id'] }}">Go back</a>
-                <h5 class="pl-2">{{ $item['Item'] }}</h5>
+                <h5 class="pl-2" name="Item">{{ $item['Item'] }} {{ $item['Asset'] }}</h5>
             </div>
         </div>
         <div>
@@ -25,12 +31,14 @@
 		@method('PATCH')
 
 		<div class="row">
-			<div class="col-6">
-
+			<div class="col-6">		
 				<div class="form-group row">
 					<label for="Asset" class="col-4 col-form-label">Tool Asset</label>
 					<div class="col-5">
 						<input type="text" class="form-control" name="Asset" value="{{ $item['Asset'] }}">
+						 @if($errors->has('Asset'))
+                            <div class="error">{{ $errors->first('Asset') }}</div>
+                        @endif
 					</div>
 				</div>
 
@@ -38,6 +46,9 @@
 					<label for="Arrived" class="col-4 col-form-label">Arrived</label>
 					<div class="col-5">
 						<input type="date" class="form-control" name="Arrived" value="{{ $item['Arrived'] }}">
+						@if($errors->has('Arrived'))
+                            <div class="error">{{ $errors->first('Arrived') }}</div>
+                        @endif
 					</div>
 				</div>
 
@@ -89,14 +100,14 @@
 				<div class="form-group row">
 					<label for="Box" class="col-4 col-form-label">Box</label>
 					<div class="col-8">
-						<input type="text" class="form-control" value="{{ $item['Box'] }}">
+						<input type="text" class="form-control" name="Box" value="{{ $item['Box'] }}">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="PositionCCD" class="col-4 col-form-label">Tool CCD pos</label>
 					<div class="col-8">
-						<input type="text" class="form-control" value="{{ $item['PositionCCD'] }}">
+						<input type="text" class="form-control" name="PositionCCD" value="{{ $item['PositionCCD'] }}">
 					</div>
 				</div>
 

@@ -1,4 +1,6 @@
-@include('nav')
+@if (Auth::user())
+	@include('nav')
+@endif
 
         <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -61,17 +63,15 @@
 
    <div class="content">
 
-
         <div class="title m-b-md">
             Gyrodata Sakhalin
         </div>
 
-
         <div>
+        @if (Auth::guest())
             @if (Route::has('login'))
                 <div class="center-content links">
                 @auth
-                {{--<a href="{{ url('/home') }}">Home</a>--}}
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -81,6 +81,20 @@
                 @endauth
                 </div>
             @endif
+        @else
+{{--            TODO - remove logout--}}
+{{--        	<div class="center-content links">--}}
+{{--				<a class="nav-link" href="{{ route('logout') }}"--}}
+{{--					onclick="event.preventDefault();--}}
+{{--					document.getElementById('logout-form').submit();">--}}
+{{--						<p> {{ __('Logout') }} </p>--}}
+{{--				</a>--}}
+
+{{--				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+{{--					@csrf--}}
+{{--				</form>--}}
+{{--        	</div>--}}
+       @endif
         </div>
     </div>
 

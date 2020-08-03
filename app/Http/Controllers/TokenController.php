@@ -15,6 +15,7 @@ class TokenController extends Controller
 
     public function store(Request $request)
     {
+//        dd($request->session());
         $uri = APIHelper::getUrl('Auth');
         $client = new \GuzzleHttp\Client([
             'headers' => ['Content-Type' => 'application/json']

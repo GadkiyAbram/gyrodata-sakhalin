@@ -11,80 +11,24 @@ class BatteriesController extends Controller
 
     public function index()
     {
-        //TODO - remove if checked
-//        $uri = 'http://192.168.0.102:8081/batteryservices/batteryservice.svc/GetSelectedBatteries?what=&where=';
-//        $uri = APIHelper::getUrl('BatteriesAll'). "?what=&where=";
-//        $token = session()->get('Token');
-//        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-//        try{
-//            $response = $client->get($uri, [
-//                'headers' => [
-//                    'Content-Type' => 'application/json',
-//                    'Token' => $token
-//                ]
-//            ]);
-//            $batteries = json_decode((string)$response->getBody());
-//            $batteries = (array)$batteries;
-//            foreach ($batteries as $serial)
-//            {
-//                array_push($this->batt_serials, $serial->SerialOne);
-//            }
-////            dd($this->batt_serials);
-//            $count = count($batteries);
-//        }catch (\Exception $ex){
-//            dd($ex);
-//        }
-
-//        return view('batteries/index', compact('batteries', 'count'));
         return view('batteries.index');
     }
 
     public function searchBatteries(Request $request)
     {
-//        return view('batteries.data');
-//        $what = $request->search_data;
-//        $where = $request->search_where;
-////        $uri = "http://192.168.0.102:8081/batteryservices/batteryservice.svc/GetSelectedBatteries?what=" . $what . "&where=" . $where;
-//        $uri = APIHelper::getUrl('BatteriesAll'). "?what=" . $what . "&where=" . $where;
-//        $token = session()->get('Token');
-//        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-//        try{
-//            $response = $client->get($uri, [
-//                'headers' => [
-//                    'Content-Type' => 'application/json',
-//                    'Token' => $token
-//                ]
-//            ]);
-//            $batteries = json_decode((string)$response->getBody());
-//            $batteries = (array)$batteries;
-//            foreach ($batteries as $serial)
-//            {
-//                array_push($this->batt_serials, $serial->SerialOne);
-//            }
-////            dd($this->batt_serials);
-//            $count = count($batteries);
-//        }catch (\Exception $ex){
-//            dd($ex);
-//        }
-
         $what = $request->search_data;
         $where = $request->search_where;
 
-        //TODO - refactor, rmeove if-else struct
-        if (empty($request->search_data))
-        {
-            $batteries = $this->getBatteryData('', '');
-        }else
-        {
-            $batteries = $this->getBatteryData($what, $where);
-        }
+        $batteries = $this->getBatteryData($what, $where);
 
         return view('batteries.data', compact('batteries'));
     }
 
     public function getBatteryData($what, $where)
     {
-        return APIHelper::getData('BatteriesAll', $what, $where);
+        $service = 'BatteriesAll';
+        $uri = APIHelper::getUrl($service). "?what=" . $what . "&where=" . $where;
+        return APIHelper::getRecord($uri);
     }
 
     public function edit($id)
@@ -104,37 +48,19 @@ class BatteriesController extends Controller
     public function getBattery($id)
     {
         //TODO - add job to battery assigned
-        $uri = 'http://192.168.0.102:8081/batteryservices/batteryservice.svc/GetSelectedBatteryData/' . $id;
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
-        try{
-            $response = $client->get($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ]
-            ]);
-            $battery = json_decode((string)$response->getBody());
-            $battery = (array)$battery[0];
-//            dd($battery);
-
-        }catch (\Exception $ex){
-            dd($ex);
-        }
-        return $battery;
+        $service = 'BatteryCustom';
+        $uri = APIHelper::getUrl($service) . $id;
+        return (array)(APIHelper::getRecord($uri))[0];
     }
 
     public function create()
     {
-
         return view('batteries/create');
     }
     public function store()
     {
-        $url = \Config::get('url.url');
-        $port = \Config::get('url.port');
-        $uri = "http://". $url. ":". $port. "/batteryservices/batteryservice.svc/AddBattery";
-
+        $service = 'BatteryAdd';
+        $uri = APIHelper::getUrl($service);
         $data = [
             'BoxNumber' => request('BoxNumber'),
             'BatteryCondition' => request('BatteryCondition'),
@@ -152,13 +78,13 @@ class BatteriesController extends Controller
         $battery_id = APIHelper::insertRecord($uri, $data);
 
         return redirect('/batteries');
+
     }
 
     public function update($id)
     {
-        $uri = 'http://192.168.0.102:8081/batteryservices/batteryservice.svc/EditBattery/' . $id;
-        $token = session()->get('Token');
-        $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
+        $service = 'BatteryEdit';
+        $uri = APIHelper::getUrl($service) . $id;
         $data = [
             'Id' => $id,
             'BoxNumber' => request('BoxNumber'),
@@ -173,18 +99,8 @@ class BatteriesController extends Controller
             'Container' => request('Container'),
             'Comment' => request('Comment')
         ];
-//        dd($data);
-        try{
-            $response = $client->post($uri, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Token' => $token
-                ],
-                'body' => json_encode($data)
-            ]);
-        }catch (\Exception $ex){
-            dd($ex);
-        }
+        APIHelper::updateRecord($uri, $data);
+
         return redirect('/batteries');
     }
 }
