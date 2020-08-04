@@ -93,11 +93,11 @@ return [
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
-            'host' => env('DB_HOST', 'tcp:serverdemodemo.database.windows.net'),
-            'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => 'tcp:serverdemodemo.database.windows.net',
+            'port' => '1433',
+            'database' => 'GyrodataTracker',
+            'username' => 'demo1',
+            'password' => 'Carrier7bags',
             'charset' => 'utf8',
             'schema' => 'public',
             'prefix' => '',
