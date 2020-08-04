@@ -99,6 +99,7 @@ return [
             'username' => env('DB_USERNAME', 'demo1'),
             'password' => env('DB_PASSWORD', 'Carrier7bags'),
             'charset' => 'utf8',
+            'schema' => 'public',
             'prefix' => '',
             'prefix_indexes' => true,
         ],
