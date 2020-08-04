@@ -6,18 +6,34 @@ namespace App\Http\Controllers;
 
 class APIHelper extends Controller
 {
+    // LOCAL SCHEME
+    // public static function getUrl($service)
+    // {
+    //     $scheme = config('url.scheme');
+    //     $url = config('url.url');
+    //     $port = config('url.port');
+
+    //     $pathService = config('url.'.$service);
+
+    //     $path = $scheme.
+    //             $url.
+    //             ":".
+    //             $port.
+    //             $pathService;
+
+    //     return $path;
+    // }
+
+    // AZURE SCHEME
     public static function getUrl($service)
     {
-        $scheme = config('url.scheme');
-        $url = config('url.url');
-        $port = config('url.port');
+        $scheme = config('url.scheme_azure');
+        $url = config('url.url_azure');
 
         $pathService = config('url.'.$service);
 
         $path = $scheme.
                 $url.
-                ":".
-                $port.
                 $pathService;
 
         return $path;

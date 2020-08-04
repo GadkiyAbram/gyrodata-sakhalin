@@ -3,10 +3,14 @@
 return [
     
     //  DO NOT FORGET TO RUN "PHP ARTISAN CONFIG:CACHE" //
-
+    // LOCAL SCHEME
     "scheme" => "http://",
     "url" => "192.168.1.105",
     "port" => "8081",
+
+    // AZURE SCHEME
+    "scheme_azure" => "http://",
+    "url_azure" => "demotestapi.cloudapp.net",
 
     "Auth" => "/authservices/authservice.svc/Authenticate",
     //Batteries
