@@ -2352,9 +2352,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2601,8 +2598,7 @@ __webpack_require__.r(__webpack_exports__);
         password: '',
         email: '',
         created_at: '',
-        approved_id: '',
-        approved_name: ''
+        approved_id: ''
       }) // form: new Form({
       //     id: '',
       //     first_name : '',
@@ -2626,7 +2622,6 @@ __webpack_require__.r(__webpack_exports__);
 
       // var approved_id = window.user.id;
       this.form.approved_id = window.user.id;
-      this.form, approved_name = window.user.name;
       console.log(this.form.approved_id);
       console.log(this.form.id);
       console.log(this.form.password);
@@ -65119,8 +65114,6 @@ var render = function() {
                         _vm._v(_vm._s(_vm._f("myDate")(user.created_at)))
                       ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(user.approved_name))]),
-                      _vm._v(" "),
                       _c("td", [
                         _c(
                           "a",
@@ -65580,8 +65573,6 @@ var staticRenderFns = [
       _c("th", [_vm._v("Type")]),
       _vm._v(" "),
       _c("th", [_vm._v("Registered At")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Approved By")]),
       _vm._v(" "),
       _c("th", [_vm._v("Modify")])
     ])

@@ -23,7 +23,6 @@
                                 <th>Email</th>
                                 <th>Type</th>
                                 <th>Registered At</th>
-                                <th>Approved By</th>
                                 <th>Modify</th>
                             </tr>
                             <tr v-for="user in users.data" :key="user.id">
@@ -33,8 +32,6 @@
                                 <td>{{user.email}}</td>
                                 <td>{{user.type | upText}}</td>
                                 <td>{{user.created_at | myDate}}</td>
-                                <td>{{user.approved_name}}</td>
-                                <!-- <td>{{user.approved_id}}</td> -->
                                 <td>
                                     <a href="#" @click="editModal(user)">
                                         <i class="fa fa-edit blue">Edit</i>
