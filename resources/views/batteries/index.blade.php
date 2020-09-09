@@ -86,7 +86,7 @@
     function loadData(){
         $.ajax({
             type: 'POST',
-            url: "{{ route('jobs.index') }}",
+            url: "{{ route('batteries.index') }}",
 
             success: function($data){
                 $('#output').html($data);
