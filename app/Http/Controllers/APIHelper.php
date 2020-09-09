@@ -51,9 +51,10 @@ class APIHelper extends Controller
                     'Token' => $token
                 ]
             ]);
+            // dd($response->getStatusCode());
             $data = json_decode((string)$response->getBody());
             $data = (array)$data;
-
+            
         }catch (\Exception $ex){
             dd($ex);
         }

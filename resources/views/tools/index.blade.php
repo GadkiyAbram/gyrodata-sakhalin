@@ -46,39 +46,12 @@
                 </div>
             </div>
         </div>
-        <p class="ml-3 mr-3" id="output"></p>
-
-{{--    	<table class="table table-striped">--}}
-{{--    		<thead>--}}
-{{--    		<tr>--}}
-{{--    			<th scope="col">Tool Type</th>--}}
-{{--    			<th scope="col">Tool A/N</th>--}}
-{{--    			<th scope="col">Arrived</th>--}}
-{{--    			<th scope="col">CCD</th>--}}
-{{--    			<th scope="col">Location</th>--}}
-{{--    			<th scope="col">Circ Hrs</th>--}}
-{{--    			<th scope="col">Comment</th>--}}
-{{--    			<th scope="col">###</th>--}}
-{{--    		</tr>--}}
-{{--    		</thead>--}}
-{{--    		@foreach($items as $item)--}}
-{{--    			<tbody>--}}
-{{--    			<tr>--}}
-{{--    				<td>{{ $item->Item }}</td>--}}
-{{--    				<td><a href="/tools/{{ $item->Id }}">{{ $item->Asset }}</a></td>--}}
-{{--    				<td>{{ $item->Arrived }}</td>--}}
-{{--    				<td>{{ $item->CCD }}</td>--}}
-{{--    				<td>{{ $item->ItemStatus }}</td>--}}
-{{--    				<td>{{ $item->Circulation }}</td>--}}
-{{--    				<td>{{ $item->Comment }}</td>--}}
-{{--    				<td><a href="/tools/{{ $item->Id }}/edit">Edit</a></td>--}}
-{{--    			</tr>--}}
-{{--    			</tbody>--}}
-{{--    		@endforeach--}}
-
-{{--    	</table>--}}
-{{--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
-{{--        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>--}}
+        
+        <p class="ml-3 mr-3" id="output">
+            <div class="loader">
+                <img src="loading.gif" alt="Loading..."/>
+            </div>
+        </p>
 </div>
 </body>
 </html>
@@ -115,25 +88,39 @@
         });
     }
 
+    var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+            clearTimeout (timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+
     $a(document).ready(function () {
+        const loader = document.querySelector(".loader");
         var search_where = $a(".search_where:checked").val();
         $a('input[type="radio"]').click(function () {
             search_where = $(this).val();
         });
-
+        
         $a('#item_data').keyup(function (e) {
-            var search_data = $a('#item_data').val();
-            e.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('tools.index') }}",
-                data: { search_data: search_data,
-                    search_where: search_where
-                },
-                success: function($data){
-                    $a('#output').html($data);
+            //delete below
+            delay(function(){
+                var search_data = $a('#item_data').val();
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('tools.index') }}",
+                    data: { search_data: search_data,
+                        search_where: search_where
+                    },
+                    success: function($data){
+                        loader.className += " hidden";
+                        $a('#output').html($data);
                 },
             });
+            }, 1000);
+            
         });
         $a('#item_data').keyup();
 

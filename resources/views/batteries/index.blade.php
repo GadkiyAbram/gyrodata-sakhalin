@@ -10,7 +10,7 @@
 		}
 		.conditionUsed {
 			color: red;
-		}
+        }
 	</style>
 </head>
 
@@ -38,7 +38,7 @@
                 </div>
                 <div class="btn-group" data-toggle="buttons">
                     <label class="btn btn-secondary">
-                        <input type="radio" class="search_where" name="search_where" value="Serial 1" checked>Serial 1
+                        <input type="radio" class="search_where" name="search_where" value="Serial" checked>Serial 1
                     </label>
 
                     <label class="btn btn-secondary">
@@ -55,51 +55,11 @@
                 </div>
             </div>
         </div>
-        <p class="ml-3 mr-3" id="output"></p>
-
-{{--	<table class="table table-striped">--}}
-{{--		<thead>--}}
-{{--		<tr>--}}
-{{--			<th scope="col">Condition</th>--}}
-{{--			<th scope="col">Serial 1</th>--}}
-{{--			<th scope="col">Serial 2</th>--}}
-{{--			<th scope="col">Serial 3</th>--}}
-{{--			<th scope="col">Production Date</th>--}}
-{{--			<th scope="col">Invoice</th>--}}
-{{--			<th scope="col">CCD</th>--}}
-{{--			<th scope="col">Container</th>--}}
-{{--			<th scope="col">Comment</th>--}}
-{{--			<th scope="col">Action</th>--}}
-{{--		</tr>--}}
-{{--		</thead>--}}
-
-{{--		@foreach($batteries as $battery)--}}
-{{--			<tbody>--}}
-{{--			<tr>--}}
-{{--				<th scope="row">--}}
-
-{{--					@if ($battery->BatteryCondition === 'New')--}}
-{{--						<span class="conditionNew">{{ $battery->BatteryCondition }}</span>--}}
-{{--					@elseif ($battery->BatteryCondition === 'Used')--}}
-{{--						<span class="conditionUsed">{{ $battery->BatteryCondition }}</span>--}}
-{{--					@endif--}}
-
-{{--				</th>--}}
-{{--				<td><a href="/batteries/{{ $battery->Id }}">{{ $battery->SerialOne }}</a></td>--}}
-{{--				<td>{{ $battery->SerialTwo ?? 'N/A' }}</td>--}}
-{{--				<td>{{ $battery->SerialThr }}</td>--}}
-{{--				<td>{{ $battery->Arrived }}</td>--}}
-{{--				<td>{{ $battery->Invoice }}</td>--}}
-{{--				<td>{{ $battery->CCD }}</td>--}}
-{{--				<td>{{ $battery->Container }}</td>--}}
-{{--				<td>{{ $battery->Comment }}</td>--}}
-{{--				<td><a href="#">Edit</a></td>--}}
-{{--			</tr>--}}
-{{--			</tbody>--}}
-{{--		@endforeach--}}
-
-{{--	</table>--}}
-{{--	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>--}}
+        <p class="ml-3 mr-3" id="output">
+            <div class="loader">
+                <img src="loading.gif" alt="Loading..."/>
+            </div>
+        </p>
 </div>
 </body>
 </html>
@@ -111,7 +71,39 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
+    function loadData(){
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('jobs.index') }}",
+
+            success: function($data){
+                $('#output').html($data);
+            },
+        });
+    }
+
+    var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+            clearTimeout (timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+
     $(document).ready(function () {
+        const loader = document.querySelector(".loader");
         var search_where = $(".search_where:checked").val();
         $('input[type="radio"]').click(function () {
             search_where = $(this).val();
@@ -127,10 +119,13 @@
                     search_where: search_where
                 },
                 success: function($data){
-                    $('#output').html($data);
+                    loader.className += " hidden";
+                    $('#output').html($data);  
                 }
             });
         });
         $('#battery_data').keyup();
+
+        setInterval(loadData, 10000);
     });
 </script>

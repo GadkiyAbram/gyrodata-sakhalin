@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="row">

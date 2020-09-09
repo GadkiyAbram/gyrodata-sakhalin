@@ -111,6 +111,3 @@ Route::get('/home', 'SearchController@index')->name('home');
 Route::get('{path}', "SearchController@index");
 //->where('path', '([A-z\d-\/_.]+)?' );
 //    ->middleware('auth');
-
-
-

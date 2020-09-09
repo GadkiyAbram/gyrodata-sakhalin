@@ -50,7 +50,11 @@
             </div>
         </div>
     </div>
-    <p class="ml-3 mr-3" id="output"></p>
+    <p class="ml-3 mr-3" id="output">
+        <div class="loader">
+            <img src="loading.gif" alt="Loading..."/>
+        </div>
+    </p>
 </div>
 </body>
 </html>
@@ -63,6 +67,7 @@
         }
     });
     $(document).ready(function () {
+        const loader = document.querySelector(".loader");
         var search_where = $(".search_where:checked").val();
         $('input[type="radio"]').click(function () {
             search_where = $(this).val();
@@ -78,10 +83,12 @@
                     search_where: search_where
                 },
                 success: function($data){
+                    loader.className += " hidden";
                     $('#output').html($data);
                 }
             });
         });
         $('#job_data').keyup();
+        
     });
 </script>
