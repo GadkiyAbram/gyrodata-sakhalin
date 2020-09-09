@@ -66,6 +66,37 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
+    function loadData(){
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('jobs.index') }}",
+
+            success: function($data){
+                $('#output').html($data);
+            },
+        });
+    }
+
+    var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+            clearTimeout (timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+
     $(document).ready(function () {
         const loader = document.querySelector(".loader");
         var search_where = $(".search_where:checked").val();
@@ -89,6 +120,8 @@
             });
         });
         $('#job_data').keyup();
+
+        setInterval(loadData, 10000);
         
     });
 </script>

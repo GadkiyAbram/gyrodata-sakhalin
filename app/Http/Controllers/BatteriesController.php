@@ -59,6 +59,9 @@ class BatteriesController extends Controller
     }
     public function store()
     {
+
+        $this->validateBatteryStore();
+
         $service = 'BatteryAdd';
         $uri = APIHelper::getUrl($service);
         $data = [
@@ -78,7 +81,12 @@ class BatteriesController extends Controller
         $battery_id = APIHelper::insertRecord($uri, $data);
 
         return redirect('/batteries');
+    }
 
+    public function validateBatteryStore(){
+        return tap(request()->validate([
+            'SerialOne' => ['required', new ValidSerialOne(request('SerialOne'))]
+        ]));
     }
 
     public function update($id)
