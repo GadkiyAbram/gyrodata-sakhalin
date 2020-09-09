@@ -34,7 +34,7 @@
                                 <td>{{user.type | upText}}</td>
                                 <td>{{user.created_at | myDate}}</td>
                                 <td>{{user.approved_name}}</td>
-                                <td>{{user.approved_id}}</td>
+                                <!-- <td>{{user.approved_id}}</td> -->
                                 <td>
                                     <a href="#" @click="editModal(user)">
                                         <i class="fa fa-edit blue">Edit</i>
