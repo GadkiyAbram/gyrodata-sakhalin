@@ -5,7 +5,7 @@ use App\Client;
 use App\Http\Component;
 use Illuminate\Http\Request;
 use DB;
-use App\Rules\validateJobData;
+use App\Rules\ValidJobNumber;
 
 define('gdp', 'GDP Section');
 define('modem', 'GWD Modem');
