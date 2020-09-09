@@ -111,7 +111,7 @@ class JobsController extends Controller
     private function validateJobData(){
         return tap(request()->validate([
             'JobNumber' => ['required', new ValidJobNumber(request('JobNumber'))]
-        ]))
+        ]));
     }
 
     public function edit($job)
