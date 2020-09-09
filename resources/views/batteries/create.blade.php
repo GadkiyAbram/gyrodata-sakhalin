@@ -29,6 +29,9 @@
 				<label for="serialOne" class="col-sm-2 col-form-label">Serial 1</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="serialOne" placeholder="Serial 1">
+						@if($errors->has('serialOne'))
+                            <div class="error">{{ $errors->first('serialOne') }}</div>
+                        @endif
 					</div>
 			</div>
 
