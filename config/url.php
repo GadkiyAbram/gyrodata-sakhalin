@@ -14,7 +14,7 @@ return [
 
     "Auth" => "/authservices/authservice.svc/Authenticate",
     //Batteries
-    "BatteryBySerial" => "/batteryservices/batteryservice.svc/GetSelectedBatteryDataBySerial/",
+    "BatteryBySerial" => "/batteryservices/batteryservice.svc/GetSelectedBattery/",
     "BatteriesAll" => "/batteryservices/batteryservice.svc/GetSelectedBatteries",
     "BatteryCustom" => "/batteryservices/batteryservice.svc/GetSelectedBatteryData/",
     "BatteryAdd" => "/batteryservices/batteryservice.svc/AddBattery",
