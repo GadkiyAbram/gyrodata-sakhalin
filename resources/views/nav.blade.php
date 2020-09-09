@@ -47,10 +47,10 @@
 			</div>
 			<ul class="nav-links">
 				<li><a href="/">Main</a></li>
-				<li><a href="news">Updates</a></li>
-				<li><a href="tools">Tools</a></li>
-				<li><a href="jobs">Jobs</a></li>
-				<li><a href="batteries">Batteries</a></li>
+				<li><a href="/news">Updates</a></li>
+				<li><a href="/tools">Tools</a></li>
+				<li><a href="/jobs">Jobs</a></li>
+				<li><a href="/batteries">Batteries</a></li>
 				@can('isAdmin')
 				<li><a href="master">Admin Panel</a></li>
 				@endcan
