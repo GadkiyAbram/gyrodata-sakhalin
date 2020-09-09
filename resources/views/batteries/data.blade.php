@@ -33,7 +33,7 @@
                     @endif
 
                 </th>
-                <td><a href="/batteries/{{ $battery->Id }}">{{ $battery->SerialOne }}</a></td>
+                <td><a href="/batteries/{{ $battery->SerialOne }}">{{ $battery->SerialOne }}</a></td>
                 <td>{{ $battery->SerialTwo ?? 'N/A' }}</td>
                 <td>{{ $battery->SerialThr }}</td>
                 <td>{{ $battery->Arrived }}</td>
@@ -41,7 +41,7 @@
                 <td>{{ $battery->CCD }}</td>
                 <td>{{ $battery->Container }}</td>
                 <td>{{ $battery->Comment }}</td>
-                <td><a href="/batteries/{{ $battery->Id }}/edit">Edit</a></td>
+                <td><a href="/batteries/{{ $battery->SerialOne }}/edit">Edit</a></td>
             </tr>
             </tbody>
         @endforeach
