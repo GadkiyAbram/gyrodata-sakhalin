@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Http\Controllers\APIHelper;
 use Illuminate\Contracts\Validation\Rule;
 
 class ValidSerialOne implements Rule
