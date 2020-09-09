@@ -130,7 +130,8 @@
                     password : '',
                     email: '',
                     created_at: '',
-                    approved_id: ''
+                    approved_id: '',
+                    approved_name: ''
                 })
                 // form: new Form({
                 //     id: '',
@@ -153,6 +154,8 @@
             approveUser(){
                 // var approved_id = window.user.id;
                 this.form.approved_id = window.user.id;
+                this.form,approved_name = window.user.name
+
                 console.log(this.form.approved_id);
                 console.log(this.form.id);
                 console.log(this.form.password);

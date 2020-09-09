@@ -37,6 +37,7 @@ class UsersPendingController extends Controller
             'type' => $request['type'],
             'password' => Hash::make($request['password']),
             'approved_id' => $request['approved_id'],
+            'approved_name' => $request['approved_name'],
             'Salt' => 'salt'
         ]);
 
