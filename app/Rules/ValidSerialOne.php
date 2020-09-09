@@ -31,7 +31,9 @@ class ValidSerialOne implements Rule
     {
         $service = 'BatteryBySerial';
         $uri = APIHelper::getUrl($service) . $this->serialOne;
+        dd($uri);
         $data = APIHelper::getRecord($uri);
+        dd($data);
         if(count($data) != 0){
             return false;
         }
