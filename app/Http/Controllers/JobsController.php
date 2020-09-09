@@ -5,6 +5,7 @@ use App\Client;
 use App\Http\Component;
 use Illuminate\Http\Request;
 use DB;
+use App\Rules\validateJobData;
 
 define('gdp', 'GDP Section');
 define('modem', 'GWD Modem');
@@ -76,6 +77,8 @@ class JobsController extends Controller
 
     public function store()
     {
+        $this->validateJobData();
+
         $service = 'JobAdd';
         $data = [
             'JobNumber' => request('JobNumber'),
@@ -103,6 +106,12 @@ class JobsController extends Controller
         $uri = APIHelper::getUrl($service);
         $job_id = APIHelper::insertRecord($uri, $data);
         return redirect('/jobs');
+    }
+
+    private function validateJobData(){
+        return tap(request()->validate([
+            'JobNumber' => ['required', new ValidJobNumber(request('JobNumber'))]
+        ]))
     }
 
     public function edit($job)

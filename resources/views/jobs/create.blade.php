@@ -33,7 +33,9 @@
 					<label for="JobNumber" class="col-4 col-form-label">Job Number</label>
 					<div class="col-4">
 						<input type="text" class="form-control" name="JobNumber" placeholder="RU0119GWD001">
+						@if($errors->has('JobNumber'))
 						<div class="error">{{ $errors->first('JobNumber') }}</div>
+						@endif
 					</div>
 				</div>
 				<div class="form-group row">
