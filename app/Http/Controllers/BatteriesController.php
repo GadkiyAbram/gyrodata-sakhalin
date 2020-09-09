@@ -85,7 +85,7 @@ class BatteriesController extends Controller
     private function validateBatteryStore(){
         // dd(request('serialOne'));
         return tap(request()->validate([
-            'SerialOne' => ['required', new ValidSerialOne(request('serialOne'))]
+            'serialOne' => ['required', new ValidSerialOne(request('serialOne'))]
         ]));
     }
 
