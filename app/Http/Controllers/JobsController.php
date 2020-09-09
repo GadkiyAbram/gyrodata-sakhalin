@@ -160,7 +160,7 @@ class JobsController extends Controller
             'Rig' => request('Rig'),
             'Comment' => request('Comment')
         ];
-        dd($data);
+        // dd($data);
         APIHelper::updateRecord($uri, $data);
         return redirect('/jobs');
     }
