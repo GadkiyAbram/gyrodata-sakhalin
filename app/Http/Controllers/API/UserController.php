@@ -7,7 +7,6 @@ use App\User;
 use App\UserGranted;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Lcobucci\JWT\Signer\Rsa\Sha256;
 
 class UserController extends Controller
 {
@@ -130,9 +129,9 @@ class UserController extends Controller
         $user->update($userData);
 
         //updating user in User table
-        // $userU = UserGranted::findOrFail($id);
-        // $userU['Password'] = hash('sha256', $userData['password'] . 'salt');
-        // $userU->update();
+        $userU = UserGranted::findOrFail($id);
+        $userU['Password'] = hash('sha256', $userData['password'] . 'salt');
+        $userU->update();
 
         return ['message' => 'Updating the user info'];
     }
