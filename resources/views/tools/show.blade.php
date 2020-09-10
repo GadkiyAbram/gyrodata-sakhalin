@@ -73,7 +73,7 @@
                     @foreach($jobs as $job)
                 	    <tbody>
                 		    <tr>
-                			    <td>{{ $job->JobNumber }}</td>
+                			    <td><a href="/jobs/{{ $job->JobNumber }}">{{ $job->JobNumber }}</a></td>
                                 <td>{{ $job->CirculationHours }}</td>
                             </tr>
                         </tbody>
