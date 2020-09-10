@@ -30,7 +30,7 @@ class UsersPendingController extends Controller
     {
         $password_sha = hash('sha256', $request['password'] . 'salt');
         // User profile in users table
-        User::create([
+        $user = User::create([
             'name' => $request['name'],
             'lastname' => $request['lastname'],
             'email' => $request['email'],
@@ -41,7 +41,9 @@ class UsersPendingController extends Controller
         ]);
 
         // User profile for getting Token, User table
+        
         UsersGranted::create([
+            'Id' => $user->id,
             'User' => $request['email'],
             'Password' => $password_sha,
             'Salt' => 'salt'
