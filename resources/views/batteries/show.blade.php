@@ -20,7 +20,7 @@
             </div>
         </div>
         <div>
-            <a href="/batteries/{{ $battery->SerialOne }}/edit">Edit Battery</a>
+            <a href="/batteries/{{ $battery['SerialOne'] }}/edit">Edit Battery</a>
         </div>
 
     </div>
