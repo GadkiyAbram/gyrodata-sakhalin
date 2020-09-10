@@ -26,7 +26,8 @@
 
 	<form action="{{ route('tools.store') }}" method="post" enctype="multipart/form-data">
 
-		<div class="row">
+		<!-- <div class="row"> -->
+		<div class="row col-md-9 col-lg-9 col-sm-9 pull-left">
 			<div class="col-6">
 
 				<div class="form-group row">

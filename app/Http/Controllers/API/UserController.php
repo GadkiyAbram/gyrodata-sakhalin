@@ -129,8 +129,8 @@ class UserController extends Controller
         $user->update($userData);
 
         //updating user in User table
-        $userU = UserGranted::findOrFail($id);
-        dd($userU);
+        // $userU = UserGranted::findOrFail($id);
+        // dd($userU);
         // $userU->Password = hash('sha256', $userData['password'] . 'salt');
         // $userU->update();
 
