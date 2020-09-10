@@ -17,7 +17,7 @@
         </div>
 	</div>
 
-	<form action="/jobs/{{ $job['Id'] }}" method="post">
+	<form action="/jobs/{{ $job['Id'] }}" method="post" enctype="multipart/form-data">
 
 		@method('PATCH')
 
