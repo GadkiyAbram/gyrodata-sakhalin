@@ -83,6 +83,7 @@ class APIHelper extends Controller
 
     public static function updateRecord($uri, $data)
     {
+        dd($data);
         $token = session()->get('Token');
         $client = new \GuzzleHttp\Client(['base_uri' => $uri]);
         try{

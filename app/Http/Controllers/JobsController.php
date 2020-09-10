@@ -136,7 +136,6 @@ class JobsController extends Controller
     {
         $service = 'JobEdit';
         $uri = APIHelper::getUrl($service) . $id;
-        dd($uri);
         $data = [
             'Id' => $id,
             'JobNumber' => request('JobNumber'),
