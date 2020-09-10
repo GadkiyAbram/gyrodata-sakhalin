@@ -130,7 +130,7 @@ class UserController extends Controller
 
         //updating user in User table
         $userU = UserGranted::findOrFail($id);
-        $userU['Password'] = hash('sha256', $userData['password'] . 'salt');
+        $userU->Password = hash('sha256', $userData['password'] . 'salt');
         $userU->update();
 
         return ['message' => 'Updating the user info'];
