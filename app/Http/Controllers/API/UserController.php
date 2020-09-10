@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\UserGranted;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
@@ -114,6 +115,7 @@ class UserController extends Controller
 //
 //        return ['message' => 'Updating the user info'];
 
+        //updating user in users table
         $user = User::findOrFail($id);
 
         $this->validate($request, [
@@ -126,6 +128,11 @@ class UserController extends Controller
         $userData['password'] = Hash::make($userData['password']);
 
         $user->update($userData);
+
+        //updating user in User table
+        $userU = UserGranted::findOrFail($id);
+        $userU['Password'] = hash('sha256', $userData['password'] . 'salt');
+        $userU->update();
 
         return ['message' => 'Updating the user info'];
     }
