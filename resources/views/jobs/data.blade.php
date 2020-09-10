@@ -27,7 +27,7 @@
             <tr>
                 <th scope="row"><a href="/jobs/{{ $job->JobNumber }}">{{ $job->JobNumber }}</a></th>
                 <td>{{ $job->ClientName }}</td>
-                <td>{{ $job->GDP }}</td>
+                <td><a href="/tools/{{ $job->GDP->Id }}">{{ $job->GDP }}</a></td>
                 <td>{{ $job->Modem }}</td>
                 <td>{{ $job->Bullplug }}</td>
                 <td>{{ $job->Battery }}</td>
