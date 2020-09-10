@@ -90,6 +90,7 @@ class UserController extends Controller
 
 
         $user->update($request->all());
+
         return ['message' => 'Success'];
     }
 
@@ -129,10 +130,11 @@ class UserController extends Controller
         $user->update($userData);
 
         //updating user in User table
-        // $userU = UserGranted::findOrFail($id);
-        // dd($userU);
-        // $userU->Password = hash('sha256', $userData['password'] . 'salt');
-        // $userU->update();
+        $userU = UserGranted::findOrFail($id);
+
+        $userU['password'] = hash('sha256', $userData['password'] . 'salt');
+
+        $userU->update();
 
         return ['message' => 'Updating the user info'];
     }
