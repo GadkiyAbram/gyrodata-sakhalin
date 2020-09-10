@@ -146,7 +146,7 @@
         methods: {
             updateUser(){
                 this.$Progress.start();
-                // console.log('Editing data');
+                console.log("User Id: " + this.form.id);
                 this.form.put('api/user/' + this.form.id)
                     .then(() => {
                         // success

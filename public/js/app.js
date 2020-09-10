@@ -2373,8 +2373,8 @@ __webpack_require__.r(__webpack_exports__);
     updateUser: function updateUser() {
       var _this = this;
 
-      this.$Progress.start(); // console.log('Editing data');
-
+      this.$Progress.start();
+      console.log("User Id: " + this.form.id);
       this.form.put('api/user/' + this.form.id).then(function () {
         // success
         $('#addNew').modal('hide');
