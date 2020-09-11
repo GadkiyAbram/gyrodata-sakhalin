@@ -15,3 +15,18 @@ You can be logged in by: USER or ADMIN
 If you log in by USER, you will only be able to manage Tools / Batteries / Job data. 
 By Admin you will be able to approve incoming requests, create / update / delete users.
 
+When you log in, application will check your credentials using API (link above) and access Token will be generated (valid 24 hours). Only with Token you will be able to manage DB data.
+
+On the Welocme screen there are Navigation links: Main / Updated / Tools / Batteries / Jobs / Addmin Panel (will only be visible if you Logged In as "Admin")
+Updates - currently unavailable. The purpose is to fill this view with latest news, e.g. Tool / Battery / Job added, etc.
+Tools - This view displays the table of Items, currently stored in DB. You can check each one by link (in Asset) for precise details:
+    - Asset
+    - Arrived in Location
+    - Invoice (the Item was sent from the country of origin)
+    - CCD - custom clearance declaration (for import to Russian Federation)
+    - Description in Russian. This comes from CCD
+    - CCD Position. This is the position of Item in CCD
+    - Circulation. This is the important parameter of some categories of the Items (applicable for GDP Sections / GWD Modem / GWD Bullplug). It depends on the Jobs             the Item was involved in. Will be explained further.
+    - Comment if neccesary
+    - Item Image if neccesary
+    - Table of Jobs with links the Item was involved in.
