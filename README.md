@@ -5,7 +5,7 @@ The application is powered by Azure Cloud Service on:
 http://demolaravel.azurewebsites.net
 
 This web application communicates with API, link below:
-# !!! GYRODATA API LINK !!!
+https://github.com/GadkiyAbram/GyrodataAPICloudService
 
 USAGE:
 1. You need to have an access to manage the Data. If you do not have one, you need to follow the link above and press "SEND REQUEST".
